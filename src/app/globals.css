@@ -73,7 +73,7 @@
 }
 /* width */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 /* Track */
@@ -86,12 +86,12 @@
 
 /* Handle */
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-t from-indigo-700 via-sky-700 to-indigo-700 rounded-sm;
+  @apply bg-slate-800 rounded-sm;
 }
 
 /* Handle on hover */
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  @apply bg-gradient-to-t from-indigo-400 via-cyan-400 to-indigo-400;
+  @apply bg-cyan-500;
 }
 
 .brd {
@@ -99,7 +99,7 @@
 }
 
 .page {
-  @apply w-full mx-auto max-w-[1000px] gap-2 items-center flex flex-col lg:px-10 py-6 px-2;
+  @apply w-full mx-auto max-w-[1000px] gap-2 items-center flex flex-col pl-10 py-6 px-1;
 }
 
 .tab {

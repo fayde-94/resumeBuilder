@@ -15,12 +15,12 @@ export default function Home() {
 
         
       </div> */}
-      <div className="flex w-full flex-row  ">
-        <div className="flex flex-col  max-w-[900px] min-w-[800px] w-full">
+      <div className="flex flex-row h-screen mx-auto max-w-max ">
+        <div className="flex flex-col overflow-y-scroll max-w-[900px] min-w-[900px] w-full">
           <Contact />
           <Skills />
         </div>
-        <div className="scale-[.7] origin-top-left  w-[1100px] max-w-[1440px] aspect-[1000/1440]">
+        <div className="scale-[.6] pt-16 pl-16 origin-top-left w-[1100px] max-w-[1440px] aspect-[1000/1440]">
           <PuppeteerTemplate />
         </div>
       </div>

@@ -24,7 +24,7 @@ export async function POST(req, res) {
         class=" w-[1100px] max-w-[1440px] aspect-[1000/1440] shadow-xl bg-white"
       >
         <div class="flex h-full w-full flex-row">
-          <div class="flex-col p-6 w-1/2  h-full border-b-neutral-50 space-y-6 bg-sky-800 text-neutral-200">
+          <div class="flex-col p-6 w-[35%]  h-full border-b-neutral-50 space-y-6 bg-sky-800 text-neutral-200">
             <div class="w-full text-center space-y-2">
               <h1 class="font-semibold text-4xl uppercase">
                 ${data.name}
