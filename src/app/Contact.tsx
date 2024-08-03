@@ -1,16 +1,33 @@
 "use client";
+import T1 from "@/components/resume_templates/t1";
+import { Button } from "@/components/ui/button";
 import Field from "@/components/ui/Field";
+import TipsCard from "@/components/ui/TipsCard";
+import generatePdf from "@/lib/generatePDF";
+import { useTextStore } from "@/lib/Zustand";
 import { useState } from "react";
-import { Button } from "./ui/button";
 
-const Header = () => {
+const Contact = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+
+  const texts = useTextStore();
+  console.log("🚀 ~ page ~ texts:", texts);
+  const {
+    name,
+    number,
+    email,
+    country,
+    city,
+    linkedin,
+    website,
+    position,
+    setField,
+  } = useTextStore();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const formattedValue = formatPhoneNumber(value);
-    setPhoneNumber(formattedValue);
-    setText({ ...text, number: e.target.value });
+    setField("number", formattedValue);
   };
 
   const [text, setText] = useState({
@@ -23,21 +40,31 @@ const Header = () => {
     website: "",
     position: "",
   });
-  console.log("🚀 ~ Home ~ text:", text);
+
+  const handleGeneratePdf = () => {
+    const resumeHtml = document.getElementById("resume-template")?.innerHTML;
+    if (resumeHtml) {
+      generatePdf(resumeHtml);
+    }
+  };
+  // console.log("🚀 ~ Home ~ text:", text);
   return (
     <div className="page ">
-      <h2 className="font-semibold leading-none text-3xl mb-10">
-        {" "}
-        Resume Header
-      </h2>
-      <div className="flex justify-between w-full ">
-        <div className="brd">cock</div>
-        <div className="grid grid-cols-2 gap-4 w-full max-w-[850px] p-4 bg-slate-200 0 shadow-md rounded-lg shadow-slate-700/40">
+      <div className="w-full">
+        <h2 className="font-semibold text-center leading-none text-4xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent">
+          Contact Information
+        </h2>
+
+        <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
+      </div>
+      <div className="flex justify-around w-full space-x-10 ">
+        <div className="grid grid-cols-2 gap-4 w-full max-w-[950px] p-4 bg-zinc-900/60 rounded-b-lg">
           <Field
             required
             placeholder="John Wick"
             title="Full Name"
-            onChange={(e) => setText({ ...text, name: e.target.value })}
+            value={name}
+            onChange={(e) => setField("name", e.target.value)}
           />
           <Field
             required
@@ -45,55 +72,60 @@ const Header = () => {
             placeholder="(250) 123 1234"
             title="Phone Number"
             maxLength={14}
-            value={phoneNumber}
+            value={number}
             onChange={handleChange}
           />
           <div className=" col-span-2">
             <Field
               required
+              value={position}
               placeholder="Full Stack Developer"
               title="Job Title"
-              onChange={(e) => setText({ ...text, position: e.target.value })}
+              onChange={(e) => setField("position", e.target.value)}
             />
           </div>{" "}
           <Field
             required
+            value={city}
             placeholder="Calgary, AB"
             title="City"
-            onChange={(e) => setText({ ...text, city: e.target.value })}
+            onChange={(e) => setField("city", e.target.value)}
           />
           <Field
             required
+            value={country}
             placeholder="Canada"
             title="Country"
-            onChange={(e) => setText({ ...text, country: e.target.value })}
+            onChange={(e) => setField("country", e.target.value)}
           />
           <div className=" col-span-2">
             <Field
               required
+              value={email}
               type="email"
               placeholder="ineedajob@stuff.com"
               title="Email Address"
-              onChange={(e) => setText({ ...text, email: e.target.value })}
+              onChange={(e) => setField("email", e.target.value)}
             />
           </div>
           <div className=" col-span-2">
             <Field
+              value={linkedin}
               placeholder="https://www.linkedin.com/in/..."
               title="LinkedIn Profile"
-              onChange={(e) => setText({ ...text, linkedin: e.target.value })}
+              onChange={(e) => setField("linkedin", e.target.value)}
             />
           </div>
           <div className=" col-span-2">
             <Field
+              value={website}
               placeholder="https://www.freelemonade.com"
               title="Web Portfolio"
-              onChange={(e) => setText({ ...text, website: e.target.value })}
+              onChange={(e) => setField("website", e.target.value)}
             />
           </div>
         </div>
       </div>
-      <Button className=" px-8 py-6 text-xl place-self-end mx-4 shadow-md rounded-lg shadow-slate-700/40">Next</Button>
     </div>
   );
 };
@@ -113,4 +145,4 @@ const formatPhoneNumber = (value: string): string => {
     )}`;
   }
 };
-export default Header;
+export default Contact;

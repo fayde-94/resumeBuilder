@@ -17,12 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={inter.className}>
+      <body>
         <main className="flex min-h-screen flex-row ">
-          {/* <EdgeStoreProvider>
+          <EdgeStoreProvider>
             <SideBar />
-          </EdgeStoreProvider> */}
+          </EdgeStoreProvider>
           <div className="h-full  w-full flex justify-center">{children}</div>
         </main>
       </body>
