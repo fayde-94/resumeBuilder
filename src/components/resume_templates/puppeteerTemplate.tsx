@@ -8,6 +8,7 @@ const PuppeteerTemplate = () => {
     position,
     city,
     country,
+    pfp,
     email,
     linkedin,
     website,
@@ -23,18 +24,23 @@ const PuppeteerTemplate = () => {
         <div className="flex h-full w-full flex-row">
           <div className="flex-col p-6 min-w-[420px] w-[420px] h-full border-b-neutral-50 space-y-6 bg-sky-800 text-neutral-200">
             {/* NAME AND TITLE SECTION */}
-            <div className="w-full text-center space-y-2">
-              <h1 className="font-semibold text-4xl uppercase">{name}</h1>
-              <div className="flex w-full justify-center">
-                <div className=" size-[224px] overflow-clip rounded-full p-[3px] bg-neutral-300">
-                  <img
-                    alt="picture"
-                    className=" object-cover object-center rounded-full w-full h-full"
-                    src="https://variety.com/wp-content/uploads/2024/01/GettyImages-1849594759-e1704908885262.jpg?w=1024"
-                  />
+            <div className="w-full text-center space-y-4">
+              <h1 className="font-semibold text-5xl uppercase leading-[1.1em]">
+                {name}
+              </h1>
+              {pfp?.url && (
+                <div className="flex w-full justify-center">
+                  <div className=" size-[274px] overflow-clip rounded-full ">
+                    <img
+                      alt="picture"
+                      className=" object-cover object-center  w-full h-full"
+                      src={pfp?.url}
+                    />
+                  </div>
                 </div>
-              </div>
-              <p className="uppercase text-base tracking-widest">{position}</p>
+              )}
+
+              <p className="uppercase text-lg tracking-widest">{position}</p>
             </div>
 
             {/* WEB PORTFOLIO SECTION */}

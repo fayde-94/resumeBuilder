@@ -6,9 +6,16 @@ const es = initEdgeStore.create();
  */
 const edgeStoreRouter = es.router({
   publicFiles: es.fileBucket(),
+
+  publicImages: es.imageBucket()
+  .beforeDelete(({ ctx, fileInfo }) => {
+    console.log('beforeDelete', ctx, fileInfo);
+    return true; // allow delete
+  }),
 });
 const handler = createEdgeStoreNextHandler({
   router: edgeStoreRouter,
+  
 });
 export { handler as GET, handler as POST };
 /**

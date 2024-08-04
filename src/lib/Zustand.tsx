@@ -12,6 +12,15 @@ type T = {
   position?: string;
   technicalSkills?: string[];
   personalSkills?: string[];
+  pfp?: {
+    metadata: {};
+    path: {};
+    pathOrder: [];
+    size: number;
+    thumbnailUrl: string;
+    uploadedAt: [];
+    url: string;
+  };
   setField: (field: any, value: any) => void;
 };
 
@@ -28,6 +37,15 @@ export const useTextStore = create<T>()(
       position: "",
       technicalSkills: [],
       personalSkills: [],
+      pfp: {
+        metadata: {},
+        path: {},
+        pathOrder: [],
+        size: 0,
+        thumbnailUrl: "",
+        uploadedAt: [],
+        url: "",
+      },
       setField: (field, value) =>
         set((state) => ({ ...state, [field]: value })),
     }),

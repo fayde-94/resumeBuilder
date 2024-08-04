@@ -32,18 +32,22 @@ const Field = ({
   maxLength,
 }: props) => {
   return (
-    <div className=" flex flex-col gap-1 md:text-lg text-sm  ">
-      <h2 className=" self-start  ">
-        {title}
-        {required ? <span className="text-amber-400"> *</span> : ""}
-      </h2>
-      <h3
-        className={`${
-          subtext == "" ? "hidden" : "visible"
-        } self-start text-slate-500 text-sm`}
-      >
-        {subtext}
-      </h3>
+    <div className=" flex flex-col md:text-lg text-sm  ">
+      {title !== "" && (
+        <h2 className=" self-start pb-1 ">
+          {title}
+          {required ? <span className="text-amber-400"> *</span> : ""}
+        </h2>
+      )}
+      {subtext && (
+        <h3
+          className={`${
+            subtext == "" ? "hidden" : "visible"
+          } self-start text-slate-500 text-sm pb-1`}
+        >
+          {subtext}
+        </h3>
+      )}
       <Input
         onChange={onChange}
         onKeyDown={onKeyDown}
@@ -52,7 +56,7 @@ const Field = ({
         required={required ? true : false}
         type={type ? type : "text"}
         className={cn(
-          "w-full md:h-14 text-lg bg-slate-800/60  focus-visible:ring-sky-200 ",
+          "w-full h-14 text-lg bg-slate-800/60  focus-visible:ring-sky-200 ",
           className
         )}
         placeholder={placeholder}

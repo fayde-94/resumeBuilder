@@ -20,10 +20,10 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <main className="flex min-h-screen flex-row ">
+          <SideBar />
           <EdgeStoreProvider>
-            <SideBar />
+            <div className="h-full  w-full flex justify-center">{children}</div>
           </EdgeStoreProvider>
-          <div className="h-full  w-full flex justify-center">{children}</div>
         </main>
       </body>
     </html>
