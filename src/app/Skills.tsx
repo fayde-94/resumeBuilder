@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { HoverBorderGradient } from "@/components/ui/border-gradient";
 
 const Skills = () => {
   const texts = useTextStore();
@@ -129,32 +130,44 @@ const Skills = () => {
           <div className="text-white">
             <div className="w-full flex flex-wrap gap-4">
               {technicalSkills?.map((skill, index) => (
-                <div
+                <HoverBorderGradient
+                  containerClassName="border-0 p-0"
+                  className=" border-0 p-0"
+                  duration={1}
                   key={index}
-                  onClick={() => handleRemoveTechnicalSkill(skill)}
-                  className="py-3 px-6 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 bg-[#0f2026] shadow-md rounded-lg w-max "
                 >
-                  <p className=" select-none uppercase text-base  text-neutral-300">
-                    {skill}
-                  </p>
-                  <div className="absolute size-4 origin-center bg-red-600 rounded-full right-[-5%] top-[-10%] scale-0 group-hover:scale-100 duration-300 transition-all"></div>
-                </div>
+                  <div
+                    onClick={() => handleRemoveTechnicalSkill(skill)}
+                    className="py-3 px-6 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 shadow-md bg-[#101728]/90 rounded-full w-max"
+                  >
+                    <p className=" select-none uppercase text-base text-neutral-300">
+                      {skill}
+                    </p>
+                    <div className="absolute size-4 origin-center bg-red-600 rounded-full right-[-5%] top-[-10%] scale-0 group-hover:scale-100 duration-300 transition-all"></div>
+                  </div>
+                </HoverBorderGradient>
               ))}
             </div>
           </div>
           <div className="text-white">
             <div className="w-full flex flex-wrap gap-4">
               {personalSkills?.map((skill, index) => (
-                <div
+                <HoverBorderGradient
+                  containerClassName="border-0 p-0"
+                  className=" border-0 p-0"
+                  duration={1}
                   key={index}
-                  onClick={() => handleRemovePersonalSkill(skill)}
-                  className="py-3 px-6 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 shadow-md bg-[#181d2b] rounded-lg w-max"
                 >
-                  <p className=" select-none uppercase text-base text-neutral-300">
-                    {skill}
-                  </p>
-                  <div className="absolute size-4 origin-center bg-red-600 rounded-full right-[-5%] top-[-10%] scale-0 group-hover:scale-100 duration-300 transition-all"></div>
-                </div>
+                  <div
+                    onClick={() => handleRemovePersonalSkill(skill)}
+                    className="py-3 px-6 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 shadow-md bg-[#101728]/90 rounded-full w-max"
+                  >
+                    <p className=" select-none uppercase text-base text-neutral-300">
+                      {skill}
+                    </p>
+                    <div className="absolute size-4 origin-center bg-red-600 rounded-full right-[-5%] top-[-10%] scale-0 group-hover:scale-100 duration-300 transition-all"></div>
+                  </div>
+                </HoverBorderGradient>
               ))}
             </div>
           </div>

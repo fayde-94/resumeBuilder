@@ -68,7 +68,7 @@
     @apply border-border custom-scrollbar;
   }
   body {
-    @apply dark bg-background text-foreground font-medium text-lg overflow-x-hidden;
+    @apply dark bg-background text-foreground font-medium text-lg overflow-x-hidden  transition-transform duration-300;
   }
 }
 /* width */
@@ -99,7 +99,7 @@
 }
 
 .page {
-  @apply w-full mx-auto max-w-[1000px] gap-2 items-center flex flex-col pl-10 py-6 px-1;
+  @apply w-full mx-auto  max-w-[700px] lg:max-w-[1000px] gap-2 items-center flex flex-col py-6 px-2;
 }
 
 .tab {
@@ -123,5 +123,28 @@ input[type="number"] {
 }
 
 .insetted {
-  inset: 0 0 0 57%
+  inset: 0 0 0 57%;
+}
+@property --num {
+  syntax: "<percentage>"; /* <- defined as type number for the transition to work */
+  initial-value: 0%;
+  inherits: true;
+}
+@property --num-2 {
+  syntax: "<percentage>"; /* <- defined as type number for the transition to work */
+  initial-value: 0%;
+  inherits: true;
+}
+.radialbig {
+  background: radial-gradient(
+    var(--num) var(--num-2) at 50% 100%,
+    hsl(201, 91%, 50%) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: --num 1s cubic-bezier(.03,.44,.53,.97),
+    --num-2 1s cubic-bezier(.03,.44,.53,.97);
+}
+.radialbig:focus-within {
+  --num: 50%;
+  --num-2: 100%
 }

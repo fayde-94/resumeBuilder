@@ -67,6 +67,22 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        radialbig: {
+          from: {
+            background: `radial-gradient(
+              10% 10% at 50% 100%,
+              hsl(211, 100%, 60%) 0%,
+              rgba(255, 255, 255, 0) 100%
+              );`,
+          },
+          to: {
+            background: `radial-gradient(
+              50% 50% at 50% 100%,
+              hsl(211, 100%, 60%) 0%,
+              rgba(255, 255, 255, 0) 100%
+              );`,
+          },
+        },
         jump: {
           from: { color: "#0369a1" },
           to: { color: "#abafb8" },
@@ -76,6 +92,7 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         jump: "jump 2s ease infinite alternate",
+        radialbig: "radialbig 2s ease infinite alternate",
       },
     },
   },

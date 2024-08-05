@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Input } from "./input";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 type props = {
   className?: string;
@@ -48,20 +49,22 @@ const Field = ({
           {subtext}
         </h3>
       )}
-      <Input
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        key={key}
-        maxLength={maxLength}
-        required={required ? true : false}
-        type={type ? type : "text"}
-        className={cn(
-          "w-full h-14 text-lg bg-slate-800/60  focus-visible:ring-sky-200 ",
-          className
-        )}
-        placeholder={placeholder}
-        value={value}
-      />
+      <div className="p-[.1rem] rounded-2xl radialbig">
+        <Input
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          key={key}
+          maxLength={maxLength}
+          required={required ? true : false}
+          type={type ? type : "text"}
+          className={cn(
+            `w-full h-14 text-lg indent-3 bg-[#1e253b]/90 focus-visible:ring-0 rounded-2xl  `,
+            className
+          )}
+          placeholder={placeholder}
+          value={value}
+        />
+      </div>
     </div>
   );
 };
