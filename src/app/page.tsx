@@ -7,6 +7,7 @@ import PuppeteerTemplate from "@/components/resume_templates/puppeteerTemplate";
 import UploadPFP from "../components/UploadPFP";
 import Upload from "@/components/Upload";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import ColorPicker from "@/components/ui/ColorPicker";
 
 export default function Home() {
   return (
@@ -19,14 +20,19 @@ export default function Home() {
         
       </div> */}
       <div className="flex flex-row h-screen mx-auto max-w-max ">
-        <div className="flex flex-col overflow-y-scroll max-w-[900px] min-w-[900px] w-full pb-10">
+        <div className="flex flex-col max-w-[900px] min-w-[900px] w-full pb-10">
           <Contact />
-          <Skills />
           <UploadPFP />
+          <Skills />
+          <ColorPicker />
           {/* <Upload /> */}
         </div>
-        <div className="scale-[.6] pt-16 pl-16 origin-top-left w-[1100px] max-w-[1440px] aspect-[1000/1440]">
-          <PuppeteerTemplate />
+        <div className=" hidden 2xl:flex  origin-top-left aspect-[1000/1440] relative">
+          <div className="fixed  scale-[.6] hidden 2xl:flex pt-16 pl-12 origin-top-left aspect-[1000/1440]">
+            <div className=" bg-black rounded-lg overflow-clip mb-2 border-2 border-black">
+              <PuppeteerTemplate />
+            </div>
+          </div>
         </div>
       </div>
     </div>

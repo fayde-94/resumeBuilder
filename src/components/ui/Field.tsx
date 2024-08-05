@@ -36,7 +36,7 @@ const Field = ({
       {title !== "" && (
         <h2 className=" self-start pb-1 ">
           {title}
-          {required ? <span className="text-amber-400"> *</span> : ""}
+          {required ? <span className="text-sky-400"> *</span> : ""}
         </h2>
       )}
       {subtext && (

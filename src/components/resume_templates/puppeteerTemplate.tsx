@@ -12,6 +12,7 @@ const PuppeteerTemplate = () => {
     email,
     linkedin,
     website,
+    accentColor,
     personalSkills,
     technicalSkills,
   } = useTextStore();
@@ -22,7 +23,10 @@ const PuppeteerTemplate = () => {
         className=" w-[1100px] aspect-[1000/1440] shadow-xl bg-white"
       >
         <div className="flex h-full w-full flex-row">
-          <div className="flex-col p-6 min-w-[420px] w-[420px] h-full border-b-neutral-50 space-y-6 bg-sky-800 text-neutral-200">
+          <div
+            style={{ backgroundColor: accentColor }}
+            className="flex-col p-6 min-w-[420px] w-[420px] h-full border-b-neutral-50 space-y-6 bg-sky-800 text-neutral-200"
+          >
             {/* NAME AND TITLE SECTION */}
             <div className="w-full text-center space-y-4">
               <h1 className="font-semibold text-5xl uppercase leading-[1.1em]">
@@ -30,17 +34,33 @@ const PuppeteerTemplate = () => {
               </h1>
               {pfp?.url && (
                 <div className="flex w-full justify-center">
-                  <div className=" size-[274px] overflow-clip rounded-full ">
+                  <div
+                    style={{ width: "274px", height: "274px" }}
+                    className="size-[274px] overflow-clip rounded-full"
+                  >
                     <img
                       alt="picture"
-                      className=" object-cover object-center  w-full h-full"
+                      className=" object-cover object-center w-full h-full"
                       src={pfp?.url}
                     />
                   </div>
                 </div>
               )}
 
-              <p className="uppercase text-lg tracking-widest">{position}</p>
+              <p className="uppercase text-xl tracking-wider">{position}</p>
+            </div>
+            {/* CITY AND COUNTRY */}
+            <div className="w-full flex-row flex">
+              <div className="flex space-x-2 items-center text-base">
+                <svg width="26" height="20" fill="white" viewBox="0 0 384 512">
+                  <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                </svg>
+                <p className="capitalize">{city}</p>
+
+                <p className="capitalize">
+                  <span className=" text-slate-300">- </span>&nbsp;{country}
+                </p>
+              </div>
             </div>
 
             {/* WEB PORTFOLIO SECTION */}
@@ -147,7 +167,7 @@ const PuppeteerTemplate = () => {
                 </div>
                 <div className="w-full space-y-2 uppercase font-semibold">
                   {technicalSkills.map((skill, index) => (
-                    <li key={index} className="ml-3 marker:text-2xl">
+                    <li key={index} className="ml-2 marker:text-2xl">
                       {skill}
                     </li>
                   ))}
@@ -168,7 +188,7 @@ const PuppeteerTemplate = () => {
                 </div>
                 <div className="w-full space-y-2 uppercase font-semibold">
                   {personalSkills.map((skill, index) => (
-                    <li key={index} className="ml-3 marker:text-2xl">
+                    <li key={index} className="ml-2 marker:text-2xl">
                       {skill}
                     </li>
                   ))}
@@ -177,17 +197,38 @@ const PuppeteerTemplate = () => {
             ) : (
               ""
             )}
+            {/* EDUCATION SECTION */}
+            <div className="w-full">
+              <div className="pb-4 text-white">
+                <p className="tracking-wider leading-8 text-2xl">EDUCATION</p>
+                <div className="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
+              </div>
+              <div className="w-full pb-2">
+                <li className="text-neutral-300 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
+                  June 2018
+                </li>
+                <li className="uppercase ml-2 marker:text-2xl font-semibold">
+                  fine arts degree
+                </li>
+                <li className="capitalize ml-2 marker:text-2xl text-neutral-300 text-[18px] marker:text-transparent">
+                  acting school
+                </li>
+              </div>
+            </div>
           </div>
           {/* ------------------ RIGHT COLUMN ------------------ */}
 
           <div className="flex-col p-6 space-y-6 w-full text-black  h-full">
             {/* PROFESSIONAL SUMMARY SECTION */}
             <div className="w-full pt-2">
-              <div className="pb-4 text-sky-800">
+              <div style={{ color: accentColor }} className="pb-4 text-sky-800">
                 <p className="tracking-wider leading-8 text-2xl">
                   PROFESSIONAL SUMMARY
                 </p>
-                <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
+                <div
+                  style={{ borderColor: accentColor }}
+                  className="w-full border-t-[3px] rounded-full border-t-sky-800"
+                ></div>
               </div>
               <div className="w-full space-y-3 text-xl font-normal">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -205,9 +246,12 @@ const PuppeteerTemplate = () => {
 
             {/* EXPERIENCE SECTION */}
             <div className="w-full flex flex-col pt-2 gap-4">
-              <div className=" text-sky-800">
+              <div style={{ color: accentColor }} className=" text-sky-800">
                 <p className="tracking-wider leading-8 text-2xl">EXPERIENCE</p>
-                <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
+                <div
+                  style={{ borderColor: accentColor }}
+                  className="w-full border-t-[3px] rounded-full border-t-sky-800"
+                ></div>
               </div>
 
               <div className="w-full space-y-3 text-xl flex flex-col pb-4">
@@ -221,23 +265,32 @@ const PuppeteerTemplate = () => {
                   </p>
                 </div>
 
-                <div className="w-full font-normal space-y-2 marker:text-sky-800 marker:text-2xl">
+                <div
+                  style={{ color: accentColor }}
+                  className="w-full font-normal space-y-2  marker:text-2xl"
+                >
                   <li className="pl-2 -indent-7 ml-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Doloremque modi nobis mollitia in distinctio similique
-                    dolor, quisquam nesciunt ex labore quaerat quidem nisi
-                    earum.
+                    <span className="text-black">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Doloremque modi nobis mollitia in distinctio similique
+                      dolor, quisquam nesciunt ex labore quaerat quidem nisi
+                      earum.
+                    </span>
                   </li>
                   <li className="pl-2 -indent-7 ml-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias id amet eligendi error, fugit et impedit
-                    aspernatur quae sunt officiis nam iusto qui sapiente animi
-                    dignissimos? Totam fuga
+                    <span className="text-black">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Molestias id amet eligendi error, fugit et impedit
+                      aspernatur quae sunt officiis nam iusto qui sapiente animi
+                      dignissimos? Totam fuga
+                    </span>
                   </li>
                   <li className="pl-2 -indent-7 ml-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Doloremque modi nobis mollitia in distinctio similique
-                    dolor, quisquam nesciunt ex labore
+                    <span className="text-black">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Doloremque modi nobis mollitia in distinctio similique
+                      dolor, quisquam nesciunt ex labore
+                    </span>
                   </li>
                 </div>
               </div>
@@ -252,55 +305,32 @@ const PuppeteerTemplate = () => {
                   </p>
                 </div>
 
-                <div className="w-full font-normal space-y-2 marker:text-sky-800 marker:text-2xl">
+                <div
+                  style={{ color: accentColor }}
+                  className="w-full font-normal space-y-2  marker:text-2xl"
+                >
                   <li className="pl-2 -indent-7 ml-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Doloremque modi nobis mollitia in distinctio similique
-                    dolor, quisquam nesciunt ex labore quaerat quidem nisi
-                    earum.
+                    <span className="text-black">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Doloremque modi nobis mollitia in distinctio similique
+                      dolor, quisquam nesciunt ex labore quaerat quidem nisi
+                      earum.
+                    </span>
                   </li>
                   <li className="pl-2 -indent-7 ml-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias id amet eligendi error, fugit et impedit
-                    aspernatur quae sunt officiis nam iusto qui sapiente animi
-                    dignissimos? Totam fuga
+                    <span className="text-black">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Molestias id amet eligendi error, fugit et impedit
+                      aspernatur quae sunt officiis nam iusto qui sapiente animi
+                      dignissimos? Totam fuga
+                    </span>
                   </li>
                   <li className="pl-2 -indent-7 ml-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Doloremque modi nobis mollitia in distinctio similique
-                    dolor, quisquam nesciunt ex labore
-                  </li>
-                </div>
-              </div>
-            </div>
-
-            {/* EDUCATION SECTION */}
-            <div className="w-full">
-              <div className="pb-4 text-sky-800">
-                <p className="tracking-wider leading-8 text-2xl">EDUCATION</p>
-                <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
-              </div>
-              <div className="w-full text-xl grid grid-cols-2">
-                <div className="w-full pb-2">
-                  <li className="text-neutral-400 marker:text-2xl text-[18px] capitalize marker:text-transparent">
-                    June 2018
-                  </li>
-                  <li className="capitalize marker:text-2xl marker:text-sky-800 ">
-                    fine arts degree
-                  </li>
-                  <li className="capitalize marker:text-2xl text-neutral-600 text-[18px] marker:text-transparent">
-                    acting school
-                  </li>
-                </div>
-                <div className="w-full pb-2">
-                  <li className="text-neutral-400 marker:text-2xl text-[18px] capitalize marker:text-transparent">
-                    June 2018
-                  </li>
-                  <li className="capitalize marker:text-2xl marker:text-sky-800 ">
-                    fine arts degree
-                  </li>
-                  <li className="capitalize marker:text-2xl text-neutral-600 text-[18px] marker:text-transparent">
-                    acting school
+                    <span className="text-black">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Doloremque modi nobis mollitia in distinctio similique
+                      dolor, quisquam nesciunt ex labore
+                    </span>
                   </li>
                 </div>
               </div>

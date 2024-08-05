@@ -176,7 +176,7 @@ const UploadPFP = () => {
             <div className="flex flex-row relative h-11">
               <Button
                 onClick={handleDelete}
-                className={`bg-destructive text-destructive-foreground absolute inset-0 transition-transform duration-300 origin-left delay-300 ${
+                className={`bg-destructive text-destructive-foreground hover:bg-red-500 absolute inset-0 transition-transform duration-300 origin-left delay-300 ${
                   pfp?.url ? "scale-1" : "scale-0"
                 }`}
               >

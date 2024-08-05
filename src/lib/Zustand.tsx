@@ -12,6 +12,7 @@ type T = {
   position?: string;
   technicalSkills?: string[];
   personalSkills?: string[];
+  accentColor?: string;
   pfp?: {
     metadata: {};
     path: {};
@@ -37,6 +38,7 @@ export const useTextStore = create<T>()(
       position: "",
       technicalSkills: [],
       personalSkills: [],
+      accentColor: "#075985",
       pfp: {
         metadata: {},
         path: {},
