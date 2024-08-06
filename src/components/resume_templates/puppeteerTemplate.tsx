@@ -208,23 +208,38 @@ const PuppeteerTemplate = () => {
               ""
             )}
             {/* EDUCATION SECTION */}
-            <div className="w-full">
-              <div className="pb-4 text-white">
-                <p className="tracking-wider leading-8 text-2xl">EDUCATION</p>
-                <div className="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
+            {education?.school ||
+            education?.degree ||
+            education?.gradMonth ||
+            education?.gradYear ? (
+              <div className="w-full">
+                <div className="pb-4 text-white">
+                  <p className="tracking-wider leading-8 text-2xl">EDUCATION</p>
+                  <div className="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
+                </div>
+                <div className="w-full pb-2">
+                  {education?.gradMonth !== "" || education?.gradYear !== "" ? (
+                    <li className="text-neutral-300 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
+                      {education?.gradMonth}&nbsp;{education?.gradYear}
+                    </li>
+                  ) : (
+                    ""
+                  )}
+                  {education?.degree && (
+                    <li className="uppercase ml-2 marker:text-2xl font-semibold">
+                      {education?.degree}
+                    </li>
+                  )}
+                  {education?.school && (
+                    <li className="capitalize ml-2 marker:text-2xl text-neutral-300 text-[18px] marker:text-transparent">
+                      {education?.school}
+                    </li>
+                  )}
+                </div>
               </div>
-              <div className="w-full pb-2">
-                <li className="text-neutral-300 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
-                  {education?.gradMonth}&nbsp;{education?.gradYear}
-                </li>
-                <li className="uppercase ml-2 marker:text-2xl font-semibold">
-                  {education?.degree}
-                </li>
-                <li className="capitalize ml-2 marker:text-2xl text-neutral-300 text-[18px] marker:text-transparent">
-                  {education?.school}
-                </li>
-              </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
           {/* ------------------ RIGHT COLUMN ------------------ */}
 

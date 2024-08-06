@@ -46,12 +46,7 @@ export const useTextStore = create<T>()(
       technicalSkills: [],
       personalSkills: [],
       accentColor: "#1a2e49",
-      education: {
-        school: "",
-        degree: "",
-        gradMonth: "",
-        gradYear: "",
-      },
+      education: {},
 
       pfpSize: "",
       pfp: {
