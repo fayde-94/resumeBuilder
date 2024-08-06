@@ -19,7 +19,7 @@ import { useTextStore } from "@/lib/Zustand";
 
 const Education = () => {
   const { setField, education } = useTextStore();
-  console.log("🚀 ~ Education ~ education:", education)
+  console.log("🚀 ~ Education ~ education:", education);
   return (
     <div className="page">
       <div className="w-full">
@@ -28,7 +28,7 @@ const Education = () => {
           collapsible
           className="p-4 pt-10 pb-0 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent"
         >
-          <h2 className="font-semibold text-center leading-none text-4xl">
+          <h2 className="font-semibold text-center leading-none text-2xl">
             Education
           </h2>
           <AccordionItem
@@ -64,26 +64,57 @@ const Education = () => {
         <div className="grid grid-cols-2  gap-y-10 w-full max-w-[950px] sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg shadow-md ">
           <div className=" col-span-1">
             <Field
+              className="capitalize"
+              value={education?.degree}
               title="Graduation Degree"
               placeholder="Science Degree"
-              onChange={(e) => setField("education", e.target.value)}
+              onChange={(e) =>
+                setField("education", { ...education, degree: e.target.value })
+              }
             />
           </div>
           <div className=" col-span-1">
             {/* field */}
             <Field
+              className="capitalize"
+              value={education?.school}
               title="School Name"
               placeholder="IT & Sciences School"
-              onChange={() => {}}
+              onChange={(e) =>
+                setField("education", { ...education, school: e.target.value })
+              }
             />
           </div>
 
           <div className=" col-span-1 ">
-            <Field title="Month" placeholder="June" onChange={() => {}} />
+            <Field
+              className="capitalize"
+              value={education?.gradMonth}
+              title="Month"
+              placeholder="June"
+              onChange={(e) =>
+                setField("education", {
+                  ...education,
+                  gradMonth: e.target.value,
+                })
+              }
+            />
           </div>
           <div className=" col-span-1">
             {/* field */}
-            <Field title="Year" placeholder="2021" onChange={() => {}} />
+            <Field
+              type="number"
+              className="capitalize"
+              value={education?.gradYear}
+              title="Year"
+              placeholder="2021"
+              onChange={(e) =>
+                setField("education", {
+                  ...education,
+                  gradYear: e.target.value,
+                })
+              }
+            />
           </div>
           <div className="text-white">
             <div className="w-full flex flex-wrap gap-4"></div>

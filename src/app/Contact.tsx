@@ -47,7 +47,7 @@ const Contact = () => {
   return (
     <div className="page ">
       <div className="w-full">
-        <h2 className="font-semibold text-center leading-none text-4xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent">
+        <h2 className="font-semibold text-center leading-none text-2xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent">
           Contact Information
         </h2>
 

@@ -19,6 +19,7 @@ type T = {
     gradMonth?: string;
     gradYear?: string;
   };
+  pfpSize: string;
   pfp?: {
     metadata: {};
     path: {};
@@ -44,13 +45,15 @@ export const useTextStore = create<T>()(
       position: "",
       technicalSkills: [],
       personalSkills: [],
-      accentColor: "#075985",
+      accentColor: "#1a2e49",
       education: {
         school: "",
         degree: "",
         gradMonth: "",
         gradYear: "",
       },
+
+      pfpSize: "",
       pfp: {
         metadata: {},
         path: {},

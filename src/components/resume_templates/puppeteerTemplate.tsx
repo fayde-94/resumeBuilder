@@ -16,12 +16,13 @@ const PuppeteerTemplate = () => {
     personalSkills,
     technicalSkills,
     education,
+    pfpSize,
   } = useTextStore();
   return (
     <div id="resume-template">
       <div
         id="resume-template"
-        className=" w-[1100px] aspect-[1000/1440] shadow-xl bg-white"
+        className=" w-[1100px] aspect-[1000/1440] bg-white"
       >
         <div className="flex h-full w-full flex-row">
           <div
@@ -36,7 +37,7 @@ const PuppeteerTemplate = () => {
               {pfp?.url && (
                 <div className="flex w-full justify-center">
                   <div
-                    style={{ width: "274px", height: "274px" }}
+                    style={{ width: pfpSize, height: pfpSize }}
                     className="size-[274px] overflow-clip rounded-full"
                   >
                     <img
@@ -214,13 +215,13 @@ const PuppeteerTemplate = () => {
               </div>
               <div className="w-full pb-2">
                 <li className="text-neutral-300 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
-                  June 2018
+                  {education?.gradMonth}&nbsp;{education?.gradYear}
                 </li>
                 <li className="uppercase ml-2 marker:text-2xl font-semibold">
-                  fine arts degree
+                  {education?.degree}
                 </li>
                 <li className="capitalize ml-2 marker:text-2xl text-neutral-300 text-[18px] marker:text-transparent">
-                  acting school
+                  {education?.school}
                 </li>
               </div>
             </div>

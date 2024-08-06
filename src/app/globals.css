@@ -152,3 +152,11 @@ input[type="number"] {
   --num: 50%;
   --num-2: 100%;
 }
+
+.react-colorful {
+  width: auto;
+  @apply rounded-full;
+}
+.color-picker .react-colorful {
+  @apply w-full h-40;
+}
