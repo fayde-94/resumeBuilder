@@ -1,6 +1,4 @@
 "use client";
-import T1 from "@/components/resume_templates/t1";
-import { Button } from "@/components/ui/button";
 import Field from "@/components/ui/Field";
 import TipsCard from "@/components/ui/TipsCard";
 import generatePdf from "@/lib/generatePDF";
@@ -8,8 +6,6 @@ import { useTextStore } from "@/lib/Zustand";
 import { useState } from "react";
 
 const Contact = () => {
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-
   const texts = useTextStore();
   console.log("🚀 ~ page ~ texts:", texts);
   const {
@@ -58,7 +54,7 @@ const Contact = () => {
         <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
       </div>
       <div className="flex justify-around w-full space-x-10 ">
-        <div className="grid grid-cols-2 gap-4 w-full max-w-[950px] p-4 bg-zinc-900/60 rounded-b-lg">
+        <div className="grid grid-cols-2 w-full max-w-[950px] gap-y-4 sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg">
           <Field
             required
             placeholder="John Wick"

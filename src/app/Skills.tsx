@@ -1,12 +1,8 @@
 "use client";
-import T1 from "@/components/resume_templates/t1";
-import { Button } from "@/components/ui/button";
 import Field from "@/components/ui/Field";
 import TipsCard from "@/components/ui/TipsCard";
-import generatePdf from "@/lib/generatePDF";
 import { useTextStore } from "@/lib/Zustand";
 import { useState } from "react";
-import { IoCloseCircle } from "react-icons/io5";
 import {
   Accordion,
   AccordionContent,
@@ -16,7 +12,6 @@ import {
 import { HoverBorderGradient } from "@/components/ui/border-gradient";
 
 const Skills = () => {
-  const texts = useTextStore();
   const { technicalSkills, personalSkills, setField } = useTextStore();
   console.log("🚀 ~ page ~ personalSkills:", personalSkills);
   const [techInput, settechInput] = useState("");
@@ -96,7 +91,7 @@ const Skills = () => {
         <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
       </div>
       <div className="flex justify-around w-full space-x-10 ">
-        <div className="grid grid-cols-2 gap-4 gap-y-10 w-full max-w-[950px] p-4 bg-zinc-900/60 rounded-b-lg shadow-md ">
+        <div className="grid grid-cols-2  gap-y-10 w-full max-w-[950px] sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg shadow-md ">
           <div className=" col-span-1">
             <Field
               value={techInput}
@@ -140,7 +135,7 @@ const Skills = () => {
                     onClick={() => handleRemoveTechnicalSkill(skill)}
                     className="py-3 px-6 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 shadow-md bg-[#101728]/90 rounded-full w-max"
                   >
-                    <p className=" select-none uppercase text-base text-neutral-300">
+                    <p className=" select-none uppercase  sm:text-base text-sm text-neutral-300">
                       {skill}
                     </p>
                     <div className="absolute size-4 origin-center bg-red-600 rounded-full right-[-5%] top-[-10%] scale-0 group-hover:scale-100 duration-300 transition-all"></div>
@@ -160,9 +155,9 @@ const Skills = () => {
                 >
                   <div
                     onClick={() => handleRemovePersonalSkill(skill)}
-                    className="py-3 px-6 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 shadow-md bg-[#101728]/90 rounded-full w-max"
+                    className="px-6 py-3 cursor-pointer relative hover:bg-slate-800 transition-all group duration-300 shadow-md bg-[#101728]/90 rounded-full w-max"
                   >
-                    <p className=" select-none uppercase text-base text-neutral-300">
+                    <p className=" select-none uppercase sm:text-base text-sm text-neutral-300">
                       {skill}
                     </p>
                     <div className="absolute size-4 origin-center bg-red-600 rounded-full right-[-5%] top-[-10%] scale-0 group-hover:scale-100 duration-300 transition-all"></div>

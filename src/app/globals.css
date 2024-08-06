@@ -99,11 +99,15 @@
 }
 
 .page {
-  @apply w-full mx-auto  max-w-[700px] lg:max-w-[1000px] gap-2 items-center flex flex-col py-6 px-2;
+  @apply w-full mx-auto 2xl:min-w-[660px] 2xl:max-w-min min-w-full max-w-full  gap-2 items-center flex flex-col py-6 2xl:px-2 px-0;
 }
 
 .tab {
   @apply bg-slate-800/50 shadow-md w-[90%] px-2 py-2 text-center max-h-16 rounded-lg hover:bg-slate-500/50 transition-all duration-300;
+}
+
+.field {
+  @apply w-full sm:h-14 h-12 sm:text-lg indent-1 bg-[#1e253b]/90 rounded-lg;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -126,12 +130,12 @@ input[type="number"] {
   inset: 0 0 0 57%;
 }
 @property --num {
-  syntax: "<percentage>"; /* <- defined as type number for the transition to work */
+  syntax: "<percentage>";
   initial-value: 0%;
-  inherits: true;
+  inherits: false;
 }
 @property --num-2 {
-  syntax: "<percentage>"; /* <- defined as type number for the transition to work */
+  syntax: "<percentage>";
   initial-value: 0%;
   inherits: true;
 }
@@ -141,10 +145,10 @@ input[type="number"] {
     hsl(201, 91%, 50%) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: --num 1s cubic-bezier(.03,.44,.53,.97),
-    --num-2 1s cubic-bezier(.03,.44,.53,.97);
+  transition: --num 1s cubic-bezier(0.03, 0.44, 0.53, 0.97),
+    --num-2 1s cubic-bezier(0.03, 0.44, 0.53, 0.97);
 }
 .radialbig:focus-within {
   --num: 50%;
-  --num-2: 100%
+  --num-2: 100%;
 }

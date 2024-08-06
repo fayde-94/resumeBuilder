@@ -67,17 +67,17 @@ const UploadPFP = () => {
           <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
         </div>
 
-        <div className="flex flex-col space-y-4 w-full max-w-[950px] p-4 bg-zinc-900/60 rounded-b-lg ">
-          <div className="flex flex-row justify-between   items-center w-full">
+        <div className="flex flex-col sm:space-y-4 space-y-2 w-full max-w-[950px]  sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg ">
+          <div className="flex sm:flex-row sm:space-y-0 space-y-4 flex-col justify-between items-center w-full">
             <div
-              className={`aspect-square transition-all duration-300 ${
-                pfp?.url ? "max-w-[31.290%]" : "max-w-0"
+              className={` sm:max-h-64 transition-all duration-300 ${
+                pfp?.url ? " max-h-full pr-0 sm:pr-4" : "max-w-0"
               }`}
             >
               <img
                 src={pfp?.url}
                 alt="Photo"
-                className={`aspect-square object-cover w-full h-full rounded-lg max-w-64 max-h-64 ${
+                className={`aspect-square object-cover min-w-full rounded-lg max-w-full max-h-full sm:max-h-64  sm:max-w-64 ${
                   pfp?.thumbnailUrl ? "block" : "hidden"
                 }`}
               />
@@ -85,16 +85,16 @@ const UploadPFP = () => {
 
             <div
               className={`flex items-center justify-center transition-all duration-300 w-full ${
-                pfp?.url ? "max-w-[66.373%]" : "max-w-full"
+                pfp?.url ? "" : "max-w-full"
               }`}
             >
               <label
                 htmlFor="dropzone-file"
-                className={`flex flex-col items-center justify-center w-full h-64 border-2   border-dashed border-sky-900 hover:border-slate-500 rounded-lg bg-slate-900/40 hover:bg-slate-900/60 ${
+                className={`flex flex-col items-center justify-center w-full sm:h-64 border-2   border-dashed border-sky-900 hover:border-slate-500 rounded-lg bg-slate-900/40 hover:bg-slate-900/60 ${
                   pfp?.url ? " cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                <div className="flex flex-col items-center sm:px-4 px-2 justify-center pt-5 pb-6">
                   {file ? (
                     <>
                       <TbPhotoCheck
@@ -112,27 +112,23 @@ const UploadPFP = () => {
                     </>
                   ) : !file && pfp?.url ? (
                     <>
-                      <FaImage
-                        size={100}
-                        className="opacity-40 fill-slate-600"
-                      />
+                      <FaImage className="opacity-40 sm:size-24 size-14  fill-slate-600" />
                       <p className="mb-2  text-xs text-neutral-500 text-center">
                         use the button to
                         <span className="font-bold text-sm"> Remove Photo</span>
                         <br /> before uploading a new one
                       </p>
-                      <p className=" text-xs text-slate-800">
-                        {" "}
+                      <p
+                        className=" text-xs text-center text-pretty
+                       text-slate-800"
+                      >
                         the photo is immediately deleted from storage upon
                         clicking the button
                       </p>
                     </>
                   ) : (
                     <>
-                      <FaImage
-                        size={100}
-                        className=" opacity-40 fill-slate-600  "
-                      />
+                      <FaImage className=" opacity-40 sm:size-24 size-14  fill-slate-600  " />
                       <p className="mb-2 text-sm text-neutral-500">
                         <span className="font-bold">Click to choose file</span>{" "}
                         or drag and drop

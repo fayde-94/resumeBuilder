@@ -3,6 +3,7 @@ import Skills from "./Skills";
 import PuppeteerTemplate from "@/components/resume_templates/puppeteerTemplate";
 import UploadPFP from "../components/UploadPFP";
 import ColorPicker from "@/components/ui/ColorPicker";
+import Education from "./Education";
 
 export default function Home() {
   return (
@@ -15,8 +16,9 @@ export default function Home() {
         
       </div> */}
       <div className="flex flex-row h-screen mx-auto max-w-max ">
-        <div className="flex flex-col max-w-[900px] w-full pb-10 ">
+        <div className="flex flex-col  w-full pb-10 ">
           <Contact />
+          <Education />
           <UploadPFP />
           <Skills />
           <ColorPicker />

@@ -33,7 +33,7 @@ const Field = ({
   maxLength,
 }: props) => {
   return (
-    <div className=" flex flex-col md:text-lg text-sm  ">
+    <div className=" flex flex-col sm:text-lg text-sm  ">
       {title !== "" && (
         <h2 className=" self-start pb-1 ">
           {title}
@@ -44,7 +44,7 @@ const Field = ({
         <h3
           className={`${
             subtext == "" ? "hidden" : "visible"
-          } self-start text-slate-500 text-sm pb-1`}
+          } self-start text-slate-500 sm:text-sm pb-1 text-xs`}
         >
           {subtext}
         </h3>
@@ -57,10 +57,7 @@ const Field = ({
           maxLength={maxLength}
           required={required ? true : false}
           type={type ? type : "text"}
-          className={cn(
-            `w-full h-14 text-lg indent-3 bg-[#1e253b]/90 focus-visible:ring-0 rounded-2xl  `,
-            className
-          )}
+          className={cn(` field   focus-visible:ring-0`, className)}
           placeholder={placeholder}
           value={value}
         />

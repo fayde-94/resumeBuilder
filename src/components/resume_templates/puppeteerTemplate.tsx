@@ -15,6 +15,7 @@ const PuppeteerTemplate = () => {
     accentColor,
     personalSkills,
     technicalSkills,
+    education,
   } = useTextStore();
   return (
     <div id="resume-template">
@@ -50,18 +51,26 @@ const PuppeteerTemplate = () => {
               <p className="uppercase text-xl tracking-wider">{position}</p>
             </div>
             {/* CITY AND COUNTRY */}
-            <div className="w-full flex-row flex">
-              <div className="flex space-x-2 items-center text-base">
-                <svg width="26" height="20" fill="white" viewBox="0 0 384 512">
-                  <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
-                </svg>
-                <p className="capitalize">{city}</p>
-
-                <p className="capitalize">
-                  <span className=" text-slate-300">- </span>&nbsp;{country}
-                </p>
+            {city && (
+              <div className="w-full flex-row flex">
+                <div className="flex space-x-2 items-center text-base">
+                  <svg
+                    width="26"
+                    height="20"
+                    fill="white"
+                    viewBox="0 0 384 512"
+                  >
+                    <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                  </svg>
+                  <p className="capitalize">{city}</p>
+                  {country && (
+                    <p className="capitalize">
+                      <span className=" text-slate-300">- </span>&nbsp;{country}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* WEB PORTFOLIO SECTION */}
             {website ? (
