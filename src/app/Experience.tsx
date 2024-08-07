@@ -75,7 +75,7 @@ const Experience = () => {
         <div className="space-y-8 w-full max-w-[950px] sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg shadow-md ">
           {/* <ExpCard count={counter[0]} /> */}
           {counter.map((count) => (
-            <div className="w-full flex gap-4 flex-col">
+            <div key={count + 16437} className="w-full flex gap-4 flex-col">
               <p className="text-sky-800">experience {count + 1}</p>
               <ExpCard count={counter[count]} />
             </div>
