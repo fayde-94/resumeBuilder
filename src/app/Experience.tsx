@@ -74,8 +74,8 @@ const Experience = () => {
       <div className="flex justify-around w-full space-x-10 ">
         <div className=" w-full max-w-[950px] sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg space-y-4 shadow-md ">
           {/* <ExpCard count={counter[0]} /> */}
-          {counterArray.map((count) => (
-            <div key={count + "82w2"} className="w-full flex gap-4 flex-col">
+          {counter.map((count) => (
+            <div key={count + 16437} className="w-full flex gap-4 flex-col">
               <p className="text-sky-800">experience {count + 1}</p>
               <ExpCard count={counterArray[count]} />
             </div>
