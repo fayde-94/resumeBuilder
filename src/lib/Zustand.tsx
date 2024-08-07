@@ -19,6 +19,7 @@ type T = {
     gradMonth?: string;
     gradYear?: string;
   };
+  summary?: string;
   pfpSize: string;
   pfp?: {
     metadata: {};
@@ -29,7 +30,9 @@ type T = {
     uploadedAt: [];
     url: string;
   };
+  experience: any[];
   setField: (field: any, value: any) => void;
+  setExperience: (index: number, key: string, value: any) => void;
 };
 
 export const useTextStore = create<T>()(
@@ -47,8 +50,15 @@ export const useTextStore = create<T>()(
       personalSkills: [],
       accentColor: "#1a2e49",
       education: {},
-
-      pfpSize: "",
+      summary: "",
+      experience: [],
+      pfpSize: "250px",
+      setExperience: (index, key, value) =>
+        set((state) => {
+          const newExperience = [...state.experience];
+          newExperience[index] = { ...newExperience[index], [key]: value };
+          return { experience: newExperience };
+        }),
       pfp: {
         metadata: {},
         path: {},
@@ -61,6 +71,7 @@ export const useTextStore = create<T>()(
       setField: (field, value) =>
         set((state) => ({ ...state, [field]: value })),
     }),
+
     {
       name: "text-store", // name of the item in local storage
     }

@@ -16,7 +16,9 @@ const PuppeteerTemplate = () => {
     personalSkills,
     technicalSkills,
     education,
+    summary,
     pfpSize,
+    experience,
   } = useTextStore();
   return (
     <div id="resume-template">
@@ -256,20 +258,12 @@ const PuppeteerTemplate = () => {
                 ></div>
               </div>
               <div className="w-full space-y-3 text-xl font-normal">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci earum commodi vel id necessitatibus enim rerum, quaerat
-                tempore blanditiis cumque architecto voluptate inventore optio
-                eius perspiciatis voluptatibus nemo illum ex labore accusamus
-                ipsam eligendi rem? Quod, iusto quisquam. Quasi sed modi
-                rwtqwrqwt tqweqtw distinctio debitis, eos unde consequatur.
-                Libero saepe alias cupiditate fugiat earum. Voluptatum
-                voluptatem quae rerum autem consectetur saepe explicabo
-                voluptatibus alias. Magni, facilis dignissimos quas itaque
-                ducimus assumenda sunt?
+                <h2 className="whitespace-pre-line text-pretty">{summary}</h2>
               </div>
             </div>
 
             {/* EXPERIENCE SECTION */}
+
             <div className="w-full flex flex-col pt-2 gap-4">
               <div style={{ color: accentColor }} className=" text-sky-800">
                 <p className="tracking-wider leading-8 text-2xl">EXPERIENCE</p>
@@ -278,87 +272,75 @@ const PuppeteerTemplate = () => {
                   className="w-full border-t-[3px] rounded-full border-t-sky-800"
                 ></div>
               </div>
+              {experience.map((exp, i: number) => {
+                console.log("0000000000", exp);
+                return (
+                  <>
+                    <div
+                      key={i}
+                      className="w-full space-y-3 text-xl flex flex-col pb-4"
+                    >
+                      <div className="w-full space-y-1">
+                        <div className="w-full flex">
+                          {experience[i].startMonth && (
+                            <p className="text-neutral-400 text-[18px] capitalize">
+                              {experience[i].startMonth}&nbsp;
+                            </p>
+                          )}
+                          {experience[i].startYear && (
+                            <p className="text-neutral-400 text-[18px]">
+                              {experience[i].startYear}&nbsp;
+                            </p>
+                          )}
+                          {experience[i].endMonth && (
+                            <p className="text-neutral-400 text-[18px] capitalize">
+                              {experience[i].endMonth}&nbsp;
+                            </p>
+                          )}
+                          {experience[i].endYear && (
+                            <p className="text-neutral-400 text-[18px]">
+                              {experience[i].endYear}&nbsp;
+                            </p>
+                          )}
+                        </div>
+                        <p className="capitalize">
+                          {experience[i].jobPosition}
+                        </p>
+                        <p className="capitalize text-neutral-600 text-[18px]">
+                          {experience[i].employer}
+                        </p>
+                      </div>
 
-              <div className="w-full space-y-3 text-xl flex flex-col pb-4">
-                <div className="w-full space-y-1">
-                  <p className="text-neutral-400 text-[18px]">
-                    January 2022 - October 2024
-                  </p>
-                  <p className="capitalize">superstar hollywood actor</p>
-                  <p className="capitalize text-neutral-600 text-[18px]">
-                    holly agency inc
-                  </p>
-                </div>
-
-                <div
-                  style={{ color: accentColor }}
-                  className="w-full font-normal space-y-2  marker:text-2xl"
-                >
-                  <li className="pl-2 -indent-7 ml-6">
-                    <span className="text-black">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Doloremque modi nobis mollitia in distinctio similique
-                      dolor, quisquam nesciunt ex labore quaerat quidem nisi
-                      earum.
-                    </span>
-                  </li>
-                  <li className="pl-2 -indent-7 ml-6">
-                    <span className="text-black">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Molestias id amet eligendi error, fugit et impedit
-                      aspernatur quae sunt officiis nam iusto qui sapiente animi
-                      dignissimos? Totam fuga
-                    </span>
-                  </li>
-                  <li className="pl-2 -indent-7 ml-6">
-                    <span className="text-black">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Doloremque modi nobis mollitia in distinctio similique
-                      dolor, quisquam nesciunt ex labore
-                    </span>
-                  </li>
-                </div>
-              </div>
-              <div className="w-full space-y-3 text-xl flex flex-col pb-4">
-                <div className="w-full space-y-1">
-                  <p className="text-neutral-400 text-[18px]">
-                    January 2022 - October 2024
-                  </p>
-                  <p className="capitalize">superstar hollywood actor</p>
-                  <p className="capitalize text-neutral-600 text-[18px]">
-                    holly agency inc
-                  </p>
-                </div>
-
-                <div
-                  style={{ color: accentColor }}
-                  className="w-full font-normal space-y-2  marker:text-2xl"
-                >
-                  <li className="pl-2 -indent-7 ml-6">
-                    <span className="text-black">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Doloremque modi nobis mollitia in distinctio similique
-                      dolor, quisquam nesciunt ex labore quaerat quidem nisi
-                      earum.
-                    </span>
-                  </li>
-                  <li className="pl-2 -indent-7 ml-6">
-                    <span className="text-black">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Molestias id amet eligendi error, fugit et impedit
-                      aspernatur quae sunt officiis nam iusto qui sapiente animi
-                      dignissimos? Totam fuga
-                    </span>
-                  </li>
-                  <li className="pl-2 -indent-7 ml-6">
-                    <span className="text-black">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Doloremque modi nobis mollitia in distinctio similique
-                      dolor, quisquam nesciunt ex labore
-                    </span>
-                  </li>
-                </div>
-              </div>
+                      <div
+                        style={{ color: accentColor }}
+                        className="w-full font-normal space-y-2  marker:text-2xl"
+                      >
+                        {experience[i].bullet1 && (
+                          <li className="pl-2 -indent-8 ml-8">
+                            <span className="text-black">
+                              {experience[i].bullet1}
+                            </span>
+                          </li>
+                        )}
+                        {experience[i].bullet2 && (
+                          <li className="pl-2 -indent-8 ml-8">
+                            <span className="text-black">
+                              {experience[i].bullet2}
+                            </span>
+                          </li>
+                        )}
+                        {experience[i].bullet3 && (
+                          <li className="pl-2 -indent-8 ml-8">
+                            <span className="text-black">
+                              {experience[i].bullet3}
+                            </span>
+                          </li>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>

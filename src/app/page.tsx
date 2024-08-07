@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Contact from "./Contact";
 import Skills from "./Skills";
@@ -7,24 +7,21 @@ import UploadPFP from "../components/UploadPFP";
 import ColorPicker from "@/components/ui/ColorPicker";
 import Education from "./Education";
 import { useTextStore } from "@/lib/Zustand";
+import Summary from "./Summary";
+import Experience from "./Experience";
 
 export default function Home() {
   const { accentColor } = useTextStore();
   return (
     <div className="w-full min-h-screen">
-      {/* <div className="flex items-center w-full h-full justify-center ">
-        <Link className=" border-2 text-foreground p-4 rounded-md" href={"/builder/contact_info"}>
-          go to start
-        </Link>
-
-        
-      </div> */}
       <div className="flex flex-row h-screen mx-auto max-w-max ">
         <div className="flex flex-col  w-full pb-10 ">
           <Contact />
-          <Education />
           <UploadPFP />
+          <Summary />
           <Skills />
+          <Experience />
+          <Education />
           <ColorPicker />
           {/* <Upload /> */}
         </div>

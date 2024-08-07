@@ -1,13 +1,9 @@
 "use client";
 import Field from "@/components/ui/Field";
-import TipsCard from "@/components/ui/TipsCard";
-import generatePdf from "@/lib/generatePDF";
 import { useTextStore } from "@/lib/Zustand";
-import { useState } from "react";
 
 const Contact = () => {
   const texts = useTextStore();
-  console.log("🚀 ~ page ~ texts:", texts);
   const {
     name,
     number,
@@ -26,24 +22,6 @@ const Contact = () => {
     setField("number", formattedValue);
   };
 
-  const [text, setText] = useState({
-    name: "",
-    number: "",
-    email: "",
-    city: "",
-    country: "",
-    linkedin: "",
-    website: "",
-    position: "",
-  });
-
-  const handleGeneratePdf = () => {
-    const resumeHtml = document.getElementById("resume-template")?.innerHTML;
-    if (resumeHtml) {
-      generatePdf(resumeHtml);
-    }
-  };
-  // console.log("🚀 ~ Home ~ text:", text);
   return (
     <div className="page ">
       <div className="w-full">
