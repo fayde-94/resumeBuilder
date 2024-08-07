@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "lucide-react";
 import { useTextStore } from "@/lib/Zustand";
+import { numsOnly } from "@/lib/utils";
 
 const Education = () => {
   const { setField, education } = useTextStore();
@@ -103,7 +104,7 @@ const Education = () => {
           <div className=" col-span-1">
             {/* field */}
             <Field
-              type="number"
+              type="string"
               className="capitalize"
               value={education?.gradYear}
               title="Year"
@@ -111,7 +112,7 @@ const Education = () => {
               onChange={(e) =>
                 setField("education", {
                   ...education,
-                  gradYear: e.target.value,
+                  gradYear: numsOnly(e.target.value),
                 })
               }
             />

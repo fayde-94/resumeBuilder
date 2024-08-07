@@ -1,18 +1,19 @@
+import { Button } from "@/components/ui/button";
 import Field from "@/components/ui/Field";
 import { Textarea } from "@/components/ui/textarea";
 import { numsOnly } from "@/lib/utils";
 import { useTextStore } from "@/lib/Zustand";
 import React from "react";
+import { FaSquareXmark } from "react-icons/fa6";
 type props = {
   count: number;
 };
 
 const ExpCard = ({ count = 0 }: props) => {
-  console.log("🚀 ~ ExpCard ~ count:", count);
   const { experience, setExperience } = useTextStore();
   return (
-    <div className=" flex flex-col sm:text-lg text-sm  ">
-      <div className="w-full grid grid-cols-4 gap-4">
+    <div className=" flex flex-col sm:text-lg text-sm ">
+      <div className="w-full grid grid-cols-4 gap-2 sm:gap-4">
         <div className="col-span-2">
           <Field
             title="Job Position"
@@ -68,7 +69,7 @@ const ExpCard = ({ count = 0 }: props) => {
             value={experience[count]?.bullet1 || ""}
             onChange={(e) => setExperience(count, "bullet1", e.target.value)}
             placeholder="Bullet Point 1"
-            className="focus-visible:ring-0 field  min-h-24"
+            className="focus-visible:ring-0 textarea  min-h-24"
           />
         </div>
 
@@ -77,7 +78,7 @@ const ExpCard = ({ count = 0 }: props) => {
             value={experience[count]?.bullet2 || ""}
             onChange={(e) => setExperience(count, "bullet2", e.target.value)}
             placeholder="Bullet Point 2"
-            className="focus-visible:ring-0 field  min-h-24"
+            className="focus-visible:ring-0 textarea  min-h-24"
           />
         </div>
         <div className="p-[.1rem] rounded-2xl radialbig">
@@ -85,7 +86,7 @@ const ExpCard = ({ count = 0 }: props) => {
             value={experience[count]?.bullet3 || ""}
             onChange={(e) => setExperience(count, "bullet3", e.target.value)}
             placeholder="Bullet Point 3"
-            className="focus-visible:ring-0 field  min-h-24"
+            className="focus-visible:ring-0 textarea  min-h-24"
           />
         </div>
       </div>

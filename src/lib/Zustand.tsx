@@ -19,6 +19,9 @@ type T = {
     gradMonth?: string;
     gradYear?: string;
   };
+  counterArray: number[];
+  addCount: () => void;
+  removeCount: () => void;
   summary?: string;
   pfpSize: string;
   pfp?: {
@@ -33,6 +36,7 @@ type T = {
   experience: any[];
   setField: (field: any, value: any) => void;
   setExperience: (index: number, key: string, value: any) => void;
+  removeExperience: (index: number) => void;
 };
 
 export const useTextStore = create<T>()(
@@ -53,12 +57,6 @@ export const useTextStore = create<T>()(
       summary: "",
       experience: [],
       pfpSize: "250px",
-      setExperience: (index, key, value) =>
-        set((state) => {
-          const newExperience = [...state.experience];
-          newExperience[index] = { ...newExperience[index], [key]: value };
-          return { experience: newExperience };
-        }),
       pfp: {
         metadata: {},
         path: {},
@@ -68,6 +66,30 @@ export const useTextStore = create<T>()(
         uploadedAt: [],
         url: "",
       },
+      counterArray: [0], // Initialize with an array containing the number 0
+      addCount: () =>
+        set((state) => {
+          const lastCount = state.counterArray[state.counterArray.length - 1];
+          return { counterArray: [...state.counterArray, lastCount + 1] };
+        }),
+      removeCount: () =>
+        set((state) => {
+          if (state.counterArray.length > 1) {
+            return { counterArray: state.counterArray.slice(0, -1) };
+          }
+          return state;
+        }),
+      setExperience: (index, key, value) =>
+        set((state) => {
+          const newExperience = [...state.experience];
+          newExperience[index] = { ...newExperience[index], [key]: value };
+          return { experience: newExperience };
+        }),
+      removeExperience: (index) =>
+        set((state) => {
+          const newExperience = state.experience.filter((_, i) => i !== index);
+          return { experience: newExperience };
+        }),
       setField: (field, value) =>
         set((state) => ({ ...state, [field]: value })),
     }),

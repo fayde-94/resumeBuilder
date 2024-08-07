@@ -13,7 +13,8 @@ import Experience from "./Experience";
 export default function Home() {
   const { accentColor } = useTextStore();
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen relative">
+      <Disclaimer />
       <div className="flex flex-row h-screen mx-auto max-w-max ">
         <div className="flex flex-col  w-full pb-10 ">
           <Contact />
@@ -39,3 +40,14 @@ export default function Home() {
     </div>
   );
 }
+
+const Disclaimer = () => {
+  return (
+    <div className="fixed bottom-0 pointer-events-none select-none right-0 bg-yellow-800/20 rounded-lg p-4">
+      <pre className="capitalize text-center text-sm whitespace-pre-line text-slate-400">
+        site <br /> under <br /> construction
+        <hr className="bg-red-400 border-amber-600" />
+      </pre>
+    </div>
+  );
+};

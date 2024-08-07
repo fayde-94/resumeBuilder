@@ -107,10 +107,10 @@
 }
 
 .field {
-  @apply w-full sm:h-14 h-12 sm:text-lg indent-1 bg-[#1e253b]/90 rounded-lg;
+  @apply w-full sm:h-14 h-12 sm:text-lg indent-1 bg-[#181e2f]/90 rounded-lg;
 }
 .textarea {
-  @apply w-full sm:text-lg indent-1 bg-[#1e253b]/90 rounded-lg;
+  @apply w-full sm:text-lg bg-[#181e2f]/90 rounded-lg;
 }
 
 .text-shadow {

@@ -282,32 +282,32 @@ const PuppeteerTemplate = () => {
                     >
                       <div className="w-full space-y-1">
                         <div className="w-full flex">
-                          {experience[i].startMonth && (
+                          {experience[i]?.startMonth && (
                             <p className="text-neutral-400 text-[18px] capitalize">
                               {experience[i].startMonth}&nbsp;
                             </p>
                           )}
-                          {experience[i].startYear && (
+                          {experience[i]?.startYear && (
                             <p className="text-neutral-400 text-[18px]">
                               {experience[i].startYear}&nbsp;
                             </p>
                           )}
-                          {experience[i].endMonth && (
+                          {experience[i]?.endMonth && (
                             <p className="text-neutral-400 text-[18px] capitalize">
                               {experience[i].endMonth}&nbsp;
                             </p>
                           )}
-                          {experience[i].endYear && (
+                          {experience[i]?.endYear && (
                             <p className="text-neutral-400 text-[18px]">
                               {experience[i].endYear}&nbsp;
                             </p>
                           )}
                         </div>
                         <p className="capitalize">
-                          {experience[i].jobPosition}
+                          {experience[i]?.jobPosition}
                         </p>
                         <p className="capitalize text-neutral-600 text-[18px]">
-                          {experience[i].employer}
+                          {experience[i]?.employer}
                         </p>
                       </div>
 
@@ -315,21 +315,21 @@ const PuppeteerTemplate = () => {
                         style={{ color: accentColor }}
                         className="w-full font-normal space-y-2  marker:text-2xl"
                       >
-                        {experience[i].bullet1 && (
+                        {experience[i]?.bullet1 && (
                           <li className="pl-2 -indent-8 ml-8">
                             <span className="text-black">
                               {experience[i].bullet1}
                             </span>
                           </li>
                         )}
-                        {experience[i].bullet2 && (
+                        {experience[i]?.bullet2 && (
                           <li className="pl-2 -indent-8 ml-8">
                             <span className="text-black">
                               {experience[i].bullet2}
                             </span>
                           </li>
                         )}
-                        {experience[i].bullet3 && (
+                        {experience[i]?.bullet3 && (
                           <li className="pl-2 -indent-8 ml-8">
                             <span className="text-black">
                               {experience[i].bullet3}
