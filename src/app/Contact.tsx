@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Field from "@/components/ui/Field";
+import TipsCard from "@/components/ui/TipsCard";
 import { trimUrls } from "@/lib/utils";
 import { useTextStore } from "@/lib/Zustand";
 
@@ -42,26 +43,25 @@ const Contact = () => {
           </h2>
           <AccordionItem
             value="item-1"
-            className="flex flex-col  items-end pb-0"
+            className="flex flex-col items-end pb-0"
           >
             <AccordionTrigger className=" gap-x-2 pt-0 pb-2 text-xs text-sky-700 max-w-max ">
               Expand Tips
             </AccordionTrigger>
-            <AccordionContent className="pt-3 text-base font-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              distinctio nobis doloribus consectetur nulla maxime rerum
-              consequuntur, suscipit ipsam ad impedit praesentium repellat earum
-              quidem nam? Iusto error quibusdam dicta sunt fugit minima,
-              suscipit esse nesciunt molestiae, veniam repellendus voluptate
-              alias deleniti, nam reprehenderit reiciendis doloremque! Minima
-              dignissimos illo consequatur nulla quaerat iusto? Eius non
-              praesentium dolore nihil quis soluta unde itaque iusto,
-              reprehenderit eveniet natus sunt exercitationem. Dolores,
-              obcaecati corporis doloribus libero facilis exercitationem nostrum
-              debitis fuga distinctio porro! Ad, voluptatum? Corporis
-              consectetur praesentium voluptas quasi ipsa, ut laboriosam
-              perspiciatis beatae enim excepturi officiis assumenda autem!
-              Commodi, quis aut.
+            <AccordionContent className="pt-3 text-base font-light ">
+              <TipsCard
+                head="The headliner of your resume containing your basic information and
+                means of contact."
+                p1="Your Web
+                Portfolio will have significant impact on your chances of getting
+                hired, it is where you can showcase your skillset and the results of
+                your hard work."
+                p2="Social Media
+                profiles like LinkedIn are becoming increasingly important for
+                companies looking to hire you, over 25% of employers will factor that into their hiring strategy."
+                p3="Having an unprofessional email address can damage your chances of landing an interview for your dream job, as said by over 33% of employers."
+                p4="Pay careful attention to correct grammar when filling your resume, resumes with typos or bad grammar will usually lead to immediate disqualification."
+              />
             </AccordionContent>
           </AccordionItem>
         </Accordion>

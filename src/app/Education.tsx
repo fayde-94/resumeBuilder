@@ -22,41 +22,11 @@ const Education = () => {
 
   return (
     <div className="page">
-      <div className="w-full">
-        <Accordion
-          type="single"
-          collapsible
-          className="p-4 pt-10 pb-0 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent"
-        >
-          <h2 className="font-semibold text-center leading-none text-2xl">
-            Education
-          </h2>
-          <AccordionItem
-            value="item-1"
-            className="flex flex-col  items-end pb-0"
-          >
-            <AccordionTrigger className=" gap-x-2 pt-0 pb-2 text-xs text-sky-700 max-w-max ">
-              Expand Tips
-            </AccordionTrigger>
-            <AccordionContent className="pt-3 text-base font-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              distinctio nobis doloribus consectetur nulla maxime rerum
-              consequuntur, suscipit ipsam ad impedit praesentium repellat earum
-              quidem nam? Iusto error quibusdam dicta sunt fugit minima,
-              suscipit esse nesciunt molestiae, veniam repellendus voluptate
-              alias deleniti, nam reprehenderit reiciendis doloremque! Minima
-              dignissimos illo consequatur nulla quaerat iusto? Eius non
-              praesentium dolore nihil quis soluta unde itaque iusto,
-              reprehenderit eveniet natus sunt exercitationem. Dolores,
-              obcaecati corporis doloribus libero facilis exercitationem nostrum
-              debitis fuga distinctio porro! Ad, voluptatum? Corporis
-              consectetur praesentium voluptas quasi ipsa, ut laboriosam
-              perspiciatis beatae enim excepturi officiis assumenda autem!
-              Commodi, quis aut.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-
+      <div className="w-full relative">
+        <h2 className="font-semibold text-center leading-none text-2xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent capitalize">
+          Education
+        </h2>
+        <p className="absolute right-0 bottom-0 p-4 text-sm text-sky-800"></p>
         <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
       </div>
 

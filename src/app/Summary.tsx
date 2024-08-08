@@ -8,6 +8,7 @@ import {
 import Field from "@/components/ui/Field";
 import { Textarea } from "@/components/ui/textarea";
 import { useTextStore } from "@/lib/Zustand";
+import TipsCard from "@/components/ui/TipsCard";
 
 const Summary = () => {
   const { summary, setField } = useTextStore();
@@ -30,20 +31,10 @@ const Summary = () => {
               Expand Tips
             </AccordionTrigger>
             <AccordionContent className="pt-3 text-base font-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              distinctio nobis doloribus consectetur nulla maxime rerum
-              consequuntur, suscipit ipsam ad impedit praesentium repellat earum
-              quidem nam? Iusto error quibusdam dicta sunt fugit minima,
-              suscipit esse nesciunt molestiae, veniam repellendus voluptate
-              alias deleniti, nam reprehenderit reiciendis doloremque! Minima
-              dignissimos illo consequatur nulla quaerat iusto? Eius non
-              praesentium dolore nihil quis soluta unde itaque iusto,
-              reprehenderit eveniet natus sunt exercitationem. Dolores,
-              obcaecati corporis doloribus libero facilis exercitationem nostrum
-              debitis fuga distinctio porro! Ad, voluptatum? Corporis
-              consectetur praesentium voluptas quasi ipsa, ut laboriosam
-              perspiciatis beatae enim excepturi officiis assumenda autem!
-              Commodi, quis aut.
+              <TipsCard
+                head="An overview of who you are, and your achievements as it relates to work"
+                p1="Pay careful attention to correct grammar when filling your resume, resumes with typos or bad grammar will usually lead to immediate disqualification."
+              />
             </AccordionContent>
           </AccordionItem>
         </Accordion>

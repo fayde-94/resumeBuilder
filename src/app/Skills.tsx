@@ -70,20 +70,16 @@ const Skills = () => {
               Expand Tips
             </AccordionTrigger>
             <AccordionContent className="pt-3 text-base font-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              distinctio nobis doloribus consectetur nulla maxime rerum
-              consequuntur, suscipit ipsam ad impedit praesentium repellat earum
-              quidem nam? Iusto error quibusdam dicta sunt fugit minima,
-              suscipit esse nesciunt molestiae, veniam repellendus voluptate
-              alias deleniti, nam reprehenderit reiciendis doloremque! Minima
-              dignissimos illo consequatur nulla quaerat iusto? Eius non
-              praesentium dolore nihil quis soluta unde itaque iusto,
-              reprehenderit eveniet natus sunt exercitationem. Dolores,
-              obcaecati corporis doloribus libero facilis exercitationem nostrum
-              debitis fuga distinctio porro! Ad, voluptatum? Corporis
-              consectetur praesentium voluptas quasi ipsa, ut laboriosam
-              perspiciatis beatae enim excepturi officiis assumenda autem!
-              Commodi, quis aut.
+              <TipsCard
+                head="The most important part of your resume showcasing your skill in your given field."
+                p1={[
+                  "Try tailoring your resume for the desired job position, targetted resumes that address over half the job requirements have a much greater chance of leaving a strong impression.",
+                ]}
+                p3={[
+                  "Don't neglect the impact of personal skills, research suggests over 50% of emplyers place a high value on skills such as:",
+                  "Time management, Communication skills, Critical thinking and Problem solving.",
+                ]}
+              />
             </AccordionContent>
           </AccordionItem>
         </Accordion>

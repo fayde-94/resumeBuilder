@@ -4,7 +4,7 @@ import Contact from "./Contact";
 import Skills from "./Skills";
 import PuppeteerTemplate from "@/components/resume_templates/puppeteerTemplate";
 import UploadPFP from "../components/UploadPFP";
-import ColorPicker from "@/components/ui/ColorPicker";
+import Customize from "@/components/ui/Customize";
 import Education from "./Education";
 import { useTextStore } from "@/lib/Zustand";
 import Summary from "./Summary";
@@ -23,7 +23,7 @@ export default function Home() {
           <Skills />
           <Experience />
           <Education />
-          <ColorPicker />
+          <Customize />
           {/* <Upload /> */}
         </div>
         <div className=" hidden 2xl:flex  origin-top-left aspect-[1000/1440] relative">

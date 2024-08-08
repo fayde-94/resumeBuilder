@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const ColorPicker = () => {
+const Customize = () => {
   const presetColors = [
     "#1c2025",
     "#94365c",
@@ -82,4 +82,4 @@ const ColorPicker = () => {
   );
 };
 
-export default ColorPicker;
+export default Customize;

@@ -154,3 +154,6 @@
 .color-picker .react-colorful {
   @apply w-full h-40;
 }
+.tips-li {
+  @apply sm:pl-6 marker:text-sky-400 sm:-indent-[1.58rem] pl-4 -indent-5;
+}
