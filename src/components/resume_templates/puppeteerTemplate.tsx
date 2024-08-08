@@ -292,6 +292,13 @@ const PuppeteerTemplate = () => {
                               {experience[i].startYear}&nbsp;
                             </p>
                           )}
+                          {experience[i]?.endMonth || experience[i]?.endYear ? (
+                            <p className="text-neutral-400 text-[18px]">
+                              -&nbsp;
+                            </p>
+                          ) : (
+                            ""
+                          )}
                           {experience[i]?.endMonth && (
                             <p className="text-neutral-400 text-[18px] capitalize">
                               {experience[i].endMonth}&nbsp;
@@ -316,21 +323,21 @@ const PuppeteerTemplate = () => {
                         className="w-full font-normal space-y-2  marker:text-2xl"
                       >
                         {experience[i]?.bullet1 && (
-                          <li className="pl-2 -indent-8 ml-8">
+                          <li className="pl-2 -indent-8 ml-8  whitespace-pre-line">
                             <span className="text-black">
                               {experience[i].bullet1}
                             </span>
                           </li>
                         )}
                         {experience[i]?.bullet2 && (
-                          <li className="pl-2 -indent-8 ml-8">
+                          <li className="pl-2 -indent-8 ml-8  whitespace-pre-line">
                             <span className="text-black">
                               {experience[i].bullet2}
                             </span>
                           </li>
                         )}
                         {experience[i]?.bullet3 && (
-                          <li className="pl-2 -indent-8 ml-8">
+                          <li className="pl-2 -indent-8 ml-8  whitespace-pre-line">
                             <span className="text-black">
                               {experience[i].bullet3}
                             </span>

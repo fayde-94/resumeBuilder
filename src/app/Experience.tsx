@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -7,12 +7,8 @@ import {
 } from "@/components/ui/accordion";
 import { FaSquareXmark, FaSquarePlus } from "react-icons/fa6";
 
-import Field from "@/components/ui/Field";
-import { Textarea } from "@/components/ui/textarea";
 import { useTextStore } from "@/lib/Zustand";
 import { Button } from "@/components/ui/button";
-import { RiAddBoxFill } from "react-icons/ri";
-import { numsOnly } from "@/lib/utils";
 import ExpCard from "./ExpCard";
 
 const Experience = () => {

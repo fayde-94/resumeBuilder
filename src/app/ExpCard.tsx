@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
 import Field from "@/components/ui/Field";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
-import { numsOnly } from "@/lib/utils";
+import { monthsArray, numsOnly } from "@/lib/utils";
 import { useTextStore } from "@/lib/Zustand";
 import React from "react";
-import { FaSquareXmark } from "react-icons/fa6";
 type props = {
   count: number;
 };
@@ -32,12 +36,32 @@ const ExpCard = ({ count = 0 }: props) => {
             onChange={(e) => setExperience(count, "employer", e.target.value)}
           />
         </div>
-        <Field
-          title="Start Month"
-          placeholder="June"
-          value={experience[count]?.startMonth || ""}
-          onChange={(e) => setExperience(count, "startMonth", e.target.value)}
-        />
+        <Popover>
+          <PopoverTrigger className="w-full">
+            <Field
+              className="capitalize"
+              value={experience[count]?.startMonth || ""}
+              title="Start Month"
+              placeholder="June"
+              onChange={(e) =>
+                setExperience(count, "startMonth", e.target.value)
+              }
+            ></Field>
+          </PopoverTrigger>
+          <PopoverContent className="px-0 py-0 gap-0 space-x-0 border-[#181e2f]/90 space-y-0 m-0 bg-[#181e2f]/90 border max-w-max">
+            <div className="grid grid-cols-3  p-2">
+              {monthsArray.map((m, i: number) => (
+                <Button
+                  key={i}
+                  onClick={() => setExperience(count, "startMonth", m)}
+                  className="months hover:bg-slate-600 transition-all duration-300"
+                >
+                  {m.slice(0, 3)}
+                </Button>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
         <Field
           type="string"
           title="Start Year"
@@ -47,12 +71,31 @@ const ExpCard = ({ count = 0 }: props) => {
             setExperience(count, "startYear", numsOnly(e.target.value))
           }
         />
-        <Field
-          title="End Month"
-          placeholder="October"
-          value={experience[count]?.endMonth || ""}
-          onChange={(e) => setExperience(count, "endMonth", e.target.value)}
-        />
+        <Popover>
+          <PopoverTrigger className="w-full">
+            <Field
+              className="capitalize"
+              value={experience[count]?.startMonth || ""}
+              title="End Month"
+              placeholder="October"
+              onChange={(e) => setExperience(count, "endMonth", e.target.value)}
+            ></Field>
+          </PopoverTrigger>
+          <PopoverContent className="px-0 py-0 gap-0 space-x-0 border-[#181e2f]/90 space-y-0 m-0 bg-[#181e2f]/90 border max-w-max">
+            <div className="grid grid-cols-3  p-2">
+              {monthsArray.map((m, i: number) => (
+                <Button
+                  key={i}
+                  onClick={() => setExperience(count, "endMonth", m)}
+                  className="months hover:bg-slate-600 transition-all duration-300"
+                >
+                  {m.slice(0, 3)}
+                </Button>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
+
         <Field
           type="string"
           title="End Year"

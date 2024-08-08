@@ -3,7 +3,6 @@
 import React from "react";
 import { Input } from "./input";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 
 type props = {
   className?: string;
@@ -17,6 +16,8 @@ type props = {
   value?: string;
   subtext?: string;
   maxLength?: number;
+  list?: string;
+  id?: string;
 };
 
 const Field = ({
@@ -30,13 +31,15 @@ const Field = ({
   required,
   type,
   value,
+  list,
+  id,
   maxLength,
 }: props) => {
   return (
     <div className=" flex flex-col sm:text-lg text-sm  ">
       {title !== "" && (
         <h2 className=" self-start pb-1 ">
-          {title}
+          {title}:
           {required ? <span className="text-sky-400"> *</span> : ""}
         </h2>
       )}
@@ -51,9 +54,11 @@ const Field = ({
       )}
       <div className="p-[.1rem] rounded-2xl radialbig">
         <Input
+          id={id}
           onChange={onChange}
           onKeyDown={onKeyDown}
           key={key}
+          list={list}
           maxLength={maxLength}
           required={required ? true : false}
           type={type ? type : "text"}

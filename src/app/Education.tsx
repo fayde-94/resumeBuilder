@@ -7,20 +7,19 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import React from "react";
-import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { CalendarIcon } from "lucide-react";
 import { useTextStore } from "@/lib/Zustand";
-import { numsOnly } from "@/lib/utils";
+import { monthsArray, numsOnly } from "@/lib/utils";
 
 const Education = () => {
   const { setField, education } = useTextStore();
-  console.log("🚀 ~ Education ~ education:", education);
+  console.log("🚀 ~ Education ~ education gradmonth:", education?.gradMonth);
+
   return (
     <div className="page">
       <div className="w-full">
@@ -88,18 +87,40 @@ const Education = () => {
           </div>
 
           <div className=" col-span-1 ">
-            <Field
-              className="capitalize"
-              value={education?.gradMonth}
-              title="Month"
-              placeholder="June"
-              onChange={(e) =>
-                setField("education", {
-                  ...education,
-                  gradMonth: e.target.value,
-                })
-              }
-            />
+            <Popover>
+              <PopoverTrigger className="w-full">
+                <Field
+                  className="capitalize"
+                  value={education?.gradMonth}
+                  title="Month"
+                  placeholder="June"
+                  onChange={(e) =>
+                    setField("education", {
+                      ...education,
+                      gradMonth: e.target.value,
+                    })
+                  }
+                ></Field>
+              </PopoverTrigger>
+              <PopoverContent className="px-0 py-0 gap-0 space-x-0 border-[#181e2f]/90 space-y-0 m-0 bg-[#181e2f]/90 border max-w-max">
+                <div className="grid grid-cols-3  p-2">
+                  {monthsArray.map((m, i: number) => (
+                    <Button
+                      key={i}
+                      onClick={() =>
+                        setField("education", {
+                          ...education,
+                          gradMonth: m,
+                        })
+                      }
+                      className="months hover:bg-slate-600 transition-all duration-300"
+                    >
+                      {m.slice(0, 3)}
+                    </Button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
           <div className=" col-span-1">
             {/* field */}
