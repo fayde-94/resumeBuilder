@@ -75,7 +75,7 @@ const ExpCard = ({ count = 0 }: props) => {
           <PopoverTrigger className="w-full">
             <Field
               className="capitalize"
-              value={experience[count]?.startMonth || ""}
+              value={experience[count]?.endMonth || ""}
               title="End Month"
               placeholder="October"
               onChange={(e) => setExperience(count, "endMonth", e.target.value)}
