@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/ui/SideBar";
 import { EdgeStoreProvider } from "@/lib/edgestore";
-
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,7 +24,10 @@ export default function RootLayout({
             <SideBar />
           </div> */}
           <EdgeStoreProvider>
-            <div className="h-full  w-full flex justify-center">{children}</div>
+            <div className="h-full  w-full flex justify-center">
+              {children}
+              <Analytics />
+            </div>
           </EdgeStoreProvider>
         </main>
       </body>
