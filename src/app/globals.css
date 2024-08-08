@@ -113,7 +113,7 @@
   @apply text-slate-300 hover:text-primary underline decoration-slate-700 hover:decoration-sky-400 sm:h-14 h-12 sm:text-lg bg-transparent border-b border-sky-800 py-0 rounded-t-lg rounded-b-none;
 }
 .textarea {
-  @apply w-full sm:text-lg bg-[#181e2f]/90 rounded-lg;
+  @apply w-full sm:text-lg bg-[#181e2f]/90 rounded-lg min-h-28 p-4;
 }
 
 .text-shadow {

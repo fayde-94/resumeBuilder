@@ -75,6 +75,7 @@ const Contact = () => {
             placeholder="John Wick"
             title="Full Name"
             value={name}
+            className="capitalize"
             onChange={(e) => setField("name", e.target.value)}
           />
           <Field
@@ -91,6 +92,7 @@ const Contact = () => {
               required
               value={position}
               placeholder="Full Stack Developer"
+              className="capitalize"
               title="Job Title"
               onChange={(e) => setField("position", e.target.value)}
             />
@@ -99,6 +101,7 @@ const Contact = () => {
             required
             value={city}
             placeholder="Calgary, AB"
+            className="capitalize"
             title="City"
             onChange={(e) => setField("city", e.target.value)}
           />
@@ -106,6 +109,7 @@ const Contact = () => {
             required
             value={country}
             placeholder="Canada"
+            className="capitalize"
             title="Country"
             onChange={(e) => setField("country", e.target.value)}
           />

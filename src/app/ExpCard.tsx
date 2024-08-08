@@ -6,6 +6,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
+import AutoResizeTextarea from "@/components/ui/TextareaResizing";
 import { monthsArray, numsOnly } from "@/lib/utils";
 import { useTextStore } from "@/lib/Zustand";
 import React from "react";
@@ -108,7 +109,7 @@ const ExpCard = ({ count = 0 }: props) => {
       </div>
       <div className="flex flex-col gap-4  pt-4">
         <div className="p-[.1rem] rounded-2xl radialbig">
-          <Textarea
+          <AutoResizeTextarea
             value={experience[count]?.bullet1 || ""}
             onChange={(e) => setExperience(count, "bullet1", e.target.value)}
             placeholder="Bullet Point 1"
@@ -117,7 +118,7 @@ const ExpCard = ({ count = 0 }: props) => {
         </div>
 
         <div className="p-[.1rem] rounded-2xl radialbig">
-          <Textarea
+          <AutoResizeTextarea
             value={experience[count]?.bullet2 || ""}
             onChange={(e) => setExperience(count, "bullet2", e.target.value)}
             placeholder="Bullet Point 2"
@@ -125,7 +126,7 @@ const ExpCard = ({ count = 0 }: props) => {
           />
         </div>
         <div className="p-[.1rem] rounded-2xl radialbig">
-          <Textarea
+          <AutoResizeTextarea
             value={experience[count]?.bullet3 || ""}
             onChange={(e) => setExperience(count, "bullet3", e.target.value)}
             placeholder="Bullet Point 3"

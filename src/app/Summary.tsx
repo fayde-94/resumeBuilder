@@ -9,6 +9,7 @@ import Field from "@/components/ui/Field";
 import { Textarea } from "@/components/ui/textarea";
 import { useTextStore } from "@/lib/Zustand";
 import TipsCard from "@/components/ui/TipsCard";
+import AutoResizeTextarea from "@/components/ui/TextareaResizing";
 
 const Summary = () => {
   const { summary, setField } = useTextStore();
@@ -52,14 +53,12 @@ const Summary = () => {
               className={`self-start text-slate-500 sm:text-sm pb-1 text-xs`}
             ></h3> */}
 
-            <div className="p-[.1rem] rounded-2xl radialbig">
-              <Textarea
-                value={summary}
-                onChange={(e) => setField("summary", e.target.value)}
-                placeholder="a brief snapshot of who you are"
-                className="focus-visible:ring-0 field  min-h-40"
-              />
-            </div>
+            <AutoResizeTextarea
+              value={summary}
+              onChange={(e) => setField("summary", e.target.value)}
+              placeholder="a brief snapshot of who you are"
+              className="focus-visible:ring-0 textarea "
+            />
           </div>
         </div>
       </div>
