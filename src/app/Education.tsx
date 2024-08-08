@@ -58,7 +58,7 @@ const Education = () => {
 
           <div className=" col-span-1 ">
             <Popover>
-              <PopoverTrigger className="w-full">
+              <PopoverTrigger  tabIndex={-1} className="w-full">
                 <Field
                   className="capitalize"
                   value={education?.gradMonth}
@@ -97,7 +97,7 @@ const Education = () => {
             <Field
               type="string"
               className="capitalize"
-              value={education?.gradYear}
+              value={education.gradYear}
               title="Year"
               placeholder="2021"
               onChange={(e) =>

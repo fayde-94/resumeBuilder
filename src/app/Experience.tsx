@@ -77,12 +77,12 @@ const Experience = () => {
             </div>
           ))}
 
-          <div className="w-full flex items-center justify-end pt-4">
+          <div className="w-full flex items-center justify-end">
             {counterArray.length > 1 ? (
               <Button
                 variant={"none"}
                 onClick={handleRemoveCount}
-                className="p-0 bg-transparent text-slate-700 hover:text-destructive hover:bg-transparent group hover:underline transition-all duration-500"
+                className="p-0 bg-transparent text-slate-700 hover:text-destructive hover:bg-transparent group hover:underline transition-all duration-300 focus-visible:underline"
               >
                 <p className=" pr-1 text-base"> Remove Experience</p>
                 <FaSquareXmark className="size-[1.5rem] fill-slate-800 group-hover:fill-destructive  transition-all duration-500" />
@@ -91,7 +91,7 @@ const Experience = () => {
               <Button
                 onClick={handleAddCount}
                 variant={"none"}
-                className="p-0 bg-transparent text-slate-700 hover:text-sky-800 hover:bg-transparent group hover:underline transition-all duration-500"
+                className="p-0 bg-transparent text-slate-700 hover:text-sky-800 hover:bg-transparent group hover:underline transition-all duration-300 focus-visible:underline"
               >
                 <p className=" pr-1 text-base"> Additional Experience</p>
                 <FaSquarePlus className="size-[1.5rem] fill-slate-800  group-hover:fill-sky-800 transition-all duration-500" />

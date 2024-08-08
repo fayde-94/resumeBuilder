@@ -2,29 +2,29 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type T = {
-  name?: string;
-  number?: string;
-  email?: string;
-  city?: string;
-  country?: string;
-  linkedin?: string;
-  website?: string;
-  position?: string;
-  technicalSkills?: string[];
-  personalSkills?: string[];
-  accentColor?: string;
-  education?: {
-    school?: string;
-    degree?: string;
-    gradMonth?: string;
-    gradYear?: string;
+  name: string;
+  number: string;
+  email: string;
+  city: string;
+  country: string;
+  linkedin: string;
+  website: string;
+  position: string;
+  technicalSkills: string[];
+  personalSkills: string[];
+  accentColor: string;
+  education: {
+    school: string;
+    degree: string;
+    gradMonth: string;
+    gradYear: string;
   };
   counterArray: number[];
   addCount: () => void;
   removeCount: () => void;
-  summary?: string;
+  summary: string;
   pfpSize: string;
-  pfp?: {
+  pfp: {
     metadata: {};
     path: {};
     pathOrder: [];
@@ -53,7 +53,12 @@ export const useTextStore = create<T>()(
       technicalSkills: [],
       personalSkills: [],
       accentColor: "#1a2e49",
-      education: {},
+      education: {
+        school: "",
+        degree: "",
+        gradMonth: "",
+        gradYear: "",
+      },
       summary: "",
       experience: [],
       pfpSize: "250px",

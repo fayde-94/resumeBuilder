@@ -18,9 +18,8 @@ const AutoResizeTextarea = ({
   const handleInput = () => {
     const textarea = textareaRef.current;
     if (textarea) {
-      console.log("scrollHeight:", textarea.scrollHeight);
-      textarea.style.height = "auto"; // Reset the height to allow shrinking
-      textarea.style.height = `${textarea.scrollHeight}px`; // Set the height to the scrollHeight
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
     }
   };
 
@@ -29,10 +28,12 @@ const AutoResizeTextarea = ({
       <Textarea
         ref={textareaRef}
         onInput={handleInput}
+        onFocus={handleInput}
         style={{
           overflow: "hidden",
-          resize: "none", // Disable manual resize by the user
-          boxSizing: "border-box", // Ensure padding is included in height calculation
+          resize: "none",
+          boxSizing: "border-box",
+          padding: "16px",
         }}
         className={className}
         value={value}
