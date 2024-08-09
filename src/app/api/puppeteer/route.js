@@ -302,9 +302,7 @@ export async function POST(req, res) {
                   class="w-full border-t-[3px] rounded-full border-t-sky-800"
                 ></div>
               </div>
-              ${data.experience
-                .map(
-                  (exp, i) =>
+              ${data.experience?.map((exp, i) =>
                     `<div
                   key='${i}'
                   class="w-full space-y-3 text-xl flex flex-col pb-4"
