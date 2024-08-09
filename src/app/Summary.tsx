@@ -22,7 +22,7 @@ const Summary = () => {
           className="p-4 pt-10 pb-0 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent"
         >
           <h2 className="font-semibold text-center leading-none text-2xl">
-            Professional Summary
+            Summary
           </h2>
           <AccordionItem
             value="item-1"

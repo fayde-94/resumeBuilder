@@ -9,6 +9,7 @@ import Education from "./Education";
 import { useTextStore } from "@/lib/Zustand";
 import Summary from "./Summary";
 import Experience from "./Experience";
+import PdfGeneratorButton from "./templates/generateBtn";
 
 export default function Home() {
   const { accentColor } = useTextStore();
@@ -24,6 +25,7 @@ export default function Home() {
           <Experience />
           <Education />
           <Customize />
+          <PdfGeneratorButton />
           {/* <Upload /> */}
         </div>
         <div className=" hidden 2xl:flex  origin-top-left aspect-[1000/1440] relative">

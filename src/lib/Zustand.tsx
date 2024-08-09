@@ -20,8 +20,6 @@ type T = {
     gradYear: string;
   };
   counterArray: number[];
-  addCount: () => void;
-  removeCount: () => void;
   summary: string;
   pfpSize: string;
   pfp: {
@@ -34,6 +32,8 @@ type T = {
     url: string;
   };
   experience: any[];
+  addCount: () => void;
+  removeCount: () => void;
   setField: (field: any, value: any) => void;
   setExperience: (index: number, key: string, value: any) => void;
   removeExperience: (index: number) => void;

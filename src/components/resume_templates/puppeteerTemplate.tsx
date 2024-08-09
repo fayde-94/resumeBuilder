@@ -250,7 +250,7 @@ const PuppeteerTemplate = () => {
             <div className="w-full pt-2">
               <div style={{ color: accentColor }} className="pb-4 text-sky-800">
                 <p className="tracking-wider leading-8 text-2xl">
-                  PROFESSIONAL SUMMARY
+                  SUMMARY
                 </p>
                 <div
                   style={{ borderColor: accentColor }}
