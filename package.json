@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npx puppeteer install"
   },
   "dependencies": {
     "@bytescale/upload-widget-react": "^4.19.0",
