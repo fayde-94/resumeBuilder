@@ -17,8 +17,7 @@ export async function POST(req, res) {
   // npx tailwindcss -o styles.css --minify
   console.log(
     "Resolved CSS Path: ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥",
-    resolve(process.cwd(), 
-    "src/app/templates/", "templateStyles.css")
+    resolve(process.cwd(), "src/app/templates/", "templateStyles.css")
   );
 
   const templateHtml = `
@@ -29,11 +28,7 @@ export async function POST(req, res) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
         ${readFileSync(
-          resolve(
-            process.cwd(),
-            "src/app/templates/",
-            "templateStyles.css"
-          ),
+          resolve(process.cwd(), "src/app/templates/", "templateStyles.css"),
           "utf8"
         )}
         </style>
@@ -302,7 +297,9 @@ export async function POST(req, res) {
                   class="w-full border-t-[3px] rounded-full border-t-sky-800"
                 ></div>
               </div>
-              ${data.experience?.map((exp, i) =>
+              ${data.experience
+                ?.map(
+                  (exp, i) =>
                     `<div
                   key='${i}'
                   class="w-full space-y-3 text-xl flex flex-col pb-4"
@@ -322,7 +319,8 @@ export async function POST(req, res) {
                         </p>`
                       }
                       ${
-                        data.experience[i]?.endMonth || experience[i]?.endYear
+                        data.experience[i]?.endMonth ||
+                        data.experience[i]?.endYear
                           ? `<p class="text-neutral-400 text-[18px]">-&nbsp;</p>`
                           : ""
                       }
