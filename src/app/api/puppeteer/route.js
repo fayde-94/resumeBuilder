@@ -1,5 +1,6 @@
 // src/app/api/puppeteer/route.js
-import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer-core";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
@@ -380,24 +381,41 @@ export async function POST(req, res) {
     </html>
   `;
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setContent(templateHtml, {
-    waitUntil: "networkidle0",
-  });
+  let browser = null;
+  try {
+    // Launch browser with chrome-aws-lambda
+    browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath,
+      headless: true,
+      defaultViewport: chromium.defaultViewport,
+    });
 
-  const pdfBuffer = await page.pdf({
-    format: "A4",
-    printBackground: true,
-    pageRanges: "1", // Ensures only the first page is included in the PDF
-  });
+    const page = await browser.newPage();
+    await page.setContent(templateHtml, {
+      waitUntil: "networkidle0",
+    });
 
-  await browser.close();
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+      pageRanges: "1",
+    });
 
-  return new Response(pdfBuffer, {
-    headers: {
-      "Content-Type": "application/pdf",
-      "Content-Disposition": "attachment; filename=resume.pdf",
-    },
-  });
+    await browser.close();
+
+    return new Response(pdfBuffer, {
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": "attachment; filename=resume.pdf",
+      },
+    });
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+    return new Response("Error generating PDF", { status: 500 });
+  } finally {
+    if (browser !== null) {
+      await browser.close();
+    }
+  }
 }
