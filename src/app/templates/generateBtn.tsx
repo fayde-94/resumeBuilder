@@ -62,6 +62,7 @@ const PdfGeneratorButton = () => {
     link.download = `resume-${today.toLocaleDateString()}.pdf`;
     link.click();
   };
+
   const handleOpenPdf = async () => {
     const response = await axios.post(
       "/api/puppeteer",
@@ -91,11 +92,6 @@ const PdfGeneratorButton = () => {
 
     const url = URL.createObjectURL(blob);
     window.open(url, "_blank");
-
-    // const link = document.createElement("a");
-    // link.href = window.URL.createObjectURL(blob);
-    // link.download = "resume.pdf";
-    // link.click();
   };
 
   return (

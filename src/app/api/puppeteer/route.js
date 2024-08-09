@@ -5,9 +5,21 @@ import { resolve } from "path";
 
 export async function POST(req, res) {
   const data = await req.json();
-  console.log("🚀 ~ POST ~ data:", data);
+  // console.log("🚀 ~ POST ~ data:", data);
+
+  const cssPath = resolve(
+    process.cwd(),
+    "src/app/templates/",
+    "templateStyles.css"
+  );
+  const cssContent = readFileSync(cssPath, "utf8");
 
   // npx tailwindcss -o styles.css --minify
+  console.log(
+    "Resolved CSS Path: ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥",
+    resolve(process.cwd(), 
+    "src/app/templates/", "templateStyles.css")
+  );
 
   const templateHtml = `
     <!DOCTYPE html>
@@ -16,7 +28,14 @@ export async function POST(req, res) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-          ${readFileSync(resolve("./public/styles.css"), "utf8")}
+        ${readFileSync(
+          resolve(
+            process.cwd(),
+            "src/app/templates/",
+            "templateStyles.css"
+          ),
+          "utf8"
+        )}
         </style>
       </head>
       <body>
@@ -258,7 +277,9 @@ export async function POST(req, res) {
 
           <div class="flex-col p-6 space-y-6 w-full text-black  h-full">
             <div class="w-full pt-2">
-              <div style="color: ${data.accentColor};" class="pb-4 text-sky-800">
+              <div style="color: ${
+                data.accentColor
+              };" class="pb-4 text-sky-800">
                 <p class="tracking-wider leading-8 text-2xl">
                   SUMMARY
                 </p>
@@ -351,7 +372,7 @@ export async function POST(req, res) {
                   </div>
                 </div>`
                 )
-                .join('')}
+                .join("")}
             </div>
           </div>
         </div>
