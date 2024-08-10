@@ -1,5 +1,5 @@
 // src/app/api/puppeteer/route.js
-import chromium from "chrome-aws-lambda";
+import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 import { readFileSync } from "fs";
 import { resolve } from "path";
@@ -116,7 +116,7 @@ export async function POST(req, res) {
                         <path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" />
                       </svg>
                     </div>
-                    <p>${data.website}</p>
+                      <a href="https://${data.website}">${data.website}</a>
                   </div>
                 </div>
               </div>`
@@ -144,7 +144,7 @@ export async function POST(req, res) {
                           <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
                         </svg>
                       </div>
-                      <p>${data.linkedin}</p>
+                      <a href="https://${data.linkedin}">${data.linkedin}</a>
                     </div>`
                   }
                   ${
@@ -233,42 +233,7 @@ export async function POST(req, res) {
               </div>`
                 : ""
             }
-            ${
-              data.education?.school ||
-              data.education?.degree ||
-              data.education?.gradMonth ||
-              data.education?.gradYear
-                ? `
-                <div class="w-full">
-                  <div class="pb-4 text-white">
-                    <p class="tracking-wider leading-8 text-2xl">EDUCATION</p>
-                    <div class="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
-                  </div>
-                  <div class="w-full pb-2">
-                    ${
-                      data.education?.gradMonth !== "" ||
-                      data.education?.gradYear !== ""
-                        ? `<li class="text-neutral-300 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
-                        ${data.education?.gradMonth}&nbsp;${data.education?.gradYear}
-                      </li>`
-                        : ""
-                    }
-                    ${
-                      data.education?.degree &&
-                      `<li class="uppercase ml-2 marker:text-2xl text-lg font-semibold">
-                        ${data.education?.degree}
-                      </li>`
-                    }
-                    ${
-                      data.education?.school &&
-                      `<li class="capitalize ml-2 marker:text-2xl text-neutral-300 text-[18px] marker:text-transparent">
-                        ${data.education?.school}
-                      </li>`
-                    }
-                  </div>
-                </div>`
-                : ""
-            }
+            
           </div>
 
           <div class="flex-col p-6 space-y-6 w-full text-black  h-full">
@@ -326,16 +291,18 @@ export async function POST(req, res) {
                           : ""
                       }
                       ${
-                        data.experience[i]?.endMonth &&
-                        `<p class="text-neutral-400 text-[18px] capitalize">
+                        data.experience[i]?.endMonth
+                          ? `<p class="text-neutral-400 text-[18px] capitalize">
                           ${data.experience[i].endMonth}&nbsp;
                         </p>`
+                          : ""
                       }
                       ${
-                        data.experience[i]?.endYear &&
-                        `<p class="text-neutral-400 text-[18px]">
+                        data.experience[i]?.endYear
+                          ? `<p class="text-neutral-400 text-[18px]">
                           ${data.experience[i].endYear}&nbsp;
                         </p>`
+                          : ""
                       }
                     </div>
                     <p class="capitalize">${data.experience[i]?.jobPosition}</p>
@@ -371,6 +338,47 @@ export async function POST(req, res) {
                 )
                 .join("")}
             </div>
+            ${
+              data.education?.school ||
+              data.education?.degree ||
+              data.education?.gradMonth ||
+              data.education?.gradYear
+                ? `
+                <div class="w-full">
+                <div style='color: ${
+                  data.accentColor
+                };' className="pb-4 text-sky-800">
+                    <p class="tracking-wider leading-8 text-2xl">EDUCATION</p>
+                    <div
+                  style="border-color: ${data.accentColor};"
+                  class="w-full border-t-[3px] rounded-full border-t-sky-800"
+                ></div>
+                  </div>
+                  <div class="w-full pt-4">
+                    ${
+                      data.education?.gradMonth !== "" ||
+                      data.education?.gradYear !== ""
+                        ? `<li class="text-neutral-400 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
+                        ${data.education?.gradMonth}&nbsp;${data.education?.gradYear}
+                      </li>`
+                        : ""
+                    }
+                    ${
+                      data.education?.degree &&
+                      `<li class="uppercase ml-2 marker:text-2xl text-lg ">
+                        ${data.education?.degree}
+                      </li>`
+                    }
+                    ${
+                      data.education?.school &&
+                      `<li class="capitalize ml-2 marker:text-2xl text-neutral-600 text-[18px] marker:text-transparent">
+                        ${data.education?.school}
+                      </li>`
+                    }
+                  </div>
+                </div>`
+                : ""
+            }
           </div>
         </div>
       </div>
@@ -381,41 +389,46 @@ export async function POST(req, res) {
     </html>
   `;
 
-  let browser = null;
-  try {
-    // Launch browser with chrome-aws-lambda
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath,
-      headless: true,
-      defaultViewport: chromium.defaultViewport,
-    });
+  const isLocal = process.env.NODE_ENV === 'development';
 
-    const page = await browser.newPage();
-    await page.setContent(templateHtml, {
-      waitUntil: "networkidle0",
-    });
-
-    const pdfBuffer = await page.pdf({
-      format: "A4",
-      printBackground: true,
-      pageRanges: "1",
-    });
-
-    await browser.close();
-
-    return new Response(pdfBuffer, {
-      headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": "attachment; filename=resume.pdf",
-      },
-    });
-  } catch (error) {
-    console.error("Error generating PDF:", error);
-    return new Response("Error generating PDF", { status: 500 });
-  } finally {
-    if (browser !== null) {
-      await browser.close();
-    }
+  let executablePath;
+  if (isLocal) {
+    executablePath = puppeteer.executablePath();
+  } else {
+    executablePath = await chromium.executablePath();
   }
+
+  if (!executablePath) {
+    console.error("Error: Chromium executable path not found.");
+    return new Response("Error: Chromium executable path not found.", {
+      status: 500,
+    });
+  }
+
+  const browser = await puppeteer.launch({
+    args: isLocal ? [] : chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: executablePath,
+    headless: isLocal ? true : chromium.headless,
+  });
+
+  const page = await browser.newPage();
+  await page.setContent(templateHtml, {
+    waitUntil: "networkidle0",
+  });
+
+  const pdfBuffer = await page.pdf({
+    format: "A4",
+    printBackground: true,
+    pageRanges: "1", // Ensures only the first page is included in the PDF
+  });
+
+  await browser.close();
+
+  return new Response(pdfBuffer, {
+    headers: {
+      "Content-Type": "application/pdf",
+      "Content-Disposition": "attachment; filename=resume.pdf",
+    },
+  });
 }

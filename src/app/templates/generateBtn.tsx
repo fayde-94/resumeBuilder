@@ -45,7 +45,7 @@ const PdfGeneratorButton = () => {
         education,
         summary,
         pfpSize,
-        pfp: pfp.url,
+        pfp: pfp ? pfp.url : "",
         experience,
       },
       {
@@ -53,6 +53,9 @@ const PdfGeneratorButton = () => {
       }
     );
     const blob = new Blob([response.data], { type: "application/pdf" });
+
+    // const url = URL.createObjectURL(blob);
+    // window.open(url, "_blank");
 
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
@@ -61,34 +64,47 @@ const PdfGeneratorButton = () => {
   };
 
   const handleOpenPdf = async () => {
-    const response = await axios.post(
-      "/api/puppeteer",
-      {
-        name,
-        number,
-        email,
-        city,
-        country,
-        linkedin,
-        website,
-        position,
-        technicalSkills,
-        personalSkills,
-        accentColor,
-        education,
-        summary,
-        pfpSize,
-        pfp: pfp.url,
-        experience,
-      },
-      {
-        responseType: "blob",
-      }
-    );
-    const blob = new Blob([response.data], { type: "application/pdf" });
+    try {
+      const response = await axios.post(
+        "/api/puppeteer",
+        {
+          name,
+          number,
+          email,
+          city,
+          country,
+          linkedin,
+          website,
+          position,
+          technicalSkills,
+          personalSkills,
+          accentColor,
+          education,
+          summary,
+          pfpSize,
+          pfp: pfp ? pfp.url : "",
+          experience,
+        },
+        {
+          responseType: "blob",
+        }
+      );
 
-    const url = URL.createObjectURL(blob);
-    window.open(url, "_blank");
+      // Ensure the response status is successful
+      if (response.status === 200) {
+        const blob = new Blob([response.data], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        window.open(url, "_blank");
+      } else {
+        console.error("Failed to generate PDF:", response.statusText);
+        alert("Failed to generate PDF. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error during PDF generation:", error);
+      alert(
+        "An error occurred during PDF generation. Please check the console for details."
+      );
+    }
   };
 
   return (

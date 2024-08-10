@@ -380,6 +380,9 @@ video {
 .inline-flex {
   display: inline-flex;
 }
+.inline-block {
+  display: inline-block;
+}
 .table {
   display: table;
 }

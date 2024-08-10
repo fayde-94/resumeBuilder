@@ -54,26 +54,6 @@ const PuppeteerTemplate = () => {
               <p className="uppercase text-xl tracking-wider">{position}</p>
             </div>
             {/* CITY AND COUNTRY */}
-            {city && (
-              <div className="w-full flex-row flex">
-                <div className="flex space-x-2 items-center text-base">
-                  <svg
-                    width="26"
-                    height="20"
-                    fill="white"
-                    viewBox="0 0 384 512"
-                  >
-                    <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
-                  </svg>
-                  <p className="capitalize">{city}</p>
-                  {country && (
-                    <p className="capitalize">
-                      <span className=" text-slate-300">- </span>&nbsp;{country}
-                    </p>
-                  )}
-                </div>
-              </div>
-            )}
 
             {/* WEB PORTFOLIO SECTION */}
             {website ? (
@@ -106,7 +86,7 @@ const PuppeteerTemplate = () => {
             )}
 
             {/* CONTACT SECTION */}
-            {number || email || linkedin ? (
+            {number || email || linkedin || city ? (
               <div className="w-full">
                 <div className="pb-4 text-white">
                   <p className="tracking-wider leading-8 text-2xl">CONTACT</p>
@@ -126,7 +106,12 @@ const PuppeteerTemplate = () => {
                           <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
                         </svg>
                       </div>
-                      <p>{linkedin}</p>
+                      <p>
+                        <span className="max-w-0 inline-block overflow-hidden ">
+                          www.
+                        </span>
+                        {linkedin}
+                      </p>
                     </div>
                   )}
                   {/*  EMAIL */}
@@ -160,6 +145,27 @@ const PuppeteerTemplate = () => {
                         </svg>
                       </div>
                       <p>{number}</p>
+                    </div>
+                  )}
+                  {city && (
+                    <div className="w-full flex-row flex">
+                      <div className="flex space-x-2 items-center text-base">
+                        <svg
+                          width="26"
+                          height="20"
+                          fill="white"
+                          viewBox="0 0 384 512"
+                        >
+                          <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                        </svg>
+                        <p className="capitalize">{city}</p>
+                        {country && (
+                          <p className="capitalize">
+                            <span className=" text-slate-300">- </span>&nbsp;
+                            {country}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -209,39 +215,6 @@ const PuppeteerTemplate = () => {
             ) : (
               ""
             )}
-            {/* EDUCATION SECTION */}
-            {education?.school ||
-            education?.degree ||
-            education?.gradMonth ||
-            education?.gradYear ? (
-              <div className="w-full">
-                <div className="pb-4 text-white">
-                  <p className="tracking-wider leading-8 text-2xl">EDUCATION</p>
-                  <div className="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
-                </div>
-                <div className="w-full pb-2">
-                  {education?.gradMonth !== "" || education?.gradYear !== "" ? (
-                    <li className="text-neutral-300 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
-                      {education?.gradMonth}&nbsp;{education?.gradYear}
-                    </li>
-                  ) : (
-                    ""
-                  )}
-                  {education?.degree && (
-                    <li className="uppercase ml-2 marker:text-2xl font-semibold">
-                      {education?.degree}
-                    </li>
-                  )}
-                  {education?.school && (
-                    <li className="capitalize ml-2 marker:text-2xl text-neutral-300 text-[18px] marker:text-transparent">
-                      {education?.school}
-                    </li>
-                  )}
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
           </div>
           {/* ------------------ RIGHT COLUMN ------------------ */}
 
@@ -249,16 +222,14 @@ const PuppeteerTemplate = () => {
             {/* PROFESSIONAL SUMMARY SECTION */}
             <div className="w-full pt-2">
               <div style={{ color: accentColor }} className="pb-4 text-sky-800">
-                <p className="tracking-wider leading-8 text-2xl">
-                  SUMMARY
-                </p>
+                <p className="tracking-wider leading-8 text-2xl">SUMMARY</p>
                 <div
                   style={{ borderColor: accentColor }}
                   className="w-full border-t-[3px] rounded-full border-t-sky-800"
                 ></div>
               </div>
               <div className="w-full space-y-3 text-xl font-normal">
-                <h2 className="whitespace-pre-line text-pretty">{summary}</h2>
+                <h2 className="whitespace-pre-line">{summary}</h2>
               </div>
             </div>
 
@@ -294,15 +265,19 @@ const PuppeteerTemplate = () => {
                       ) : (
                         ""
                       )}
-                      {experience[i]?.endMonth && (
+                      {experience[i]?.endMonth ? (
                         <p className="text-neutral-400 text-[18px] capitalize">
                           {experience[i].endMonth}&nbsp;
                         </p>
+                      ) : (
+                        ""
                       )}
-                      {experience[i]?.endYear && (
+                      {experience[i]?.endYear ? (
                         <p className="text-neutral-400 text-[18px]">
                           {experience[i].endYear}&nbsp;
                         </p>
+                      ) : (
+                        ""
                       )}
                     </div>
                     <p className="capitalize">{experience[i]?.jobPosition}</p>
@@ -338,7 +313,51 @@ const PuppeteerTemplate = () => {
                     )}
                   </div>
                 </div>
-              ))}
+              ))}{" "}
+              {education?.school ||
+              education?.degree ||
+              education?.gradMonth ||
+              education?.gradYear ? (
+                <div className="w-full">
+                  <div
+                    style={{ color: accentColor }}
+                    className="pb-4 text-sky-800"
+                  >
+                    <p className="tracking-wider leading-8 text-2xl">
+                      EDUCATION
+                    </p>
+                    <div
+                      style={{ borderColor: accentColor }}
+                      className="w-full border-t-[3px] rounded-full border-t-sky-800"
+                    ></div>
+                  </div>
+                  <div className="w-full pb-2">
+                    {education?.gradMonth !== "" ||
+                    education?.gradYear !== "" ? (
+                      <li className="text-neutral-400 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
+                        {education?.gradMonth}&nbsp;{education?.gradYear}
+                      </li>
+                    ) : (
+                      ""
+                    )}
+                    {education?.degree && (
+                      <li
+                        style={{ color: accentColor }}
+                        className="uppercase ml-2 marker:text-2xl font-semibold"
+                      >
+                        <span className="text-black">{education?.degree}</span>
+                      </li>
+                    )}
+                    {education?.school && (
+                      <li className="capitalize ml-2 marker:text-2xl text-neutral-600 text-[18px] marker:text-transparent">
+                        {education?.school}
+                      </li>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
