@@ -3,6 +3,9 @@ import puppeteer from "puppeteer";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
+const puppeteerCore = require("puppeteer-core");
+const chromium = require("@sparticuz/chromium-min");
+
 export async function POST(req, res) {
   const data = await req.json();
   // console.log("🚀 ~ POST ~ data:", data);
@@ -388,17 +391,22 @@ export async function POST(req, res) {
     </html>
   `;
 
-  const browser = await puppeteer.launch();
+  // const browser = await puppeteer.launch();
+
+  const browser = await puppeteerCore.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(
+      `https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar`
+    ),
+    headless: chromium.headless,
+    ignoreHTTPSErrors: true,
+  });
+
   const page = await browser.newPage();
   await page.setContent(templateHtml, {
     waitUntil: "networkidle0",
   });
-  // const browser = await puppeteer.launch({
-  //   args: chromium.args,
-  //   defaultViewport: chromium.defaultViewport,
-  //   executablePath: await chromium.executablePath(),
-  //   headless: chromium.headless,
-  // });
 
   const pdfBuffer = await page.pdf({
     format: "A4",
