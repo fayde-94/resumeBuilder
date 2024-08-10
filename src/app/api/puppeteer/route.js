@@ -391,17 +391,22 @@ export async function POST(req, res) {
     </html>
   `;
 
+  const isLocal = process.env.NODE_ENV === "development";
+  let browser;
   // const browser = await puppeteer.launch();
-
-  const browser = await puppeteerCore.launch({
-    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      `https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar`
-    ),
-    headless: chromium.headless,
-    ignoreHTTPSErrors: true,
-  });
+  if (isLocal) {
+    browser = await puppeteer.launch();
+  } else {
+    browser = await puppeteerCore.launch({
+      args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(
+        `https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar`
+      ),
+      headless: chromium.headless,
+      ignoreHTTPSErrors: true,
+    });
+  }
 
   const page = await browser.newPage();
   await page.setContent(templateHtml, {
