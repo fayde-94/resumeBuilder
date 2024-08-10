@@ -108,13 +108,16 @@ const PdfGeneratorButton = () => {
   };
 
   return (
-    <div className="flex w-full gap-4 pb-20 px-4">
-      <Button onClick={handleOpenPdf} className="w-full">
-        View PDF
-      </Button>
-      <Button onClick={handleDownloadPdf} className="w-full">
-        Download PDF
-      </Button>
+    <div className="flex w-full px-4 flex-col pb-20 gap-4 ">
+      <p>view / download not currently working atm rn fr fr no cap shiiiii...</p>
+      <div className="flex w-full  gap-4 ">
+        <Button onClick={handleOpenPdf} className="w-full">
+          View PDF
+        </Button>
+        <Button onClick={handleDownloadPdf} className="w-full">
+          Download PDF
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 // src/app/api/puppeteer/route.js
-import chromium from "@sparticuz/chromium";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
@@ -389,33 +388,17 @@ export async function POST(req, res) {
     </html>
   `;
 
-  const isLocal = process.env.NODE_ENV === 'development';
-
-  let executablePath;
-  if (isLocal) {
-    executablePath = puppeteer.executablePath();
-  } else {
-    executablePath = await chromium.executablePath();
-  }
-
-  if (!executablePath) {
-    console.error("Error: Chromium executable path not found.");
-    return new Response("Error: Chromium executable path not found.", {
-      status: 500,
-    });
-  }
-
-  const browser = await puppeteer.launch({
-    args: isLocal ? [] : chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: executablePath,
-    headless: isLocal ? true : chromium.headless,
-  });
-
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setContent(templateHtml, {
     waitUntil: "networkidle0",
   });
+  // const browser = await puppeteer.launch({
+  //   args: chromium.args,
+  //   defaultViewport: chromium.defaultViewport,
+  //   executablePath: await chromium.executablePath(),
+  //   headless: chromium.headless,
+  // });
 
   const pdfBuffer = await page.pdf({
     format: "A4",
