@@ -125,15 +125,20 @@ const PdfGeneratorButton = () => {
   };
 
   return (
-    <div className="flex w-full px-4 flex-col pb-20 gap-4 ">
-      <p>
-        view / download now available!
-      </p>
+    <div className="flex w-full flex-col gap-4 ">
       <div className="flex w-full  gap-4 ">
-        <Button onClick={handleOpenPdf} className="w-full">
+        <Button
+          onClick={handleOpenPdf}
+          className="w-full bg-transparent text-slate-400 underline-offset-2 hover:underline hover:bg-sky-800 transition-all duration-300 hover:text-slate-100"
+          variant={"outline"}
+        >
           View PDF
         </Button>
-        <Button onClick={handleDownloadPdf} className="w-full">
+        <Button
+          onClick={handleDownloadPdf}
+          className="w-full bg-transparent text-slate-400 underline-offset-2 hover:underline hover:bg-sky-800 transition-all duration-300 hover:text-slate-100"
+          variant={"outline"}
+        >
           Download PDF
         </Button>
       </div>

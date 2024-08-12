@@ -1,7 +1,13 @@
 "use client";
 import { useTextStore } from "@/lib/Zustand";
+import { useRef } from "react";
+import { calculateSize, useContainerSize } from "../hooks/useContainerSize";
+import { cn } from "@/lib/utils";
+type p = {
+  className?: string;
+};
 
-const PuppeteerTemplate = () => {
+const PuppeteerTemplate = ({ className }: p) => {
   const {
     name,
     number,
@@ -20,26 +26,67 @@ const PuppeteerTemplate = () => {
     pfpSize,
     experience,
   } = useTextStore();
+  console.log("🚀 ~ PuppeteerTemplate ~ pfpSize:", pfpSize);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const containerSize = useContainerSize(containerRef);
+
+  const pfpcalculated = calculateSize(pfpSize.percent, containerSize);
+
+  const borderPX = calculateSize("0.2727%", containerSize);
+  const svgSize = calculateSize("2%", containerSize);
+  const indented = calculateSize("2.5%", containerSize);
+  const space8 = calculateSize("2.9090%", containerSize);
+  const space6 = calculateSize("2.1818%", containerSize);
+  const space4 = calculateSize("1.4545%", containerSize);
+  const space3 = calculateSize("1.0908%", containerSize);
+  const space2 = calculateSize("0.7272%", containerSize);
+
+  const textTITLE = calculateSize("4.3636%", containerSize);
+  const textLG = calculateSize("1.6363%", containerSize);
+  const lineHeightLG = calculateSize("2.5454%", containerSize);
+  const text2XL = calculateSize("2.1818%", containerSize);
+  const lineHeight2XL = calculateSize("2.9090%", containerSize);
+  const textXL = calculateSize("1.82%", containerSize);
+  const colWidth = calculateSize("60.713%", containerSize);
+
   return (
-    <div id="resume-template">
+    <div className="">
       <div
         id="resume-template"
-        className=" w-[1100px] aspect-[1000/1440] bg-white"
+        ref={containerRef}
+        className={cn(
+          " aspect-[1000/1440] min-w-full max-w-[1100px] bg-white",
+          className
+        )}
       >
-        <div className="flex h-full w-full flex-row">
+        <div
+          style={{ fontSize: textLG, lineHeight: lineHeightLG }}
+          className="flex h-full w-full flex-row"
+        >
           <div
-            style={{ backgroundColor: accentColor }}
-            className="flex-col p-6 min-w-[420px] w-[420px] h-full border-b-neutral-50 space-y-6 bg-sky-800 text-neutral-200"
+            style={{
+              backgroundColor: accentColor,
+              width: colWidth,
+              padding: space6,
+            }}
+            className={`flex-col p-6  h-full border-b-neutral-50 bg-sky-800 text-neutral-200`}
           >
             {/* NAME AND TITLE SECTION */}
-            <div className="w-full text-center space-y-4">
-              <h1 className="font-semibold text-5xl uppercase leading-[1.1em]">
+            <div
+              style={{ paddingBottom: space6 }}
+              className="w-full text-center space-y-4"
+            >
+              <h1
+                style={{ fontSize: textTITLE, lineHeight: textTITLE }}
+                className="font-semibold text-5xl uppercase leading-[1.1em]"
+              >
                 {name}
               </h1>
               {pfp?.url && (
                 <div className="flex w-full justify-center">
                   <div
-                    style={{ width: pfpSize, height: pfpSize }}
+                    style={{ width: pfpcalculated, height: pfpcalculated }}
                     className="size-[274px] overflow-clip rounded-full"
                   >
                     <img
@@ -51,26 +98,40 @@ const PuppeteerTemplate = () => {
                 </div>
               )}
 
-              <p className="uppercase text-xl tracking-wider">{position}</p>
+              <p
+                style={{ fontSize: textXL, lineHeight: 1.3 }}
+                className="uppercase text-xl tracking-wider"
+              >
+                {position}
+              </p>
             </div>
             {/* CITY AND COUNTRY */}
 
             {/* WEB PORTFOLIO SECTION */}
             {website ? (
-              <div className="w-full ">
-                <div className="pb-4 text-white ">
-                  <p className="tracking-wider leading-8 text-2xl">
+              <div style={{ paddingBottom: space4 }} className="w-full ">
+                <div style={{ paddingBottom: space4 }} className=" text-white ">
+                  <p
+                    style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                    className="tracking-wider leading-8 text-2xl"
+                  >
                     WEB PORTFOLIO
                   </p>
-                  <div className="w-full border-t-[3px]  rounded-full border-t-neutral-200"></div>
+                  <div
+                    style={{ borderTop: `${borderPX} solid rgb(229 229 229)` }}
+                    className="w-full border-t-[3px]  rounded-full border-t-neutral-200"
+                  ></div>
                 </div>
-                <div className="w-full space-y-4">
+                <div className="w-full">
                   {/* PERSONAL WEBSITE */}
-                  <div className="flex flex-row gap-x-2 items-center align-middle lowercase">
+                  <div
+                    style={{ columnGap: space2, paddingBottom: space2 }}
+                    className="flex flex-row items-center align-middle lowercase"
+                  >
                     <div>
                       <svg
-                        width="26"
-                        height="26"
+                        width={svgSize}
+                        height={svgSize}
                         fill="white"
                         viewBox="0 0 496 512"
                       >
@@ -87,40 +148,52 @@ const PuppeteerTemplate = () => {
 
             {/* CONTACT SECTION */}
             {number || email || linkedin || city ? (
-              <div className="w-full">
-                <div className="pb-4 text-white">
-                  <p className="tracking-wider leading-8 text-2xl">CONTACT</p>
-                  <div className="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
+              <div style={{ paddingBottom: space6 }} className="w-full">
+                <div style={{ paddingBottom: space4 }} className=" text-white">
+                  <p
+                    style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                    className="tracking-wider leading-8 text-2xl"
+                  >
+                    CONTACT
+                  </p>
+                  <div
+                    style={{ borderTop: `${borderPX} solid rgb(229 229 229)` }}
+                    className="w-full border-t-[3px] rounded-full border-t-neutral-200"
+                  ></div>
                 </div>
-                <div className="w-full space-y-4">
+                <div
+                  style={{ rowGap: space3, paddingBottom: space2 }}
+                  className="w-full flex-col flex"
+                >
                   {/* LINKEDIN */}
                   {linkedin && (
-                    <div className="flex flex-row gap-x-2 items-center align-middle lowercase">
+                    <div
+                      style={{ columnGap: space2 }}
+                      className="flex flex-row items-center align-middle lowercase"
+                    >
                       <div>
                         <svg
-                          width="26"
-                          height="26"
+                          width={svgSize}
+                          height={svgSize}
                           fill="white"
                           viewBox="0 0 448 512"
                         >
                           <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
                         </svg>
                       </div>
-                      <p>
-                        <span className="max-w-0 inline-block overflow-hidden ">
-                          www.
-                        </span>
-                        {linkedin}
-                      </p>
+                      <p className="">{linkedin}</p>
                     </div>
                   )}
                   {/*  EMAIL */}
                   {email && (
-                    <div className="flex flex-row gap-x-2 items-center align-middle lowercase">
+                    <div
+                      style={{ columnGap: space2 }}
+                      className="flex flex-row items-center align-middle lowercase"
+                    >
                       <div>
                         <svg
-                          width="26"
-                          height="26"
+                          width={svgSize}
+                          height={svgSize}
                           fill="white"
                           viewBox="0 0 24 24"
                         >
@@ -133,11 +206,14 @@ const PuppeteerTemplate = () => {
 
                   {/* PHONE */}
                   {number && (
-                    <div className="flex w-full flex-row gap-x-2 items-center align-middle lowercase">
+                    <div
+                      style={{ columnGap: space2 }}
+                      className="flex w-full flex-row items-center align-middle lowercase"
+                    >
                       <div>
                         <svg
-                          width="26"
-                          height="26"
+                          width={svgSize}
+                          height={svgSize}
                           fill="white"
                           viewBox="0 0 448 512"
                         >
@@ -149,10 +225,13 @@ const PuppeteerTemplate = () => {
                   )}
                   {city && (
                     <div className="w-full flex-row flex">
-                      <div className="flex space-x-2 items-center text-base">
+                      <div
+                        style={{ columnGap: space2 }}
+                        className="flex items-center"
+                      >
                         <svg
-                          width="26"
-                          height="20"
+                          width={svgSize}
+                          height={svgSize}
                           fill="white"
                           viewBox="0 0 384 512"
                         >
@@ -176,16 +255,29 @@ const PuppeteerTemplate = () => {
 
             {/* TECHNICAL SKILLS SECTION */}
             {technicalSkills !== undefined && technicalSkills.length > 0 ? (
-              <div className="w-full">
-                <div className="pb-4 text-white">
-                  <p className="tracking-wider leading-8 text-2xl">
+              <div style={{ paddingBottom: space4 }} className="w-full">
+                <div style={{ paddingBottom: space4 }} className=" text-white">
+                  <p
+                    style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                    className="tracking-wider leading-8 text-2xl"
+                  >
                     TECHNICAL SKILLS
                   </p>
-                  <div className="w-full border-t-[3px]  rounded-full border-t-neutral-200"></div>
+                  <div
+                    style={{ borderTop: `${borderPX} solid rgb(229 229 229)` }}
+                    className="w-full border-t-[3px]  rounded-full border-t-neutral-200"
+                  ></div>
                 </div>
-                <div className="w-full space-y-2 uppercase font-semibold">
+                <div className="w-full  uppercase font-semibold">
                   {technicalSkills.map((skill, index) => (
-                    <li key={index} className="ml-2 marker:text-2xl">
+                    <li
+                      style={{
+                        fontSize: textLG,
+                        paddingBottom: space3,
+                        marginLeft: space2,
+                      }}
+                      key={index}
+                    >
                       {skill}
                     </li>
                   ))}
@@ -197,16 +289,29 @@ const PuppeteerTemplate = () => {
 
             {/* PERSONAL SKILLS */}
             {personalSkills !== undefined && personalSkills.length > 0 ? (
-              <div className="w-full">
-                <div className="pb-4 text-white">
-                  <p className="tracking-wider leading-8 text-2xl">
+              <div style={{ paddingBottom: space4 }} className="w-full">
+                <div style={{ paddingBottom: space4 }} className=" text-white">
+                  <p
+                    style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                    className="tracking-wider leading-8 text-2xl"
+                  >
                     PERSONAL SKILLS
                   </p>
-                  <div className="w-full border-t-[3px]  rounded-full border-t-neutral-200"></div>
+                  <div
+                    style={{ borderTop: `${borderPX} solid rgb(229 229 229)` }}
+                    className="w-full border-t-[3px]  rounded-full border-t-neutral-200"
+                  ></div>
                 </div>
-                <div className="w-full space-y-2 uppercase font-semibold">
+                <div className="w-full uppercase font-semibold">
                   {personalSkills.map((skill, index) => (
-                    <li key={index} className="ml-2 marker:text-2xl">
+                    <li
+                      style={{
+                        fontSize: textLG,
+                        paddingBottom: space3,
+                        marginLeft: space2,
+                      }}
+                      key={index}
+                    >
                       {skill}
                     </li>
                   ))}
@@ -218,94 +323,167 @@ const PuppeteerTemplate = () => {
           </div>
           {/* ------------------ RIGHT COLUMN ------------------ */}
 
-          <div className="flex-col p-6 space-y-6 w-full text-black  h-full">
+          <div
+            style={{ padding: space6 }}
+            className="flex-col w-full text-black  h-full"
+          >
             {/* PROFESSIONAL SUMMARY SECTION */}
-            <div className="w-full pt-2">
-              <div style={{ color: accentColor }} className="pb-4 text-sky-800">
-                <p className="tracking-wider leading-8 text-2xl">SUMMARY</p>
+            <div style={{ paddingBottom: space6 }} className="w-full pt-2">
+              <div
+                style={{ color: accentColor, paddingBottom: space4 }}
+                className=" text-sky-800"
+              >
+                <p
+                  style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                  className="tracking-wider leading-8 text-2xl"
+                >
+                  SUMMARY
+                </p>
                 <div
-                  style={{ borderColor: accentColor }}
+                  style={{
+                    borderColor: accentColor,
+                    borderTop: `${borderPX} solid`,
+                  }}
                   className="w-full border-t-[3px] rounded-full border-t-sky-800"
                 ></div>
               </div>
-              <div className="w-full space-y-3 text-xl font-normal">
+              <div
+                style={{ fontSize: textXL, lineHeight: lineHeightLG }}
+                className="w-full text-xl font-normal"
+              >
                 <h2 className="whitespace-pre-line">{summary}</h2>
               </div>
             </div>
 
             {/* EXPERIENCE SECTION */}
 
-            <div className="w-full flex flex-col pt-2 gap-4">
-              <div style={{ color: accentColor }} className=" text-sky-800">
-                <p className="tracking-wider leading-8 text-2xl">EXPERIENCE</p>
+            <div className="w-full flex flex-col ">
+              <div
+                style={{ color: accentColor, paddingBottom: space4 }}
+                className=" text-sky-800"
+              >
+                <p
+                  style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                  className="tracking-wider leading-8 text-2xl"
+                >
+                  EXPERIENCE
+                </p>
                 <div
-                  style={{ borderColor: accentColor }}
+                  style={{
+                    borderColor: accentColor,
+                    borderTop: `${borderPX} solid`,
+                  }}
                   className="w-full border-t-[3px] rounded-full border-t-sky-800"
                 ></div>
               </div>
               {experience.map((exp, i: number) => (
                 <div
+                  style={{
+                    fontSize: textLG,
+                    lineHeight: lineHeightLG,
+                    paddingBottom: space4,
+                  }}
                   key={i}
-                  className="w-full space-y-3 text-xl flex flex-col pb-4"
+                  className="w-full  text-xl flex flex-col "
                 >
-                  <div className="w-full space-y-1">
+                  <div
+                    style={{
+                      fontSize: textLG,
+                      lineHeight: lineHeightLG,
+                    }}
+                    className="w-full "
+                  >
                     <div className="w-full flex">
                       {experience[i]?.startMonth && (
-                        <p className="text-neutral-400 text-[18px] capitalize">
+                        <p className="text-neutral-400  capitalize">
                           {experience[i].startMonth}&nbsp;
                         </p>
                       )}
                       {experience[i]?.startYear && (
-                        <p className="text-neutral-400 text-[18px]">
+                        <p className="text-neutral-400 ">
                           {experience[i].startYear}&nbsp;
                         </p>
                       )}
                       {experience[i]?.endMonth || experience[i]?.endYear ? (
-                        <p className="text-neutral-400 text-[18px]">-&nbsp;</p>
+                        <p className="text-neutral-400 ">-&nbsp;</p>
                       ) : (
                         ""
                       )}
                       {experience[i]?.endMonth ? (
-                        <p className="text-neutral-400 text-[18px] capitalize">
+                        <p className="text-neutral-400  capitalize">
                           {experience[i].endMonth}&nbsp;
                         </p>
                       ) : (
                         ""
                       )}
                       {experience[i]?.endYear ? (
-                        <p className="text-neutral-400 text-[18px]">
+                        <p className="text-neutral-400 ">
                           {experience[i].endYear}&nbsp;
                         </p>
                       ) : (
                         ""
                       )}
                     </div>
-                    <p className="capitalize">{experience[i]?.jobPosition}</p>
-                    <p className="capitalize text-neutral-600 text-[18px]">
+                    <p
+                      style={{ fontSize: textXL, lineHeight: 1.3 }}
+                      className="capitalize text-xl"
+                    >
+                      {experience[i]?.jobPosition}
+                    </p>
+                    <p className="capitalize text-neutral-600 ">
                       {experience[i]?.employer}
                     </p>
                   </div>
 
                   <div
-                    style={{ color: accentColor }}
-                    className="w-full font-normal space-y-2  marker:text-2xl"
+                    style={{
+                      color: accentColor,
+                      fontSize: textXL,
+                      lineHeight: lineHeightLG,
+                      paddingBottom: space4,
+                    }}
+                    className="w-full font-normal"
                   >
                     {experience[i]?.bullet1 && (
-                      <li className="pl-2 -indent-8 ml-8  whitespace-pre-line">
+                      <li
+                        style={{
+                          paddingTop: space2,
+                          textIndent: `-${indented}`,
+                          marginLeft: space6,
+                          paddingLeft: space2,
+                        }}
+                        className="whitespace-pre-line"
+                      >
                         <span className="text-black">
                           {experience[i].bullet1}
                         </span>
                       </li>
                     )}
                     {experience[i]?.bullet2 && (
-                      <li className="pl-2 -indent-8 ml-8  whitespace-pre-line">
+                      <li
+                        style={{
+                          paddingTop: space2,
+                          textIndent: `-${indented}`,
+                          marginLeft: space6,
+                          paddingLeft: space2,
+                        }}
+                        className=" whitespace-pre-line"
+                      >
                         <span className="text-black">
                           {experience[i].bullet2}
                         </span>
                       </li>
                     )}
                     {experience[i]?.bullet3 && (
-                      <li className="pl-2 -indent-8 ml-8  whitespace-pre-line">
+                      <li
+                        style={{
+                          paddingTop: space2,
+                          textIndent: `-${indented}`,
+                          marginLeft: space6,
+                          paddingLeft: space2,
+                        }}
+                        className=" whitespace-pre-line"
+                      >
                         <span className="text-black">
                           {experience[i].bullet3}
                         </span>
@@ -320,21 +498,33 @@ const PuppeteerTemplate = () => {
               education?.gradYear ? (
                 <div className="w-full">
                   <div
-                    style={{ color: accentColor }}
-                    className="pb-4 text-sky-800"
+                    style={{ color: accentColor, paddingBottom: space4 }}
+                    className=" text-sky-800"
                   >
-                    <p className="tracking-wider leading-8 text-2xl">
+                    <p
+                      style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                      className="tracking-wider leading-8 text-2xl"
+                    >
                       EDUCATION
                     </p>
                     <div
-                      style={{ borderColor: accentColor }}
+                      style={{
+                        borderColor: accentColor,
+                        borderTop: `${borderPX} solid`,
+                      }}
                       className="w-full border-t-[3px] rounded-full border-t-sky-800"
                     ></div>
                   </div>
-                  <div className="w-full pb-2">
+                  <div className="w-full">
                     {education?.gradMonth !== "" ||
                     education?.gradYear !== "" ? (
-                      <li className="text-neutral-400 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
+                      <li
+                        style={{
+                          fontSize: textLG,
+                          lineHeight: lineHeightLG,
+                        }}
+                        className="text-neutral-400 ml-2 capitalize marker:text-transparent"
+                      >
                         {education?.gradMonth}&nbsp;{education?.gradYear}
                       </li>
                     ) : (
@@ -342,14 +532,24 @@ const PuppeteerTemplate = () => {
                     )}
                     {education?.degree && (
                       <li
-                        style={{ color: accentColor }}
-                        className="uppercase ml-2 marker:text-2xl font-semibold"
+                        style={{
+                          color: accentColor,
+                          fontSize: textLG,
+                          lineHeight: lineHeightLG,
+                        }}
+                        className="uppercase ml-2  font-semibold"
                       >
                         <span className="text-black">{education?.degree}</span>
                       </li>
                     )}
                     {education?.school && (
-                      <li className="capitalize ml-2 marker:text-2xl text-neutral-600 text-[18px] marker:text-transparent">
+                      <li
+                        style={{
+                          fontSize: textLG,
+                          lineHeight: lineHeightLG,
+                        }}
+                        className="capitalize ml-2  text-neutral-600   marker:text-transparent"
+                      >
                         {education?.school}
                       </li>
                     )}

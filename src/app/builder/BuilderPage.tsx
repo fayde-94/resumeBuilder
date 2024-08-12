@@ -10,6 +10,8 @@ import Skills from "../Skills";
 import Experience from "../Experience";
 import Education from "../Education";
 import PdfGeneratorButton from "../templates/generateBtn";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const BuilderPage = () => {
   const { accentColor } = useTextStore();
@@ -18,7 +20,7 @@ const BuilderPage = () => {
     <div className="w-full min-h-screen relative">
       <Disclaimer />
       <div className="flex flex-row h-screen mx-auto max-w-max ">
-        <div className="flex flex-col  w-full pb-10 ">
+        <div className="flex flex-col w-full pb-10 ">
           <Contact />
           <UploadPFP />
           <Summary />
@@ -26,15 +28,23 @@ const BuilderPage = () => {
           <Experience />
           <Education />
           <Customize />
-          <PdfGeneratorButton />
+          <div className="2xl:px-2 px-0 py-0 -mt-10 flex justify-end w-full ">
+            <Link
+              href={"/builder/finalize"}
+              className="  text-base text-center text-black bg-sky-600 px-4 mb-10 py-2 rounded-lg"
+            >
+              Finalize Resume
+            </Link>
+          </div>
         </div>
+
         <div className=" hidden 2xl:flex  origin-top-left aspect-[1000/1440] relative">
-          <div className="fixed  scale-[.6] hidden 2xl:flex pt-16 pl-12 origin-top-left aspect-[1000/1440]">
+          <div className="fixed hidden 2xl:flex mt-8 ml-12 origin-top-left aspect-[1000/1440]">
             <div
               style={{ boxShadow: `20px 20px 50px ${accentColor}70` }}
-              className=" border-2 border-slate-300 rounded-xl overflow-clip mb-2"
+              className=" overflow-clip mb-2"
             >
-              <PuppeteerTemplate />
+              <PuppeteerTemplate className="max-w-[1000px] min-h-[94vh]" />
             </div>
           </div>
         </div>

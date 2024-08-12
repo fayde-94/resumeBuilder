@@ -56,7 +56,7 @@ export async function POST(req, res) {
                 data.pfp !== ""
                   ? `<div class="flex w-full justify-center">
                   <div
-                    style="width: ${data.pfpSize}; height: ${data.pfpSize};"
+                    style="width: ${data.pfpSize.px}; height: ${data.pfpSize.px};"
                     class="size-[274px] overflow-clip rounded-full"
                   >
                     <img

@@ -20,12 +20,18 @@ const Customize = () => {
     "#1b5f85",
     "#1f4623",
   ];
+  const calculatePfpPercentage = (pfpsize: any) => {
+    const pfp = Number(pfpsize);
+    const calculated = (pfp / 1100) * 100;
+    console.log("🚀 ~ calculatePfpPercentage ~ calculated:", calculated);
+    return `${calculated}%`;
+  };
 
   const { setField, accentColor, pfpSize } = useTextStore();
   return (
     <div className="page ">
       <div className="w-full relative">
-        <h2 className="font-semibold text-center leading-none text-2xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent capitalize">
+        <h2 className=" font-light  text-center leading-none text-2xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent capitalize">
           Customize your resume
         </h2>
         <p className="absolute right-0 bottom-0 p-4 text-sm text-sky-800"></p>
@@ -44,11 +50,14 @@ const Customize = () => {
                 min={200}
                 max={300}
                 onValueChange={(e) => {
-                  setField("pfpSize", e + "px");
+                  setField("pfpSize", {
+                    px: e.toString() + "px",
+                    percent: calculatePfpPercentage(e),
+                  });
                 }}
               />
 
-              <p className="pt-2 text-slate-600 text-sm">{pfpSize}</p>
+              <p className="pt-2 text-slate-600 text-sm">{pfpSize.px}</p>
             </AccordionContent>
           </AccordionItem>
 

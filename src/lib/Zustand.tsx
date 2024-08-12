@@ -27,7 +27,7 @@ type T = {
   };
   counterArray: number[];
   summary: string;
-  pfpSize: string;
+  pfpSize: { px: string; percent: string };
   pfp: {
     metadata: {};
     path: {};
@@ -73,7 +73,10 @@ export const useTextStore = create<T>()(
       },
       summary: "",
       experience: [],
-      pfpSize: "250px",
+      pfpSize: {
+        px: "250px",
+        percent: "18.1818182%",
+      },
       pfp: {
         metadata: {},
         path: {},

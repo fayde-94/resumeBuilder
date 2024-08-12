@@ -21,7 +21,7 @@ const Summary = () => {
           collapsible
           className="p-4 pt-10 pb-0 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent"
         >
-          <h2 className="font-semibold text-center leading-none text-2xl">
+          <h2 className=" font-light  text-center leading-none text-2xl">
             Summary
           </h2>
           <AccordionItem
