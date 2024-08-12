@@ -2,6 +2,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { setInteractions } from "@/lib/appwrite";
 import { useTextStore } from "@/lib/Zustand";
 import axios from "axios";
 import React from "react";
@@ -24,6 +25,7 @@ const PdfGeneratorButton = () => {
     summary,
     pfpSize,
     experience,
+    setField,
   } = useTextStore();
   const today = new Date();
 
@@ -61,6 +63,17 @@ const PdfGeneratorButton = () => {
     link.href = window.URL.createObjectURL(blob);
     link.download = `resume-${today.toLocaleDateString()}.pdf`;
     link.click();
+
+    const res = await setInteractions("pdfs_made");
+    if (res) {
+      setField("ui_pdfs", res.pdfs_made);
+    }
+  };
+  const handleIncreasePDFsMade = async () => {
+    const res = await setInteractions("pdfs_made");
+    if (res) {
+      setField("ui_pdfs", res.pdfs_made);
+    }
   };
 
   const handleOpenPdf = async () => {
@@ -99,6 +112,10 @@ const PdfGeneratorButton = () => {
         console.error("Failed to generate PDF:", response.statusText);
         alert("Failed to generate PDF. Please try again.");
       }
+      const res = await setInteractions("pdfs_made");
+      if (res) {
+        setField("ui_pdfs", res.pdfs_made);
+      }
     } catch (error) {
       console.error("Error during PDF generation:", error);
       alert(
@@ -109,7 +126,9 @@ const PdfGeneratorButton = () => {
 
   return (
     <div className="flex w-full px-4 flex-col pb-20 gap-4 ">
-      <p>view / download not currently working atm rn fr fr no cap shiiiii...</p>
+      <p>
+        view / download not currently working atm rn fr fr no cap shiiiii...
+      </p>
       <div className="flex w-full  gap-4 ">
         <Button onClick={handleOpenPdf} className="w-full">
           View PDF
