@@ -13,6 +13,12 @@ type T = {
   technicalSkills: string[];
   personalSkills: string[];
   accentColor: string;
+  ui_pdfs: number;
+  ui_likes: number;
+  interactions: {
+    liked: boolean;
+    commented: boolean;
+  };
   education: {
     school: string;
     degree: string;
@@ -42,6 +48,8 @@ type T = {
 export const useTextStore = create<T>()(
   persist(
     (set) => ({
+      ui_pdfs: 0,
+      ui_likes: 0,
       name: "",
       number: "",
       email: "",
@@ -58,6 +66,10 @@ export const useTextStore = create<T>()(
         degree: "",
         gradMonth: "",
         gradYear: "",
+      },
+      interactions: {
+        liked: false,
+        commented: false,
       },
       summary: "",
       experience: [],

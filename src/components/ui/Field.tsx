@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Input } from "./input";
 import { cn } from "@/lib/utils";
+import { Input } from "./input";
 
 type props = {
   className?: string;
@@ -39,8 +39,7 @@ const Field = ({
     <div className=" flex flex-col sm:text-lg text-sm  ">
       {title !== "" && (
         <h2 className=" self-start pb-1 ">
-          {title}:
-          {required ? <span className="text-sky-400"> *</span> : ""}
+          {title}:{required ? <span className="text-sky-400"> *</span> : ""}
         </h2>
       )}
       {subtext && (
