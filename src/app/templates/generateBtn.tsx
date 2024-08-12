@@ -127,7 +127,7 @@ const PdfGeneratorButton = () => {
   return (
     <div className="flex w-full px-4 flex-col pb-20 gap-4 ">
       <p>
-        view / download not currently working atm rn fr fr no cap shiiiii...
+        view / download now available!
       </p>
       <div className="flex w-full  gap-4 ">
         <Button onClick={handleOpenPdf} className="w-full">
