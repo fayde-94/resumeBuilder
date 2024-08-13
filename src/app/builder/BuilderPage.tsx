@@ -44,7 +44,7 @@ const BuilderPage = () => {
               style={{ boxShadow: `20px 20px 50px ${accentColor}70` }}
               className=" overflow-clip mb-2"
             >
-              <PuppeteerTemplate className="max-w-[1000px] min-h-[94vh]" />
+              <PuppeteerTemplate className="max-w-[1000px] min-h-[94vh] max-h-[94vh]" />
             </div>
           </div>
         </div>
