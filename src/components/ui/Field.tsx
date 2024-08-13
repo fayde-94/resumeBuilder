@@ -3,6 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Input } from "./input";
+import { FaArrowCircleUp } from "react-icons/fa";
 
 type props = {
   className?: string;
@@ -10,6 +11,7 @@ type props = {
   key?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+  submitButtonOnclick?: React.MouseEventHandler<HTMLButtonElement>;
   placeholder?: string;
   required?: boolean;
   type?: string;
@@ -18,6 +20,7 @@ type props = {
   maxLength?: number;
   list?: string;
   id?: string;
+  submitButton?: boolean;
 };
 
 const Field = ({
@@ -34,6 +37,8 @@ const Field = ({
   list,
   id,
   maxLength,
+  submitButton = false,
+  submitButtonOnclick,
 }: props) => {
   return (
     <div className=" flex flex-col sm:text-lg text-sm  ">
@@ -51,7 +56,7 @@ const Field = ({
           {subtext}
         </h3>
       )}
-      <div className="p-[.1rem] rounded-2xl radialbig">
+      <div className="p-[.1rem] rounded-2xl radialbig relative">
         <Input
           id={id}
           onChange={onChange}
@@ -65,6 +70,14 @@ const Field = ({
           placeholder={placeholder}
           value={value}
         />
+        {submitButton && (
+          <button
+            onClick={submitButtonOnclick}
+            className="absolute inset-y-0 right-0 mr-3 focus:ring-0 focus:outline-none focus:opacity-100 opacity-50 transition-opacity duration-300"
+          >
+            <FaArrowCircleUp className=" size-6 lg:size-7 " />
+          </button>
+        )}
       </div>
     </div>
   );

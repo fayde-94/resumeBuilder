@@ -90,10 +90,12 @@ const Skills = () => {
         <div className="grid grid-cols-2  gap-y-10 w-full max-w-[950px] sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg shadow-md ">
           <div className=" col-span-1">
             <Field
+              submitButton
+              submitButtonOnclick={handleAddTechnicalSkill}
               required
               value={techInput}
               subtext="Hard Skills"
-              placeholder="click Enter to submit"
+              placeholder="Enter to submit"
               title="Technical Skills"
               onChange={(e) => settechInput(e.target.value)}
               onKeyDown={(e) => {
@@ -106,10 +108,12 @@ const Skills = () => {
           </div>
           <div className=" col-span-1">
             <Field
+              submitButton
+              submitButtonOnclick={handleAddPersonalSkill}
               required
               value={persInput}
               subtext="Soft Skills"
-              placeholder="click Enter to submit"
+              placeholder="Enter to submit"
               title="Personal Skills"
               onChange={(e) => setpersInput(e.target.value)}
               onKeyDown={(e) => {

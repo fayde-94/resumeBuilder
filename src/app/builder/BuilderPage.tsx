@@ -9,9 +9,8 @@ import Summary from "../Summary";
 import Skills from "../Skills";
 import Experience from "../Experience";
 import Education from "../Education";
-import PdfGeneratorButton from "../templates/generateBtn";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const BuilderPage = () => {
   const { accentColor } = useTextStore();
@@ -22,7 +21,10 @@ const BuilderPage = () => {
       <div className="flex flex-row h-screen mx-auto max-w-max ">
         <div className="flex flex-col w-full pb-10 ">
           <Contact />
-          <UploadPFP />
+
+          <EdgeStoreProvider>
+            <UploadPFP />
+          </EdgeStoreProvider>
           <Summary />
           <Skills />
           <Experience />

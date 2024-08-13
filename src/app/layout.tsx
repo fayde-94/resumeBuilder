@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SideBar from "@/components/ui/SideBar";
-import { EdgeStoreProvider } from "@/lib/edgestore";
 import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata: Metadata = {
   title: "Super Resume",
@@ -20,15 +19,10 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <main className="flex min-h-screen flex-row ">
-          {/* <div className="w-[100px] min-w-[100px]">
-            <SideBar />
-          </div> */}
-          <EdgeStoreProvider>
-            <div className="h-full  w-full flex justify-center">
-              {children}
-              <Analytics />
-            </div>
-          </EdgeStoreProvider>
+          <div className="h-full  w-full flex justify-center">
+            <ViewTransitions>{children}</ViewTransitions>
+            <Analytics />
+          </div>
         </main>
       </body>
     </html>

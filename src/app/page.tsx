@@ -7,7 +7,7 @@ import {
   increaseDecreaseLikes,
 } from "@/lib/appwrite";
 import { useTextStore } from "@/lib/Zustand";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import FeedbackCarousel from "@/components/FeedbackCarousel";
@@ -85,7 +85,8 @@ export default function Home() {
               your resume! <br />
               but there are many planned features and optimizations to come{" "}
               <br /> including: <br /> template choices. <br /> upload your
-              existing resume. <br /> export as DOCX. <br />and others...
+              existing resume. <br /> export as DOCX. <br />
+              and others...
             </p>
           </div>
         </div>
