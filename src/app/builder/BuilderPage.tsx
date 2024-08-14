@@ -17,7 +17,7 @@ const BuilderPage = () => {
 
   return (
     <div className="w-full min-h-screen relative">
-      <Disclaimer />
+      {/* <Disclaimer /> */}
       <div className="flex flex-row h-screen mx-auto max-w-max ">
         <div className="flex flex-col w-full pb-10 ">
           <Contact />
@@ -30,7 +30,7 @@ const BuilderPage = () => {
           <Experience />
           <Education />
           <Customize />
-          <div className="2xl:px-2 px-0 py-0 -mt-10 flex justify-end w-full ">
+          <div className="2xl:px-2 px-1 py-0 -mt-10 flex justify-end w-full ">
             <Link
               href={"/builder/finalize"}
               className="  text-base text-center text-black bg-sky-600 px-4 mb-10 py-2 rounded-lg"

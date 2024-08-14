@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div className="w-full min-h-screen relative">
-      <Disclaimer />
+      {/* <Disclaimer /> */}
 
       <div className="flex h-full w-full flex-col items-center space-y-4 capitalize justify-between pb-10 pt-20 max-w-[1440px] mx-auto">
         <div className="w-full flex-col flex mx-auto items-center">

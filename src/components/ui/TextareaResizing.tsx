@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Textarea } from "./textarea";
+import { cn } from "@/lib/utils";
 
 type resizingTextArea = {
   value?: string;
@@ -35,7 +36,10 @@ const AutoResizeTextarea = ({
           boxSizing: "border-box",
           padding: "16px",
         }}
-        className={className}
+        className={cn(
+          "w-full sm:text-lg bg-[#141b30]/90 rounded-lg min-h-28",
+          className
+        )}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
