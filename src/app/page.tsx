@@ -70,31 +70,32 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full min-h-screen relative">
+    <div className="w-full min-h-screen overflow-x-hidden ">
       {/* <Disclaimer /> */}
 
-      <div className="flex h-full w-full flex-col items-center space-y-4 capitalize justify-between pb-10 pt-20 max-w-[1440px] mx-auto">
-        <div className="w-full flex-col flex mx-auto items-center">
-          <div className="max-w-[60%] text-center space-y-2 pb-4 ">
-            <h2 className="text-3xl font-semibold ">super resume builder</h2>
-            <p className=" text-slate-600">
+      <div className="flex h-full w-full flex-col items-center space-y-4 capitalize justify-between pb-0 pt-20 max-w-[1440px]  mx-auto">
+        <div className="w-full flex-col flex mx-auto items-center relative">
+          <div className=" text-center space-y-1 pb-4 ">
+            <h2 className="md:text-3xl text-2xl font-semibold ">
+              super resume builder
+            </h2>
+            <p className=" text-slate-600 md:text-lg text-base">
               Simplify your resume making process.
             </p>
-            <p className="text-xs text-left text-neutral-700 hover:text-neutral-400 transition-colors duration-500 select-none">
-              site is in development: <br /> you can now generate and download
-              your resume! <br />
-              but there are many planned features and optimizations to come{" "}
-              <br /> including: <br /> template choices. <br /> upload your
-              existing resume. <br /> export as DOCX. <br />
-              and others...
-            </p>
+            <div className="text-xs  pt-2 text-neutral-700 hover:text-neutral-400 transition-colors duration-500 absolute inset-x-0 select-none px-2">
+              <p className="text-left mx-auto max-w-max">
+                site is in development: <br /> you can now generate and download
+                your resume! <br />
+                but there are many planned features and optimizations to come.
+              </p>
+            </div>
           </div>
         </div>
         <div className="w-full flex-col flex mx-auto items-center ">
           <Link
             // style={{textShadow: "0px 1px 7px #07598590"}}
             href={"/builder"}
-            className="relative  py-3 px-5 text-neutral-200 text-3xl rounded-md hover:scale-[1.1] origin-bottom transition-transform duration-300"
+            className="relative py-3 px-5 text-neutral-200 text-2xl md:text-3xl rounded-md hover:scale-[1.1] origin-bottom transition-transform duration-300"
           >
             <motion.p
               animate={{
@@ -116,10 +117,10 @@ export default function Home() {
                 opacity: [0.5, 1, 0.5],
               }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className=" origin-center left-[-33px] absolute flex items-center inset-x-0 inset-y-[3.2rem] w-[400px]"
+              className=" origin-center absolute inset-x-0  "
             >
               {/* <div className="bg-gradient-to-r from-violet-800 blur-[2px] via-sky-600 to-violet-800 h-[1px] w-full"></div> */}
-              <div className="h-[2px] mx-auto w-[60%] bg-gradient-to-r via-sky-500 from-transparent to-transparent"></div>
+              <div className="h-[.1rem] mx-auto w-[80%] bg-gradient-to-r via-sky-500 from-transparent to-transparent"></div>
             </motion.div>
           </Link>
           <div className="inline-flex">
@@ -130,7 +131,9 @@ export default function Home() {
             <p className="text-slate-600 text-base"> Resumes Made so far!</p>
           </div>
         </div>
-        <FeedbackCarousel />
+        <div className="max-w-[820px]">
+          <FeedbackCarousel />
+        </div>
       </div>
     </div>
   );

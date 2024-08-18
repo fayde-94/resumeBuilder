@@ -71,14 +71,15 @@ const Skills = () => {
             </AccordionTrigger>
             <AccordionContent className="pt-3 text-base font-light">
               <TipsCard
-                head="The most important part of your resume showcasing your skill in your given field."
+                head="An important part of your resume listing your skill in your given field."
                 p1={[
                   "Try tailoring your resume for the desired job position, targetted resumes that address over half the job requirements have a much greater chance of leaving a strong impression.",
                 ]}
-                p3={[
+                p2={[
                   "Don't neglect the impact of personal skills, research suggests over 50% of emplyers place a high value on skills such as:",
                   "Time management, Communication skills, Critical thinking and Problem solving.",
                 ]}
+                p3="Try listing only the most relevant skills to the job, an average of 4-7 skills in each of the two categories, depending on your skills and position needs."
               />
             </AccordionContent>
           </AccordionItem>

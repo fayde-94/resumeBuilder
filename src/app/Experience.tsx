@@ -10,6 +10,7 @@ import { FaSquareXmark, FaSquarePlus } from "react-icons/fa6";
 import { useTextStore } from "@/lib/Zustand";
 import { Button } from "@/components/ui/button";
 import ExpCard from "./ExpCard";
+import TipsCard from "@/components/ui/TipsCard";
 
 const Experience = () => {
   const { experience, removeExperience, counterArray, addCount, removeCount } =
@@ -46,21 +47,17 @@ const Experience = () => {
             <AccordionTrigger className=" gap-x-2 pt-0 pb-2 text-xs text-sky-700 max-w-max ">
               Expand Tips
             </AccordionTrigger>
-            <AccordionContent className="pt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              distinctio nobis doloribus consectetur nulla maxime rerum
-              consequuntur, suscipit ipsam ad impedit praesentium repellat earum
-              quidem nam? Iusto error quibusdam dicta sunt fugit minima,
-              suscipit esse nesciunt molestiae, veniam repellendus voluptate
-              alias deleniti, nam reprehenderit reiciendis doloremque! Minima
-              dignissimos illo consequatur nulla quaerat iusto? Eius non
-              praesentium dolore nihil quis soluta unde itaque iusto,
-              reprehenderit eveniet natus sunt exercitationem. Dolores,
-              obcaecati corporis doloribus libero facilis exercitationem nostrum
-              debitis fuga distinctio porro! Ad, voluptatum? Corporis
-              consectetur praesentium voluptas quasi ipsa, ut laboriosam
-              perspiciatis beatae enim excepturi officiis assumenda autem!
-              Commodi, quis aut.
+            <AccordionContent className="pt-3 text-base font-light">
+              <TipsCard
+                head="A most important section on your resume, serves to showcase your previous job positions, and your accomplishments on the job."
+                p1="Only list the job experiences mosst relevant to your target job position, be descriptive and concise with your bullet points."
+                p2="Use strong action-words to emphasize your value and impact, focusing on your achievements and why your contributions are an asset to the employer."
+                p3={[
+                  "How to structure each bullet point:",
+                  "What you did, the skills you employed and the impact of your contribution.",
+                ]}
+                p4="The start / end dates for your job are an approximation of the time spent at your previous jobs, while not essential, it is recommended to at least fill the start month and start year."
+              />
             </AccordionContent>
           </AccordionItem>
         </Accordion>

@@ -9,10 +9,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import PuppeteerTemplate from "@/components/resume_templates/puppeteerTemplate";
-import TestComponent from "./TestComponent";
-import { Button } from "@/components/ui/button";
 import PdfGeneratorButton from "@/app/templates/generateBtn";
-import { animate, AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import UserInteractions from "@/components/UserInteractions";
 const sectionAnim = {
   initial: {
@@ -25,9 +23,9 @@ const sectionAnim = {
   animate: {
     transition: {
       borderRadius: { delay: 2.2, duration: 2 },
-      duration: .7,
+      duration: 0.7,
       delay: 2,
-      ease: [0.33, 1, 0.68, 1]
+      ease: [0.33, 1, 0.68, 1],
     },
     scale: 1,
     y: 0,

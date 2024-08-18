@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/extractText.ts", "src/app/api/puppeteer/route.js", "src/lib/renderHtml.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/extractText.ts", "src/app/api/puppeteer/route.js", "src/lib/renderHtml.js", "src/app/api/pdf/route.ts"],
   "exclude": ["node_modules"]
 }
