@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <main className="flex min-h-screen flex-row ">
+        <main className="flex min-h-screen flex-row overflow-x-hidden ">
           <div className="h-full  w-full flex justify-center">
             <ViewTransitions>{children}</ViewTransitions>
             <Analytics />

@@ -128,7 +128,7 @@ const UserInteractions = () => {
     },
   };
   return (
-    <div className="w-full min-h-screen relative">
+    <div className="w-full min-h-[100svh] relative">
       {width && height ? (
         <Confetti
           width={width}
@@ -151,7 +151,7 @@ const UserInteractions = () => {
         variants={parent}
         initial="initial"
         animate="animate"
-        className="flex h-full w-full flex-col items-center pt-20  space-y-4 text-slate-200 justify-around max-w-[1440px] mx-auto  px-2 "
+        className="flex h-full w-full flex-col items-center pt-10 space-y-4 text-slate-200 justify-around max-w-[1440px] mx-auto  px-2 "
       >
         <motion.div
           onAnimationComplete={() => setBool(true)}
@@ -166,10 +166,10 @@ const UserInteractions = () => {
           variants={fadein}
           className="max-w-[650px] text-center space-y-2 pb-4 transition-all duration-300"
         >
-          <h2 className="text-lg font-semibold text-start text-sky-600">
+          <h2 className="sm:text-lg text-base font-semibold text-start text-sky-600">
             Creator Message:
           </h2>
-          <p className="font-light text-left md:text-base text-base text-pretty">
+          <p className="font-light text-left sm:text-base text-sm text-pretty">
             {" "}
             The job market is unbelievably harsh in many industries nowadays,
             It's said that only about 3% of job applications you send will end
@@ -185,11 +185,11 @@ const UserInteractions = () => {
           variants={child}
           className="inline-flex items-center"
         >
-          <p className="text-sky-600 pr-4">Tap the heart to boost my ego!</p>
+          <p className="text-sky-600 pr-4 sm:text-lg text-sm">Tap the heart to boost my ego!</p>
           {bool2 && (
             <FlippingNumbers
               targetValue={ui_likes}
-              className="text-2xl font-light"
+              className="sm:text-xl text-sm font-light"
             />
           )}
           <button
@@ -198,13 +198,11 @@ const UserInteractions = () => {
           >
             {interactions.liked ? (
               <FaHeart
-                size={26}
-                className="hover:fill-slate-500 mb-[2px] fill-red-500"
+                className="hover:fill-slate-500 mb-[2px] size-5 sm:size-7 fill-red-500"
               />
             ) : (
               <FaRegHeart
-                size={26}
-                className="hover:fill-slate-200 mb-[2px] fill-slate-500"
+                className="hover:fill-slate-200 mb-[2px] size-5 sm:size-7 fill-slate-500"
               />
             )}
           </button>
@@ -213,7 +211,7 @@ const UserInteractions = () => {
           variants={slideup}
           className=" w-full max-w-[650px] flex flex-col"
         >
-          <p className="">Did you find the site useful?</p>
+          <p className="sm:text-base text-sm">Did you find the site useful?</p>
           <div>
             <AutoResizeTextarea
               value={feedback}
@@ -230,8 +228,8 @@ const UserInteractions = () => {
               submit feedback
             </Button>
           </div>
-          <div className=" flex pt-20 flex-col items-center gap-y-2">
-            <p className="text-slate-600 text-center text-sm">
+          <div className=" flex pt-14 flex-col items-center gap-y-2">
+            <p className="text-slate-700 text-center text-xs">
               continue down to choose your template
             </p>{" "}
             <motion.div

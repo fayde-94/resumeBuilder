@@ -46,32 +46,35 @@ const sectionAnim = {
 const page = () => {
   return (
     <AnimatePresence mode="wait">
-      <div className="min-h-screen w-full">
+      <div className="min-h-[100svh] overflow-x-hidden w-full m-0">
+        {/* <div className="h-40 bg-red-100 w-full"></div> */}
         <motion.div
           variants={sectionAnim}
           initial={"initial"}
           animate={"animate"}
           exit={"exit"}
-          className="flex flex-col w-full bg-[#000] justify-center items-center"
+          className="flex flex-col w-full min-h-[100svh] bg-[#000] justify-center items-center"
         >
           <UserInteractions />
         </motion.div>
-        <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen">
-          <CarouselContent className=" m-auto w-full ">
-            <CarouselItem className=" p-0 px-2 m-0 h-screen items-center pt-4 justify-center sm:justify-normal flex flex-col ">
-              <div className="aspect-[1000/1440] h-full max-w-full max-h-[90vh] space-y-4">
+        <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen px-2">
+          <CarouselContent className="max-w-[100vw] h-screen p-0 m-0 ">
+            <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">
+              <div className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[90vh] max-w-full">
                 <PuppeteerTemplate />
+              </div>
+              <div className="max-w-[640px] w-full">
                 <PdfGeneratorButton />
               </div>
             </CarouselItem>
             <CarouselItem className=" p-0 m-0 w-full px-2 flex items-center justify-center">
-              <div className="aspect-[1000/1440] flex items-center justify-center mx-auto px-4 max-h-screen">
+              <div className="aspect-[1000/1440] flex items-center justify-center px-4 max-h-screen">
                 <p>more templates coming soon!</p>
               </div>
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="size-20" />
-          <CarouselNext className="size-20" />
+          <CarouselPrevious className="size-12 left-0 m-0" />
+          <CarouselNext className="size-12  right-0 m-0" />
         </Carousel>
       </div>
     </AnimatePresence>
