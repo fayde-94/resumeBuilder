@@ -115,7 +115,7 @@ const UserInteractions = () => {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 50, ease: [0.33, 1, 0.68, 1] },
+      transition: { type: "spring", stiffness: 120, ease: [0.33, 1, 0.68, 1] },
     },
   };
   const slideup = {

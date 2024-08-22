@@ -27,11 +27,9 @@ const BasicTemplate = ({ className }: p) => {
     experience,
   } = useTextStore();
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const containerSize = useContainerSize(containerRef);
+  const basicTemplateRef = useRef<HTMLDivElement>(null);
+  const containerSize = useContainerSize(basicTemplateRef);
   console.log("🚀 ~ BasicTemplate ~ containerSize:", containerSize);
-
-  const pfpcalculated = calculateSize(pfpSize.percent, containerSize);
 
   const borderPX = calculateSize("0.4195%", containerSize);
   const borderPXthick = calculateSize("0.5602%", containerSize);
@@ -62,7 +60,7 @@ const BasicTemplate = ({ className }: p) => {
     <div className="">
       <div
         id="resume-template"
-        ref={containerRef}
+        ref={basicTemplateRef}
         className={cn(
           " aspect-[1000/1440] min-w-full max-w-[1100px] bg-white text-black font-semi",
           className
@@ -437,7 +435,7 @@ const BasicTemplate = ({ className }: p) => {
                             education
                           </p>
 
-                          <div className="w-full">
+                          <div className="w-full ">
                             {education?.gradMonth !== "" ||
                             education?.gradYear !== "" ? (
                               <li

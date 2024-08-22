@@ -4,7 +4,7 @@ export function useContainerSize(ref: React.RefObject<HTMLDivElement>): {
   width: number;
   height: number;
 } {
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [size, setSize] = useState({ width: 643, height: 927 });
 
   useEffect(() => {
     function updateSize() {
@@ -12,6 +12,11 @@ export function useContainerSize(ref: React.RefObject<HTMLDivElement>): {
         setSize({
           width: ref.current.offsetWidth,
           height: ref.current.offsetHeight,
+        });
+      } else {
+        setSize({
+          width: 643,
+          height: 927,
         });
       }
     }
