@@ -185,7 +185,9 @@ const UserInteractions = () => {
           variants={child}
           className="inline-flex items-center"
         >
-          <p className="text-sky-600 pr-4 sm:text-lg text-sm">Tap the heart to boost my ego!</p>
+          <p className="text-sky-600 pr-4 sm:text-lg text-sm">
+            Tap the heart to boost my ego!
+          </p>
           {bool2 && (
             <FlippingNumbers
               targetValue={ui_likes}
@@ -197,13 +199,9 @@ const UserInteractions = () => {
             className="hover:scale-125 pl-1 transition-all duration-300"
           >
             {interactions.liked ? (
-              <FaHeart
-                className="hover:fill-slate-500 mb-[2px] size-5 sm:size-7 fill-red-500"
-              />
+              <FaHeart className="hover:fill-slate-500 mb-[2px] size-5 sm:size-7 fill-red-500" />
             ) : (
-              <FaRegHeart
-                className="hover:fill-slate-200 mb-[2px] size-5 sm:size-7 fill-slate-500"
-              />
+              <FaRegHeart className="hover:fill-slate-200 mb-[2px] size-5 sm:size-7 fill-slate-500" />
             )}
           </button>
         </motion.div>

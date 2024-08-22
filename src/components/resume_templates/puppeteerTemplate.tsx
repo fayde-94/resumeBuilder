@@ -26,7 +26,6 @@ const PuppeteerTemplate = ({ className }: p) => {
     pfpSize,
     experience,
   } = useTextStore();
-  console.log("🚀 ~ PuppeteerTemplate ~ pfpSize:", pfpSize);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const containerSize = useContainerSize(containerRef);
@@ -492,6 +491,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                   </div>
                 </div>
               ))}{" "}
+              
               {education?.school ||
               education?.degree ||
               education?.gradMonth ||

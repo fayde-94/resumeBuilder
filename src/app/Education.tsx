@@ -18,7 +18,6 @@ import { monthsArray, numsOnly } from "@/lib/utils";
 
 const Education = () => {
   const { setField, education } = useTextStore();
-  console.log("🚀 ~ Education ~ education gradmonth:", education?.gradMonth);
 
   return (
     <div className="page">

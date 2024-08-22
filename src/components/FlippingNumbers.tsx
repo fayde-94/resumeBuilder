@@ -58,9 +58,6 @@ const FlippingNumbers: React.FC<FlippingNumbersProps> = ({
               display: "inline-flex",
             }}
             className={className}
-            onChange={(e) =>
-              console.log("onchange is changing value", e.target)
-            }
           >
             {digit}
           </motion.div>

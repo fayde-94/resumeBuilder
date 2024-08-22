@@ -13,7 +13,6 @@ import { HoverBorderGradient } from "@/components/ui/border-gradient";
 
 const Skills = () => {
   const { technicalSkills, personalSkills, setField } = useTextStore();
-  console.log("🚀 ~ page ~ personalSkills:", personalSkills);
   const [techInput, settechInput] = useState("");
   const [persInput, setpersInput] = useState("");
 

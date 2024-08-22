@@ -15,8 +15,6 @@ import TipsCard from "@/components/ui/TipsCard";
 const Experience = () => {
   const { experience, removeExperience, counterArray, addCount, removeCount } =
     useTextStore();
-  console.log("🚀 ~ Experience ~ experience:", experience);
-  console.log("🚀 ~ Experience ~ counterArray:", counterArray);
 
   const handleAddCount = () => {
     if (counterArray.length >= 2) {

@@ -12,6 +12,7 @@ import PuppeteerTemplate from "@/components/resume_templates/puppeteerTemplate";
 import PdfGeneratorButton from "@/app/templates/generateBtn";
 import { AnimatePresence, motion } from "framer-motion";
 import UserInteractions from "@/components/UserInteractions";
+import BasicTemplate from "@/components/resume_templates/BasicTemplate";
 const sectionAnim = {
   initial: {
     scale: 0.8,
@@ -60,16 +61,19 @@ const page = () => {
         <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen px-2">
           <CarouselContent className="max-w-[100vw] h-screen p-0 m-0 ">
             <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">
-              <div className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[90vh] max-w-full">
+              <div className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[90vh] max-w-full ">
                 <PuppeteerTemplate />
               </div>
-              <div className="max-w-[640px] w-full">
+              <div className="max-w-[644px] w-full pt-2">
                 <PdfGeneratorButton />
               </div>
             </CarouselItem>
-            <CarouselItem className=" p-0 m-0 w-full px-2 flex items-center justify-center">
-              <div className="aspect-[1000/1440] flex items-center justify-center px-4 max-h-screen">
-                <p>more templates coming soon!</p>
+            <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">
+              <div className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[90vh] max-w-full ">
+                <BasicTemplate />
+              </div>
+              <div className="max-w-[644px] w-full pt-2">
+                <PdfGeneratorButton />
               </div>
             </CarouselItem>
           </CarouselContent>

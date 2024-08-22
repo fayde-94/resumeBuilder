@@ -14,9 +14,6 @@ import FeedbackCarousel from "@/components/FeedbackCarousel";
 
 export default function Home() {
   const { ui_likes, ui_pdfs, setField, interactions } = useTextStore();
-  console.log("🚀 ~ Home ~ interations:", interactions);
-  console.log("🚀 ~ Home ~ ui_pdfs:", ui_pdfs);
-  console.log("🚀 ~ Home ~ ui_likes:", ui_likes);
   // grabbing initial counts
   const initialCount = async () => {
     const res = await getInteractions("pdfs_made");

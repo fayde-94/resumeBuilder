@@ -11,10 +11,8 @@ import { Button } from "./ui/button";
 import { Progress } from "./ui/progress";
 const UploadPFP = () => {
   const [file, setFile] = useState<File>();
-  console.log("🚀 ~ UploadPFP ~ file:", file);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const { pfp, setField } = useTextStore();
-  console.log("🚀 ~ UploadPFP ~ pfp:", pfp);
   const { edgestore } = useEdgeStore();
 
   const handleUpload = async () => {

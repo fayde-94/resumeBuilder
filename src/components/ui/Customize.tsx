@@ -23,7 +23,6 @@ const Customize = () => {
   const calculatePfpPercentage = (pfpsize: any) => {
     const pfp = Number(pfpsize);
     const calculated = (pfp / 1100) * 100;
-    console.log("🚀 ~ calculatePfpPercentage ~ calculated:", calculated);
     return `${calculated}%`;
   };
 
