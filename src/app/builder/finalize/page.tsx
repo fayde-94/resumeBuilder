@@ -62,7 +62,10 @@ const page = () => {
         <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen px-2">
           <CarouselContent className="max-w-[100vw] h-screen p-0 m-0 ">
             {/* two column template */}
-            <CarouselItem key={"caro1"} className="p-0 m-0 flex flex-col items-center justify-center ">
+            <CarouselItem
+              key={"caro1"}
+              className="p-0 m-0 flex flex-col items-center justify-center "
+            >
               <p className="text-center pb-2 text-slate-400 capitalize">
                 two column template
               </p>
@@ -78,7 +81,10 @@ const page = () => {
               </div>
             </CarouselItem>
             {/* basic template */}
-            <CarouselItem key={"caro2"} className="p-0 m-0 flex flex-col items-center justify-center ">
+            <CarouselItem
+              key={"caro2"}
+              className="p-0 m-0 flex flex-col items-center justify-center "
+            >
               <p className="text-center pb-2 text-slate-400 capitalize">
                 classic template
               </p>
