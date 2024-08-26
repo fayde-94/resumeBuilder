@@ -106,6 +106,7 @@ const UserInteractions = () => {
     initial: { opacity: 0 },
     animate: {
       opacity: 1,
+      
       transition: { duration: 2, ease: [0.33, 1, 0.68, 1] },
     },
   };

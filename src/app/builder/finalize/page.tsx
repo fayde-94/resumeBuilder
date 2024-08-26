@@ -13,6 +13,7 @@ import PdfGeneratorButton from "@/app/templates/generateBtn";
 import { AnimatePresence, motion } from "framer-motion";
 import UserInteractions from "@/components/UserInteractions";
 import BasicTemplate from "@/components/resume_templates/BasicTemplate";
+import BasicGenerateBtn from "@/app/templates/BasicGenerateBtn";
 const sectionAnim = {
   initial: {
     scale: 0.8,
@@ -49,7 +50,7 @@ const page = () => {
     <AnimatePresence mode="wait">
       <div className="min-h-[100svh] overflow-x-hidden w-full m-0">
         {/* <div className="h-40 bg-red-100 w-full"></div> */}
-        <motion.div
+        {/* <motion.div
           variants={sectionAnim}
           initial={"initial"}
           animate={"animate"}
@@ -57,18 +58,18 @@ const page = () => {
           className="flex flex-col w-full bg-[#000] justify-center items-center"
         >
           <UserInteractions />
-        </motion.div>
+        </motion.div> */}
         <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen px-2">
           <CarouselContent className="max-w-[100vw] h-screen p-0 m-0 ">
             {/* two column template */}
-            <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">
-              <p className="text-center pb-2 text-slate-400">
+            <CarouselItem key={"caro1"} className="p-0 m-0 flex flex-col items-center justify-center ">
+              <p className="text-center pb-2 text-slate-400 capitalize">
                 two column template
               </p>
               <motion.div
                 initial={{ height: "99%" }}
                 whileInView={{ height: "100%" }}
-                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full "
+                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full"
               >
                 <PuppeteerTemplate />
               </motion.div>
@@ -77,21 +78,21 @@ const page = () => {
               </div>
             </CarouselItem>
             {/* basic template */}
-            {/* <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">
-              <p className="text-center pb-2 text-slate-400">
-                basic vanilla template
+            <CarouselItem key={"caro2"} className="p-0 m-0 flex flex-col items-center justify-center ">
+              <p className="text-center pb-2 text-slate-400 capitalize">
+                classic template
               </p>
               <motion.div
                 initial={{ height: "99%" }}
                 whileInView={{ height: "100%" }}
-                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full "
+                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full"
               >
                 <BasicTemplate />
               </motion.div>
               <div className="max-w-[614.89px] w-full flex-col flex pt-2">
-                <PdfGeneratorButton />
+                <BasicGenerateBtn />
               </div>
-            </CarouselItem> */}
+            </CarouselItem>
 
             {/* more soon */}
             <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">

@@ -483,7 +483,9 @@ const BasicTemplate = ({ className }: p) => {
                       ""
                     )}
 
-                    <div className=" ">
+                    {/* LANGUAGES */}
+
+                    {/* <div className="">
                       <div
                         style={{ padding: `${space6} 0px`, rowGap: space2 }}
                         className="w-full px-2 flex flex-col"
@@ -533,7 +535,7 @@ const BasicTemplate = ({ className }: p) => {
                           </li>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
