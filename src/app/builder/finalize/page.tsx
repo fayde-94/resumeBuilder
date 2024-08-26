@@ -50,7 +50,7 @@ const page = () => {
     <AnimatePresence mode="wait">
       <div className="min-h-[100svh] overflow-x-hidden w-full m-0">
         {/* <div className="h-40 bg-red-100 w-full"></div> */}
-        {/* <motion.div
+        <motion.div
           variants={sectionAnim}
           initial={"initial"}
           animate={"animate"}
@@ -58,7 +58,7 @@ const page = () => {
           className="flex flex-col w-full bg-[#000] justify-center items-center"
         >
           <UserInteractions />
-        </motion.div> */}
+        </motion.div>
         <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen px-2">
           <CarouselContent className="max-w-[100vw] h-screen p-0 m-0 ">
             {/* two column template */}
@@ -69,11 +69,11 @@ const page = () => {
               <motion.div
                 initial={{ height: "99%" }}
                 whileInView={{ height: "100%" }}
-                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full"
+                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] px-1 max-w-full"
               >
                 <PuppeteerTemplate />
               </motion.div>
-              <div className="max-w-[614.89px] w-full flex-col flex pt-2">
+              <div className="max-w-[614.89px] w-full flex-col flex pt-2 px-1">
                 <PdfGeneratorButton />
               </div>
             </CarouselItem>
@@ -85,11 +85,11 @@ const page = () => {
               <motion.div
                 initial={{ height: "99%" }}
                 whileInView={{ height: "100%" }}
-                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full"
+                className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] px-1 max-w-full"
               >
                 <BasicTemplate />
               </motion.div>
-              <div className="max-w-[614.89px] w-full flex-col flex pt-2">
+              <div className="max-w-[614.89px] w-full flex-col flex pt-2 px-1">
                 <BasicGenerateBtn />
               </div>
             </CarouselItem>
