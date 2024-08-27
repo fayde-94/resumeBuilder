@@ -30,58 +30,58 @@ const PdfGeneratorButton = () => {
   const today = new Date();
   const [pending, setpending] = useState(false);
 
-  const handleDownloadPdf = async () => {
-    try {
-      setpending(true);
-      const response = await axios.post(
-        "/api/puppeteer",
-        {
-          name,
-          number,
-          email,
-          city,
-          country,
-          linkedin,
-          website,
-          position,
-          technicalSkills,
-          personalSkills,
-          accentColor,
-          education,
-          summary,
-          pfpSize,
-          pfp: pfp ? pfp.url : "",
-          experience,
-        },
-        {
-          responseType: "blob",
-        }
-      );
+  // const handleDownloadPdf = async () => {
+  //   try {
+  //     setpending(true);
+  //     const response = await axios.post(
+  //       "/api/puppeteer",
+  //       {
+  //         name,
+  //         number,
+  //         email,
+  //         city,
+  //         country,
+  //         linkedin,
+  //         website,
+  //         position,
+  //         technicalSkills,
+  //         personalSkills,
+  //         accentColor,
+  //         education,
+  //         summary,
+  //         pfpSize,
+  //         pfp: pfp ? pfp.url : "",
+  //         experience,
+  //       },
+  //       {
+  //         responseType: "blob",
+  //       }
+  //     );
 
-      if (response.status === 200) {
-        const blob = new Blob([response.data], { type: "application/pdf" });
+  //     if (response.status === 200) {
+  //       const blob = new Blob([response.data], { type: "application/pdf" });
 
-        const link = document.createElement("a");
-        link.href = window.URL.createObjectURL(blob);
-        link.download = `resume-${today.toLocaleDateString()}.pdf`;
-        link.click();
-      } else {
-        console.error("Failed to generate PDF:", response.statusText);
+  //       const link = document.createElement("a");
+  //       link.href = window.URL.createObjectURL(blob);
+  //       link.download = `resume-${today.toLocaleDateString()}.pdf`;
+  //       link.click();
+  //     } else {
+  //       console.error("Failed to generate PDF:", response.statusText);
 
-        alert(
-          "Request timed out. Please try again. \n Due to vercel's tight restrictions for server functions, the first generation attempt might fail but not to worry, just try again!"
-        );
-      }
-    } catch (error) {
-      console.error("Error during PDF generation:", error);
-    }
+  //       alert(
+  //         "Request timed out. Please try again. \n Due to vercel's tight restrictions for server functions, the first generation attempt might fail but not to worry, just try again!"
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during PDF generation:", error);
+  //   }
 
-    setpending(false);
-    const res = await setInteractions("pdfs_made");
-    if (res) {
-      setField("ui_pdfs", res.pdfs_made);
-    }
-  };
+  //   setpending(false);
+  //   const res = await setInteractions("pdfs_made");
+  //   if (res) {
+  //     setField("ui_pdfs", res.pdfs_made);
+  //   }
+  // };
 
   const handleIncreasePDFsMade = async () => {
     const res = await setInteractions("pdfs_made");
@@ -90,6 +90,90 @@ const PdfGeneratorButton = () => {
     }
   };
 
+  const handleDownloadPdf = async () => {
+    const maxRetries = 3; // Maximum number of retries
+    let attempts = 0;
+    let success = false;
+
+    try {
+      setpending(true);
+
+      while (attempts < maxRetries && !success) {
+        attempts++;
+
+        try {
+          const response = await axios.post(
+            "/api/puppeteer",
+            {
+              name,
+              number,
+              email,
+              city,
+              country,
+              linkedin,
+              website,
+              position,
+              technicalSkills,
+              personalSkills,
+              accentColor,
+              education,
+              summary,
+              pfpSize,
+              pfp: pfp ? pfp.url : "",
+              experience,
+            },
+            {
+              responseType: "blob",
+            }
+          );
+
+          // Check if the response is successful
+          if (response.status === 200) {
+            const blob = new Blob([response.data], { type: "application/pdf" });
+
+            const link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = `resume-${today.toLocaleDateString()}.pdf`;
+            link.click();
+            success = true; // Mark success as true to exit loop
+          } else {
+            console.error("Failed to generate PDF:", response.statusText);
+            if (attempts < maxRetries) {
+              console.log(`Retrying... (${attempts}/${maxRetries})`);
+            }
+          }
+        } catch (error) {
+          console.error(
+            `Error during PDF generation (attempt ${attempts}):`,
+            error
+          );
+          if (attempts < maxRetries) {
+            console.log(`Retrying... (${attempts}/${maxRetries})`);
+          }
+        }
+
+        // If not successful, wait before retrying
+        if (!success) {
+          await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+        }
+      }
+
+      if (!success) {
+        alert(
+          "Request timed out. Please try again. \n Due to Vercel's tight restrictions for server functions, the first generation attempt might fail but not to worry, just try again!"
+        );
+      }
+
+      setpending(false);
+      const res = await setInteractions("pdfs_made");
+      if (res) {
+        setField("ui_pdfs", res.pdfs_made);
+      }
+    } catch (error) {
+      console.error("Error during PDF generation:", error);
+      setpending(false);
+    }
+  };
   const handleOpenPdf = async () => {
     const maxRetries = 3; // Maximum number of retries
     let attempts = 0;
