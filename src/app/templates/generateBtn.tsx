@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { setInteractions } from "@/lib/appwrite";
 import { useTextStore } from "@/lib/Zustand";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 const PdfGeneratorButton = () => {
   const {
@@ -28,6 +28,7 @@ const PdfGeneratorButton = () => {
     setField,
   } = useTextStore();
   const today = new Date();
+  const [pending, setpending] = useState(false);
 
   const handleDownloadPdf = async () => {
     const response = await axios.post(
@@ -56,9 +57,6 @@ const PdfGeneratorButton = () => {
     );
     const blob = new Blob([response.data], { type: "application/pdf" });
 
-    // const url = URL.createObjectURL(blob);
-    // window.open(url, "_blank");
-
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
     link.download = `resume-${today.toLocaleDateString()}.pdf`;
@@ -69,6 +67,7 @@ const PdfGeneratorButton = () => {
       setField("ui_pdfs", res.pdfs_made);
     }
   };
+
   const handleIncreasePDFsMade = async () => {
     const res = await setInteractions("pdfs_made");
     if (res) {
@@ -78,6 +77,7 @@ const PdfGeneratorButton = () => {
 
   const handleOpenPdf = async () => {
     try {
+      setpending(true);
       const response = await axios.post(
         "/api/puppeteer",
         {
@@ -108,9 +108,15 @@ const PdfGeneratorButton = () => {
         const blob = new Blob([response.data], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         window.open(url, "_blank");
+        setpending(false);
       } else {
-        console.error("Failed to generate PDF:", response.statusText);
-        alert("Failed to generate PDF. Please try again.");
+        setpending(true);
+        console.error(
+          "RETRYING!! , Failed to generate PDF:",
+          response.statusText
+        );
+        // alert("Failed to generate PDF. Please try again.");
+        handleOpenPdf();
       }
       const res = await setInteractions("pdfs_made");
       if (res) {
@@ -118,9 +124,9 @@ const PdfGeneratorButton = () => {
       }
     } catch (error) {
       console.error("Error during PDF generation:", error);
-      alert(
-        "An error occurred during PDF generation. Please check the console for details."
-      );
+      // alert(
+      //   "An error occurred during PDF generation. Please check the console for details."
+      // );
     }
   };
 
@@ -128,11 +134,12 @@ const PdfGeneratorButton = () => {
     <div className="flex w-full flex-col gap-4 ">
       <div className="flex w-full  gap-4 ">
         <Button
+          disabled={pending}
           onClick={handleOpenPdf}
           className="w-full bg-transparent text-slate-400 underline-offset-2 hover:underline hover:bg-sky-800 transition-all duration-300 hover:text-slate-100"
           variant={"outline"}
         >
-          View PDF
+          {pending ? "Processing..." : "View PDF"}
         </Button>
         <Button
           onClick={handleDownloadPdf}
