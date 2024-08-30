@@ -21,14 +21,16 @@ import {
 } from "@/components/ui/carousel";
 import { motion } from "framer-motion";
 import BasicTemplate from "@/components/resume_templates/BasicTemplate";
+import Languages from "../Languages";
 
 const BuilderPage = () => {
-  const { accentColor } = useTextStore();
+  const { accentColor, experience } = useTextStore();
+  console.log("🚀 ~ BuilderPage ~ experience:", experience);
 
   return (
     <div className="w-full min-h-screen relative">
       {/* <Disclaimer /> */}
-      <div className="flex flex-row h-screen mx-auto max-w-max ">
+      <div className="flex flex-row h-screen mx-auto max-w-max gap-x-2">
         <div className="flex flex-col w-full pb-10 ">
           <Contact />
 
@@ -39,6 +41,7 @@ const BuilderPage = () => {
           <Skills />
           <Experience />
           <Education />
+          <Languages />
           <Customize />
           <div className="2xl:px-2 px-1 py-0 -mt-10 flex justify-end w-full ">
             <Link
@@ -50,14 +53,14 @@ const BuilderPage = () => {
           </div>
         </div>
 
-        <div className=" hidden 2xl:flex origin-top-left aspect-[1000/1440] relative">
-          <div className="fixed aspect-[1000/1440] max-w-[710px]">
-            <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen px-2">
-              <CarouselContent className="max-w-[100vw] h-screen p-0 m-0 ">
+        <div className=" hidden 2xl:flex origin-top-left relative min-w-[710px]">
+          <div className="fixed  max-w-[710px] top-1/2 -translate-y-1/2 px-1">
+            <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen my-auto px-2 ">
+              <CarouselContent className=" p-0 m-0">
                 {/* two column template */}
                 <CarouselItem
                   key={"caro1"}
-                  className="p-0 m-0 flex flex-col items-center justify-center "
+                  className="p-0 m-0 flex flex-col items-center justify-center aspect-[1000/1440] min-w-full min-h-full"
                 >
                   <p className="text-center pb-2 text-slate-400 capitalize">
                     two column template
@@ -65,8 +68,7 @@ const BuilderPage = () => {
                   <motion.div
                     initial={{ height: "99%" }}
                     whileInView={{ height: "100%" }}
-                    style={{ boxShadow: `10px 10px 28px ${accentColor}70` }}
-                    className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh]  max-w-full rounded-md overflow-clip select-none"
+                    className="aspect-[1000/1440]  flex flex-col justify-center  mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
                   >
                     <PuppeteerTemplate />
                   </motion.div>
@@ -81,7 +83,6 @@ const BuilderPage = () => {
                   </p>
                   <motion.div
                     initial={{ height: "99%" }}
-                    style={{ boxShadow: `10px 10px 28px ${accentColor}70` }}
                     whileInView={{ height: "100%" }}
                     className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
                   >

@@ -23,6 +23,7 @@ const PuppeteerTemplate = ({ className }: p) => {
     technicalSkills,
     education,
     summary,
+    languages,
     pfpSize,
     experience,
   } = useTextStore();
@@ -146,7 +147,7 @@ const PuppeteerTemplate = ({ className }: p) => {
             )}
 
             {/* CONTACT SECTION */}
-            {number || email || linkedin || city ? (
+            {number.f || email || linkedin || city ? (
               <div style={{ paddingBottom: space6 }} className="w-full">
                 <div style={{ paddingBottom: space4 }} className=" text-white">
                   <p
@@ -161,7 +162,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                   ></div>
                 </div>
                 <div
-                  style={{ rowGap: space3, paddingBottom: space2 }}
+                  style={{ rowGap: space2, paddingBottom: space2 }}
                   className="w-full flex-col flex"
                 >
                   {/* LINKEDIN */}
@@ -204,7 +205,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                   )}
 
                   {/* PHONE */}
-                  {number && (
+                  {number.f && (
                     <div
                       style={{ columnGap: space2 }}
                       className="flex w-full flex-row items-center align-middle lowercase"
@@ -219,7 +220,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                           <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48zm-16.39 307.37l-15 65A15 15 0 0 1 354 416C194 416 64 286.29 64 126a15.7 15.7 0 0 1 11.63-14.61l65-15A18.23 18.23 0 0 1 144 96a16.27 16.27 0 0 1 13.79 9.09l30 70A17.9 17.9 0 0 1 189 181a17 17 0 0 1-5.5 11.61l-37.89 31a231.91 231.91 0 0 0 110.78 110.78l31-37.89A17 17 0 0 1 299 291a17.85 17.85 0 0 1 5.91 1.21l70 30A16.25 16.25 0 0 1 384 336a17.41 17.41 0 0 1-.39 3.37z" />
                         </svg>
                       </div>
-                      <p>{number}</p>
+                      <p>{number.f}</p>
                     </div>
                   )}
                   {city && (
@@ -272,9 +273,10 @@ const PuppeteerTemplate = ({ className }: p) => {
                     <li
                       style={{
                         fontSize: textLG,
-                        paddingBottom: space3,
+                        paddingBottom: space2,
                         marginLeft: space2,
                       }}
+                      className=" list-inside"
                       key={index}
                     >
                       {skill}
@@ -306,9 +308,9 @@ const PuppeteerTemplate = ({ className }: p) => {
                     <li
                       style={{
                         fontSize: textLG,
-                        paddingBottom: space3,
+                        paddingBottom: space2,
                         marginLeft: space2,
-                      }}
+                      }} className=" list-inside"
                       key={index}
                     >
                       {skill}
@@ -319,7 +321,44 @@ const PuppeteerTemplate = ({ className }: p) => {
             ) : (
               ""
             )}
+            {languages[0]?.lang && (
+              <div style={{ paddingBottom: space4 }} className="w-full">
+                <div style={{ paddingBottom: space4 }} className=" text-white">
+                  <p
+                    style={{ fontSize: text2XL, lineHeight: lineHeight2XL }}
+                    className="tracking-wider leading-8 text-2xl"
+                  >
+                    LANGUAGES
+                  </p>
+                  <div
+                    style={{ borderTop: `${borderPX} solid rgb(229 229 229)` }}
+                    className="w-full border-t-[3px]  rounded-full border-t-neutral-200"
+                  ></div>
+                </div>
+                <div className="w-full flex flex-col capitalize  ">
+                  {languages.map((obj, index: number) => (
+                    <li
+                      style={{
+                        fontSize: textLG,
+                        paddingBottom: space2,
+                        marginLeft: space2,
+                      }}
+                      key={index}
+                      className="ml-1 pb-1  list-inside"
+                    >
+                      <span className=" uppercase ">{obj.lang}&nbsp;</span>
+                      <span className=" text-neutral-400">&nbsp;-&nbsp;</span>
+                      <span className=" text-neutral-400">
+                        &nbsp;
+                        {obj.prof}
+                      </span>
+                    </li>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+
           {/* ------------------ RIGHT COLUMN ------------------ */}
 
           <div
@@ -380,7 +419,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                   style={{
                     fontSize: textLG,
                     lineHeight: lineHeightLG,
-                    paddingBottom: space4,
+                    paddingBottom: space2,
                   }}
                   key={i}
                   className="w-full  text-xl flex flex-col "
@@ -451,7 +490,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                           marginLeft: space6,
                           paddingLeft: space2,
                         }}
-                        className="whitespace-pre-line"
+                        className="whitespace-pre-line list-inside"
                       >
                         <span className="text-black">
                           {experience[i].bullet1}
@@ -466,7 +505,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                           marginLeft: space6,
                           paddingLeft: space2,
                         }}
-                        className=" whitespace-pre-line"
+                        className=" whitespace-pre-line list-inside"
                       >
                         <span className="text-black">
                           {experience[i].bullet2}
@@ -481,7 +520,7 @@ const PuppeteerTemplate = ({ className }: p) => {
                           marginLeft: space6,
                           paddingLeft: space2,
                         }}
-                        className=" whitespace-pre-line"
+                        className=" whitespace-pre-line list-inside"
                       >
                         <span className="text-black">
                           {experience[i].bullet3}
@@ -491,7 +530,6 @@ const PuppeteerTemplate = ({ className }: p) => {
                   </div>
                 </div>
               ))}{" "}
-              
               {education?.school ||
               education?.degree ||
               education?.gradMonth ||
@@ -520,10 +558,13 @@ const PuppeteerTemplate = ({ className }: p) => {
                     education?.gradYear !== "" ? (
                       <li
                         style={{
+                          textIndent: `-${indented}`,
+                          marginLeft: space6,
+                          paddingLeft: space2,
                           fontSize: textLG,
                           lineHeight: lineHeightLG,
                         }}
-                        className="text-neutral-400 ml-2 capitalize marker:text-transparent"
+                        className="text-neutral-400 ml-2 capitalize marker:text-transparent list-inside"
                       >
                         {education?.gradMonth}&nbsp;{education?.gradYear}
                       </li>
@@ -533,11 +574,14 @@ const PuppeteerTemplate = ({ className }: p) => {
                     {education?.degree && (
                       <li
                         style={{
+                          textIndent: `-${indented}`,
+                          marginLeft: space6,
+                          paddingLeft: space2,
                           color: accentColor,
                           fontSize: textLG,
                           lineHeight: lineHeightLG,
                         }}
-                        className="uppercase ml-2  font-semibold"
+                        className="uppercase ml-2  font-semibold list-inside"
                       >
                         <span className="text-black">{education?.degree}</span>
                       </li>
@@ -545,10 +589,13 @@ const PuppeteerTemplate = ({ className }: p) => {
                     {education?.school && (
                       <li
                         style={{
+                          textIndent: `-${indented}`,
+                          marginLeft: space6,
+                          paddingLeft: space2,
                           fontSize: textLG,
                           lineHeight: lineHeightLG,
                         }}
-                        className="capitalize ml-2  text-neutral-600   marker:text-transparent"
+                        className="capitalize ml-2  text-neutral-600   marker:text-transparent list-inside"
                       >
                         {education?.school}
                       </li>

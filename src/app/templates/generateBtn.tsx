@@ -25,6 +25,7 @@ const PdfGeneratorButton = () => {
     summary,
     pfpSize,
     experience,
+    languages,
     setField,
   } = useTextStore();
   const today = new Date();
@@ -106,7 +107,7 @@ const PdfGeneratorButton = () => {
             "/api/puppeteer",
             {
               name,
-              number,
+              number: number ? number.f : "",
               email,
               city,
               country,
@@ -121,6 +122,7 @@ const PdfGeneratorButton = () => {
               pfpSize,
               pfp: pfp ? pfp.url : "",
               experience,
+              languages,
             },
             {
               responseType: "blob",
@@ -190,7 +192,7 @@ const PdfGeneratorButton = () => {
             "/api/puppeteer",
             {
               name,
-              number,
+              number: number ? number.f : "",
               email,
               city,
               country,
@@ -205,6 +207,7 @@ const PdfGeneratorButton = () => {
               pfpSize,
               pfp: pfp ? pfp.url : "",
               experience,
+              languages,
             },
             {
               responseType: "blob",

@@ -21,6 +21,7 @@ const ExpCard = ({ count = 0 }: props) => {
       <div className="w-full grid grid-cols-4 gap-2 sm:gap-4">
         <div className="col-span-2">
           <Field
+            required
             title="Job Position"
             placeholder="Meme Manager"
             value={experience[count]?.jobPosition || ""}
@@ -31,6 +32,7 @@ const ExpCard = ({ count = 0 }: props) => {
         </div>
         <div className=" col-span-2">
           <Field
+            required
             title="Employer"
             placeholder="Some Company"
             value={experience[count]?.employer || ""}
@@ -40,6 +42,7 @@ const ExpCard = ({ count = 0 }: props) => {
         <Popover>
           <PopoverTrigger tabIndex={-1} className="w-full ">
             <Field
+              required
               className="capitalize"
               value={experience[count]?.startMonth || ""}
               title="Start Month"
@@ -64,6 +67,7 @@ const ExpCard = ({ count = 0 }: props) => {
           </PopoverContent>
         </Popover>
         <Field
+          required
           type="string"
           title="Start Year"
           placeholder="2011"
@@ -73,7 +77,7 @@ const ExpCard = ({ count = 0 }: props) => {
           }
         />
         <Popover>
-          <PopoverTrigger  tabIndex={-1} className="w-full">
+          <PopoverTrigger tabIndex={-1} className="w-full">
             <Field
               className="capitalize"
               value={experience[count]?.endMonth || ""}
@@ -108,24 +112,24 @@ const ExpCard = ({ count = 0 }: props) => {
         />
       </div>
       <div className="flex flex-col gap-4  pt-4">
-          <AutoResizeTextarea
-            value={experience[count]?.bullet1 || ""}
-            onChange={(e) => setExperience(count, "bullet1", e.target.value)}
-            placeholder="Bullet Point 1"
-            className="focus-visible:ring-0 textarea  min-h-24"
-          />
-          <AutoResizeTextarea
-            value={experience[count]?.bullet2 || ""}
-            onChange={(e) => setExperience(count, "bullet2", e.target.value)}
-            placeholder="Bullet Point 2"
-            className="focus-visible:ring-0 textarea  min-h-24"
-          />
-          <AutoResizeTextarea
-            value={experience[count]?.bullet3 || ""}
-            onChange={(e) => setExperience(count, "bullet3", e.target.value)}
-            placeholder="Bullet Point 3"
-            className="focus-visible:ring-0 textarea  min-h-24"
-          />
+        <AutoResizeTextarea
+          value={experience[count]?.bullet1 || ""}
+          onChange={(e) => setExperience(count, "bullet1", e.target.value)}
+          placeholder="Bullet Point 1"
+          className="focus-visible:ring-0 textarea  min-h-24"
+        />
+        <AutoResizeTextarea
+          value={experience[count]?.bullet2 || ""}
+          onChange={(e) => setExperience(count, "bullet2", e.target.value)}
+          placeholder="Bullet Point 2"
+          className="focus-visible:ring-0 textarea  min-h-24"
+        />
+        <AutoResizeTextarea
+          value={experience[count]?.bullet3 || ""}
+          onChange={(e) => setExperience(count, "bullet3", e.target.value)}
+          placeholder="Bullet Point 3"
+          className="focus-visible:ring-0 textarea  min-h-24"
+        />
       </div>
     </div>
   );

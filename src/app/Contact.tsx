@@ -9,8 +9,13 @@ import Field from "@/components/ui/Field";
 import TipsCard from "@/components/ui/TipsCard";
 import { trimUrls } from "@/lib/utils";
 import { useTextStore } from "@/lib/Zustand";
+import { useState } from "react";
+import PhoneInput, {
+  formatPhoneNumber as format,
+} from "react-phone-number-input";
 
 const Contact = () => {
+  const [unformatted, setunformatted] = useState<any>();
   const texts = useTextStore();
   const {
     name,
@@ -24,10 +29,8 @@ const Contact = () => {
     setField,
   } = useTextStore();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const formattedValue = formatPhoneNumber(value);
-    setField("number", formattedValue);
+  const handleChange = (e: any) => {
+    setField("number", { u: e, f: format(e) });
   };
 
   return (
@@ -78,15 +81,20 @@ const Contact = () => {
             className="capitalize"
             onChange={(e) => setField("name", e.target.value)}
           />
-          <Field
-            required
-            type="text"
-            placeholder="(250) 123 1234"
-            title="Phone Number"
-            maxLength={14}
-            value={number}
-            onChange={handleChange}
-          />
+          <div className=" flex flex-col sm:text-lg text-sm  ">
+            <h2 className=" self-start pb-1 ">Phone Number:</h2>
+
+            <div className="p-[.1rem] rounded-2xl radialbig relative">
+              <PhoneInput
+                defaultCountry="US"
+                countryCallingCodeEditable={false}
+                className="focus-visible:border-0 focus-visible:outline-none focus-visible:ring-0"
+                placeholder="250 232 8792"
+                value={number.u}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+          </div>
           <div className=" col-span-2">
             <Field
               required

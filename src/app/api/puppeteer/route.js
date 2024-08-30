@@ -73,28 +73,7 @@ export async function POST(req, res) {
                 data.position
               }</p>
             </div>
-            ${
-              data.city &&
-              `<div class="w-full flex-row flex">
-                <div class="flex space-x-2 items-center text-lg font-semibold">
-                  <svg
-                    width="26"
-                    height="20"
-                    fill="white"
-                    viewBox="0 0 384 512"
-                  >
-                    <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
-                  </svg>
-                  <p class="capitalize">${data.city}</p>
-                  ${
-                    data.country &&
-                    `<p class="capitalize">
-                      <span class=" text-slate-300">- </span>&nbsp;${data.country}
-                    </p>`
-                  }
-                </div>
-              </div>`
-            }
+            
 
             ${
               data.website
@@ -126,13 +105,13 @@ export async function POST(req, res) {
             }
 
             ${
-              data.number || data.email || data.linkedin
+              data.number || data.email || data.linkedin || data.country
                 ? `<div class="w-full">
                 <div class="pb-4 text-white">
                   <p class="tracking-wider leading-8 text-2xl">CONTACT</p>
                   <div class="w-full border-t-[3px] rounded-full border-t-neutral-200"></div>
                 </div>
-                <div class="w-full space-y-4 text-lg font-semibold">
+                <div class="w-full space-y-2 text-lg font-semibold">
                   ${
                     data.linkedin &&
                     `<div class="flex flex-row gap-x-2 items-center align-middle lowercase">
@@ -183,6 +162,28 @@ export async function POST(req, res) {
                       <p>${data.number}</p>
                     </div>`
                   }
+                    ${
+              data.city &&
+              `
+                    <div class="flex w-full flex-row gap-x-2 items-center align-middle lowercase">
+                  <svg
+                    width="26"
+                    height="20"
+                    fill="white"
+                    viewBox="0 0 384 512"
+                  >
+                    <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                  </svg>
+                  <p class="capitalize">${data.city}</p>
+                  ${
+                    data.country &&
+                    `<p class="capitalize">
+                      <span class=" text-slate-300">- </span>&nbsp;${data.country}
+                    </p>`
+                  }
+                
+              </div>`
+            }
                 </div>
               </div>`
                 : ""
@@ -198,7 +199,7 @@ export async function POST(req, res) {
                   </p>
                   <div class="w-full border-t-[3px]  rounded-full border-t-neutral-200"></div>
                 </div>
-                <div class="w-full space-y-2 uppercase text-lg font-semibold">
+                <div class="w-full space-y-1 uppercase text-lg font-semibold">
                   ${data.technicalSkills
                     .map(
                       (skill) =>
@@ -222,7 +223,7 @@ export async function POST(req, res) {
                   </p>
                   <div class="w-full border-t-[3px]  rounded-full border-t-neutral-200"></div>
                 </div>
-                <div class="w-full space-y-2 uppercase text-lg font-semibold">
+                <div class="w-full space-y-1 uppercase text-lg font-semibold">
                   ${data.personalSkills
                     .map(
                       (skill, index) =>
@@ -234,6 +235,36 @@ export async function POST(req, res) {
                 </div>
               </div>`
                 : ""
+            }
+            ${
+              data.languages[0]?.lang &&
+              `<div style={{ paddingBottom: space4 }} class="w-full">
+                  <div
+                    class=" text-white pb-4 "
+                  >
+                    <p
+                      class="tracking-wider leading-8 text-2xl"
+                    >
+                      LANGUAGES
+                    </p>
+                  <div class="w-full border-t-[3px]  rounded-full border-t-neutral-200"></div>
+                  </div>
+                  <div class="w-full flex flex-col capitalize  ">
+                    ${data.languages
+                      .map(
+                        (obj, index) =>
+                          `<li
+                        key='${index}'
+                        class="ml-2 pb-1 text-lg marker:text-2xl"
+                      >
+                        <span class=" uppercase font-semibold">${obj.lang}</span>
+                        <span class=" text-neutral-400">&nbsp;-&nbsp;</span>
+                        <span class=" text-neutral-400">${obj.prof}</span>
+                      </li>`
+                      )
+                      .join("")}
+                  </div>
+                </div>`
             }
             
           </div>
@@ -270,38 +301,38 @@ export async function POST(req, res) {
                   (exp, i) =>
                     `<div
                   key='${i}'
-                  class="w-full space-y-3 text-xl flex flex-col pb-4"
+                  class="w-full space-y-1 text-xl flex flex-col pb-1"
                 >
-                  <div class="w-full space-y-1">
+                  <div class="w-full ">
                     <div class="w-full flex">
                       ${
                         data.experience[i]?.startMonth &&
-                        `<p class="text-neutral-400 text-[18px] capitalize">
+                        `<p class="text-neutral-600 text-[18px] capitalize">
                           ${data.experience[i].startMonth}&nbsp;
                         </p>`
                       }
                       ${
                         data.experience[i]?.startYear &&
-                        `<p class="text-neutral-400 text-[18px]">
+                        `<p class="text-neutral-600 text-[18px]">
                           ${data.experience[i].startYear}&nbsp;
                         </p>`
                       }
                       ${
                         data.experience[i]?.endMonth ||
                         data.experience[i]?.endYear
-                          ? `<p class="text-neutral-400 text-[18px]">-&nbsp;</p>`
+                          ? `<p class="text-neutral-600 text-[18px]">-&nbsp;</p>`
                           : ""
                       }
                       ${
                         data.experience[i]?.endMonth
-                          ? `<p class="text-neutral-400 text-[18px] capitalize">
+                          ? `<p class="text-neutral-600 text-[18px] capitalize">
                           ${data.experience[i].endMonth}&nbsp;
                         </p>`
                           : ""
                       }
                       ${
                         data.experience[i]?.endYear
-                          ? `<p class="text-neutral-400 text-[18px]">
+                          ? `<p class="text-neutral-600 text-[18px]">
                           ${data.experience[i].endYear}&nbsp;
                         </p>`
                           : ""
@@ -315,23 +346,23 @@ export async function POST(req, res) {
 
                   <div
                     style="color: ${data.accentColor};"
-                    class="w-full font-normal space-y-2 marker:text-2xl"
+                    class="w-full font-normal space-y-1 marker:text-2xl"
                   >
                     ${
                       data.experience[i]?.bullet1 &&
-                      `<li class="pl-2 -indent-8 ml-8">
+                      `<li class=" pl-2 -indent-8 ml-6">
                       <span class="text-black whitespace-pre-line">${data.experience[i].bullet1}</span>
                       </li>`
                     }
                     ${
                       data.experience[i]?.bullet2 &&
-                      `<li class="pl-2 -indent-8 ml-8">
+                      `<li class=" pl-2 -indent-8 ml-6">
                       <span class="text-black whitespace-pre-line">${data.experience[i].bullet2}</span>
                       </li>`
                     }
                     ${
                       data.experience[i]?.bullet3 &&
-                      `<li class="pl-2 -indent-8 ml-8">
+                      `<li class=" pl-2 -indent-8 ml-6">
                       <span class="text-black whitespace-pre-line">${data.experience[i].bullet3}</span>
                       </li>`
                     }
@@ -360,20 +391,20 @@ export async function POST(req, res) {
                     ${
                       data.education?.gradMonth !== "" ||
                       data.education?.gradYear !== ""
-                        ? `<li class="text-neutral-400 ml-2 marker:text-2xl text-[18px] capitalize marker:text-transparent">
+                        ? `<li class="text-neutral-600 pl-2 -indent-8 ml-6 marker:text-2xl text-[18px]  leading-none capitalize marker:text-transparent">
                         ${data.education?.gradMonth}&nbsp;${data.education?.gradYear}
                       </li>`
                         : ""
                     }
                     ${
                       data.education?.degree &&
-                      `<li class="uppercase ml-2 marker:text-2xl text-lg ">
+                      `<li class="uppercase pl-2 -indent-8 ml-6 marker:text-2xl  leading-none text-lg ">
                         ${data.education?.degree}
                       </li>`
                     }
                     ${
                       data.education?.school &&
-                      `<li class="capitalize ml-2 marker:text-2xl text-neutral-600 text-[18px] marker:text-transparent">
+                      `<li class="capitalize pl-2 -indent-8 ml-6 marker:text-2xl  leading-none text-neutral-600 text-[18px] marker:text-transparent">
                         ${data.education?.school}
                       </li>`
                     }
@@ -381,6 +412,8 @@ export async function POST(req, res) {
                 </div>`
                 : ""
             }
+
+            
           </div>
         </div>
       </div>
@@ -393,7 +426,6 @@ export async function POST(req, res) {
 
   const isLocal = process.env.NODE_ENV === "development";
   let browser;
-  // const browser = await puppeteer.launch();
   if (isLocal) {
     browser = await puppeteer.launch();
   } else {

@@ -1,9 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+type Language = {
+  lang?: string;
+  prof?: string;
+};
+
 type T = {
   name: string;
-  number: string;
+  number: { u: string; f: string };
   email: string;
   city: string;
   country: string;
@@ -26,6 +31,7 @@ type T = {
     gradYear: string;
   };
   counterArray: number[];
+  langsArray: number[];
   summary: string;
   pfpSize: { px: string; percent: string };
   pfp: {
@@ -38,6 +44,12 @@ type T = {
     url: string;
   };
   experience: any[];
+
+  languages: Language[];
+  setLanguage: (index: number, lang: Language) => void;
+  addLanguage: () => void;
+  removeLanguage: (index: number) => void;
+
   addCount: () => void;
   removeCount: () => void;
   setField: (field: any, value: any) => void;
@@ -51,7 +63,7 @@ export const useTextStore = create<T>()(
       ui_pdfs: 0,
       ui_likes: 0,
       name: "",
-      number: "",
+      number: { u: "", f: "" },
       email: "",
       city: "",
       country: "",
@@ -86,7 +98,34 @@ export const useTextStore = create<T>()(
         uploadedAt: [],
         url: "",
       },
-      counterArray: [0], // Initialize with an array containing the number 0
+
+      languages: [{ lang: "", prof: "" }],
+
+      setLanguage: (index, language) => {
+        set((state) => {
+          const newLanguages = [...state.languages];
+          newLanguages[index] = language;
+          return { languages: newLanguages };
+        });
+      },
+
+      // Function to add a new language entry
+      addLanguage: () => {
+        set((state) => ({
+          languages: [...state.languages, { lang: "", prof: "" }],
+        }));
+      },
+
+      // Function to remove a language entry by index
+      removeLanguage: (index) => {
+        set((state) => {
+          const newLanguages = state.languages.filter((_, i) => i !== index);
+          return { languages: newLanguages };
+        });
+      },
+
+      counterArray: [0],
+      langsArray: [0],
       addCount: () =>
         set((state) => {
           const lastCount = state.counterArray[state.counterArray.length - 1];

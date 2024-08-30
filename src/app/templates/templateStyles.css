@@ -396,6 +396,10 @@ video {
 .ml-6 {
   margin-left: 1.5rem /* 24px */;
 }
+.ml-6 {
+  margin-left: 1.75rem;
+}
+
 .-mt-10 {
   margin-top: -2.5rem;
 }
@@ -1393,6 +1397,9 @@ video {
 }
 .-indent-8 {
   text-indent: -2.1rem;
+}
+.-indent-4 {
+  text-indent: -1rem /* -16px */;
 }
 .-indent-6 {
   text-indent: -1.5rem;

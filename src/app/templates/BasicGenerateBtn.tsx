@@ -25,6 +25,8 @@ const BasicGenerateBtn = () => {
     summary,
     pfpSize,
     experience,
+
+    languages,
     setField,
   } = useTextStore();
   const today = new Date();
@@ -47,7 +49,7 @@ const BasicGenerateBtn = () => {
             "/api/puppeteer/basic",
             {
               name,
-              number,
+              number: number ? number.f : "",
               email,
               city,
               country,
@@ -62,6 +64,7 @@ const BasicGenerateBtn = () => {
               pfpSize,
               pfp: pfp ? pfp.url : "",
               experience,
+              languages,
             },
             {
               responseType: "blob",
@@ -138,7 +141,7 @@ const BasicGenerateBtn = () => {
             "/api/puppeteer/basic",
             {
               name,
-              number,
+              number: number ? number.f : "",
               email,
               city,
               country,
@@ -153,6 +156,7 @@ const BasicGenerateBtn = () => {
               pfpSize,
               pfp: pfp ? pfp.url : "",
               experience,
+              languages,
             },
             {
               responseType: "blob",

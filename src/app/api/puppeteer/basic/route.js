@@ -278,7 +278,7 @@ export async function POST(req, res) {
       <p class="capitalize text-xl font-black">
         ${exp.jobPosition || ""}
       </p>
-      <div class="w-full font-medium text-xl pb-4 pt-1 px-1 tracking-basic">
+      <div style='color: ${data.accentColor};' class="w-full font-medium text-xl pb-4 pt-1 px-1 tracking-basic ">
         ${
           exp.bullet1
             ? `
@@ -323,22 +323,60 @@ export async function POST(req, res) {
                               ${
                                 data.education?.gradMonth !== "" ||
                                 data.education?.gradYear !== ""
-                                  ? `<li class=" text-transparent -indent-6 ml-6 text-end capitalize "><span class="text-neutral-400">${data.education?.gradMonth}&nbsp;${data.education?.gradYear}</span></li>`
+                                  ? `<li class=" text-transparent pl-1 -indent-6 ml-6 text-end capitalize "><span class="text-neutral-600">${data.education?.gradMonth}&nbsp;${data.education?.gradYear}</span></li>`
                                   : ""
                               }
                               ${
                                 data.education?.degree &&
-                                `<li class="uppercase -indent-6 ml-6 text-lg text-end font-basic"><span class="text-black">${data.education?.degree}</span></li>`
+                                `<li style='color: ${data.accentColor};' class="uppercase pl-1 -indent-6 ml-6 text-lg text-end font-basic"><span class="text-black">${data.education?.degree}</span></li>`
                               }
                               ${
                                 data.education?.school &&
-                                `<li class="capitalize text-transparent -indent-6 ml-6 text-lg text-end"><span class="text-neutral-600">${data.education?.school}</span></li>`
+                                `<li class="capitalize text-transparent pl-1 -indent-6 ml-6 text-lg text-end"><span class="text-neutral-600">${data.education?.school}</span></li>`
                               }
                             </div>
                           </div>
                         </div>`
                         : ""
-                    }
+                    } ${
+    data.languages[0]?.lang
+      ? `<div class="">
+                  <div
+                    class="w-full px-2 flex  gap-y-2 flex-col"
+                  >
+                    <p
+                      class="uppercase font-black text-xl text-left tracking-wider"
+                    >
+                      languages
+                    </p>
+                    <div class="w-full flex flex-col capitalize  ">
+                      ${data.languages
+                        .map(
+                          (obj, index) =>
+                            `<li
+                            key='${index}'
+                            style='color: ${data.accentColor};'
+                            
+                            class="ml-2 text-lg pl-1 font-semibold"
+                          >
+                            <span class=" text-black">
+                              ${obj.lang}&nbsp;
+                            </span>
+                            <span class=" text-neutral-600">
+                              &nbsp;-&nbsp;
+                            </span>
+                            <span class=" text-neutral-600">
+                              &nbsp;
+                              ${obj.prof}
+                            </span>
+                          </li>`
+                        )
+                        .join("")}
+                    </div>
+                  </div>
+                </div>`
+      : ""
+  }
 
                     
                   
@@ -411,13 +449,13 @@ export async function POST(req, res) {
     <div class="w-full flex flex-col capitalize">
       <li class="ml-2 text-lg font-basic">
         <span class=" text-black">english&nbsp;</span>
-        <span class=" text-neutral-400">-</span>
-        <span class=" text-neutral-400">&nbsp;fluent</span>
+        <span class=" text-neutral-600">-</span>
+        <span class=" text-neutral-600">&nbsp;fluent</span>
       </li>
       <li class="ml-2 text-lg font-basic">
         <span class=" text-black">arabic&nbsp;</span>
-        <span class=" text-neutral-400">-</span>
-        <span class=" text-neutral-400">&nbsp;native</span>
+        <span class=" text-neutral-600">-</span>
+        <span class=" text-neutral-600">&nbsp;native</span>
       </li>
     </div>
   </div>
