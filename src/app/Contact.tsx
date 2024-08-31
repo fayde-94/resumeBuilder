@@ -15,8 +15,6 @@ import PhoneInput, {
 } from "react-phone-number-input";
 
 const Contact = () => {
-  const [unformatted, setunformatted] = useState<any>();
-  const texts = useTextStore();
   const {
     name,
     number,
@@ -28,6 +26,7 @@ const Contact = () => {
     position,
     setField,
   } = useTextStore();
+  console.log("🚀 ~ Contact ~ number:", number.u, number.f);
 
   const handleChange = (e: any) => {
     setField("number", { u: e, f: format(e) });
@@ -90,6 +89,7 @@ const Contact = () => {
                 countryCallingCodeEditable={false}
                 className="focus-visible:border-0 focus-visible:outline-none focus-visible:ring-0"
                 placeholder="250 232 8792"
+                limitMaxLength
                 value={number.u}
                 onChange={(e) => handleChange(e)}
               />

@@ -45,10 +45,12 @@ const Languages = () => {
   return (
     <div className="page">
       <div className="w-full relative">
-        <h2 className=" font-light  text-center leading-none text-2xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent capitalize">
+        <h2 className=" font-light  text-center leading-none text-2xl p-4 pt-10 rounded-t-lg bg-gradient-to-t from-zinc-900/60 to-transparent">
           Languages
         </h2>
-        <p className="absolute right-0 bottom-0 p-4 text-sm text-sky-800"></p>
+        <p className="absolute right-0 bottom-0 p-4 text-sm text-sky-800">
+          Not Required
+        </p>
         <div className="w-full border-t-[3px] rounded-full border-t-sky-800"></div>
       </div>
 

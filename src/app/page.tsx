@@ -74,16 +74,18 @@ export default function Home() {
         <div className="w-full flex-col flex mx-auto items-center relative">
           <div className=" text-center space-y-1 pb-4 ">
             <h2 className="md:text-3xl text-2xl font-semibold ">
-              super resume builder
+              super resume builder{" "}
+              <span className="md:text-sm text-xs text-slate-600">V1.0</span>
             </h2>
             <p className=" text-slate-600 md:text-lg text-base">
               Simplify your resume making process.
             </p>
             <div className="text-xs  pt-2 text-neutral-700 hover:text-neutral-400 transition-colors duration-500 absolute inset-x-0 select-none px-2">
               <p className="text-left mx-auto max-w-max">
-                site is in development: <br /> you can now generate and download
-                your resume! <br />
-                but there are many planned features and optimizations to come.
+                site is in development: <br /> you can choose from 2 templates
+                to fill and download
+                <br />
+                please leave feedback for any bugs or suggesstions
               </p>
             </div>
           </div>
