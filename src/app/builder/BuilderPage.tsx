@@ -10,7 +10,9 @@ import Skills from "../Skills";
 import Experience from "../Experience";
 import Education from "../Education";
 import { Link } from "next-view-transitions";
+import useEmblaCarousel from "embla-carousel-react";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import { type CarouselApi } from "@/components/ui/carousel";
 
 import {
   Carousel,
@@ -19,13 +21,32 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import BasicTemplate from "@/components/resume_templates/BasicTemplate";
 import Languages from "../Languages";
+import { useState } from "react";
 
 const BuilderPage = () => {
+  const controls = useAnimationControls();
   const { accentColor, experience } = useTextStore();
   console.log("🚀 ~ BuilderPage ~ experience:", experience);
+  const [api, setApi] = useState<CarouselApi>();
+  console.log("🚀 ~ BuilderPage ~ api:", api);
+  const fadein = {
+    initial: {
+      opacity: 1,
+      y: "50%",
+    },
+    animate: {
+      y: "-0%",
+      opacity: 0,
+
+      transition: {
+        opacity: { delay: 2.5, duration: 0.5 },
+        y: { duration: 1, ease: [0.22, 0.6, 0.36, 1] },
+      },
+    },
+  };
 
   return (
     <div className="w-full min-h-screen relative">
@@ -55,7 +76,10 @@ const BuilderPage = () => {
 
         <div className=" hidden 2xl:flex origin-top-left relative min-w-[710px]">
           <div className="fixed  max-w-[710px] top-1/2 -translate-y-1/2 px-1">
-            <Carousel className="max-w-[1100px] w-full mx-auto h-full max-h-screen my-auto px-2 ">
+            <Carousel
+              setApi={setApi}
+              className="max-w-[1100px] w-full mx-auto h-full max-h-screen my-auto px-2 "
+            >
               <CarouselContent className=" p-0 m-0">
                 {/* two column template */}
                 <CarouselItem
@@ -68,8 +92,20 @@ const BuilderPage = () => {
                   <motion.div
                     initial={{ height: "99%" }}
                     whileInView={{ height: "100%" }}
-                    className="aspect-[1000/1440]  flex flex-col justify-center  mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
+                    className="aspect-[1000/1440] relative flex flex-col justify-center  mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
                   >
+                    <motion.div
+                      variants={fadein}
+                      initial={"initial"}
+                      whileInView={"animate"}
+                      className="aspect-[1000/1440]  absolute flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
+                    >
+                      <img
+                        src="examples/2col2-example.png"
+                        alt=""
+                        className=" object-contain "
+                      />
+                    </motion.div>
                     <PuppeteerTemplate />
                   </motion.div>
                 </CarouselItem>
@@ -84,14 +120,29 @@ const BuilderPage = () => {
                   <motion.div
                     initial={{ height: "99%" }}
                     whileInView={{ height: "100%" }}
-                    className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
+                    className="aspect-[1000/1440] relative flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
                   >
+                    <motion.div
+                      variants={fadein}
+                      initial={"initial"}
+                      whileInView={"animate"}
+                      className="aspect-[1000/1440] absolute flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
+                    >
+                      <img
+                        src="examples/classic2-example.png"
+                        alt=""
+                        className=" object-contain "
+                      />
+                    </motion.div>
                     <BasicTemplate />
                   </motion.div>
                 </CarouselItem>
 
                 {/* more soon */}
-                <CarouselItem className="p-0 m-0 flex flex-col items-center justify-center ">
+                <CarouselItem
+                  key={"caro3"}
+                  className="p-0 m-0 flex flex-col items-center justify-center "
+                >
                   <motion.div
                     initial={{ scale: 0.1 }}
                     transition={{ duration: 0.5 }}
@@ -104,8 +155,24 @@ const BuilderPage = () => {
                   </motion.div>
                 </CarouselItem>
               </CarouselContent>
-              <CarouselPrevious className="size-10 left-0 m-0 hover:bg-sky-900 bg-slate-800/80 disabled:bg-black/50" />
-              <CarouselNext className="size-10 right-0 m-0 hover:bg-sky-900 bg-slate-800/80 disabled:bg-black/50" />
+              <CarouselPrevious
+                onMouseDown={() =>
+                  console.log(
+                    "🚀 ~ BuilderPage ~ emblaMainApi:",
+                    api?.selectedScrollSnap()
+                  )
+                }
+                className="size-10 left-0 m-0 hover:bg-sky-900 bg-slate-800/80 disabled:bg-black/50"
+              />
+              <CarouselNext
+                onMouseDown={() =>
+                  console.log(
+                    "🚀 ~ BuilderPage ~ emblaMainApi:",
+                    api?.selectedScrollSnap()
+                  )
+                }
+                className="size-10 right-0 m-0 hover:bg-sky-900 bg-slate-800/80 disabled:bg-black/50"
+              />
             </Carousel>
           </div>
         </div>
