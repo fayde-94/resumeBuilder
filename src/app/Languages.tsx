@@ -57,7 +57,10 @@ const Languages = () => {
       <div className="flex justify-around w-full  ">
         <div className="grid grid-cols-2 w-full max-w-[950px] sm:p-4 p-2 gap-2 sm:gap-4 bg-zinc-900/60 rounded-b-lg shadow-md ">
           {languages?.map((set, index: number) => (
-            <>
+            <div
+              key={index}
+              className="w-full grid-cols-2 grid col-span-2 max-w-[950px]  gap-2 sm:gap-4"
+            >
               <div className=" col-span-1">
                 <Field
                   className="capitalize"
@@ -112,7 +115,7 @@ const Languages = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           ))}
 
           <div

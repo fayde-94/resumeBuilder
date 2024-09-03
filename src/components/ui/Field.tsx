@@ -9,7 +9,7 @@ type props = {
   className?: string;
   title?: string;
   name?: string;
-  key?: string;
+  key?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   submitButtonOnclick?: React.MouseEventHandler<HTMLButtonElement>;
