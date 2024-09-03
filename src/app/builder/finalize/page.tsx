@@ -70,7 +70,7 @@ const page = () => {
                 two column template
               </p>
               <motion.div
-                initial={{ height: "99%" }}
+                initial={{ height: "95%" }}
                 whileInView={{ height: "100%" }}
                 className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] px-1 max-w-full"
               >
@@ -89,7 +89,7 @@ const page = () => {
                 classic template
               </p>
               <motion.div
-                initial={{ height: "99%" }}
+                initial={{ height: "95%" }}
                 whileInView={{ height: "100%" }}
                 className="aspect-[1000/1440]  flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] px-1 max-w-full"
               >

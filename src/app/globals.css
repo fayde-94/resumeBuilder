@@ -251,7 +251,7 @@ input::placeholder {
 }
 
 .PhoneInputInput {
-  @apply field;
+  @apply w-full sm:h-14 h-12 sm:text-lg indent-1 bg-transparent rounded-lg;
 }
 .PhoneInputInput:focus,
 .PhoneInputInput:focus-within,
@@ -376,6 +376,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-background-clip: text;
   -webkit-text-fill-color: #ffffff;
-  transition: background-color 5000s ease-in-out 0s;
-  box-shadow: inset 0 0 20px 20px #23232329;
+  color: white;
+  transition: background-color 5000s ease-in-out 0s !important;
+  box-shadow: inset 0 0 900px 20px rgb(20 27 48 / 0.9);
 }

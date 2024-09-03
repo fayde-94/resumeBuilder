@@ -78,36 +78,42 @@ const BuilderPage = () => {
           <div className="fixed  max-w-[710px] top-1/2 -translate-y-1/2 px-1">
             <Carousel
               setApi={setApi}
-              className="max-w-[1100px] w-full mx-auto h-full max-h-screen my-auto px-2 "
+              className="max-w-[1100px]  w-full relative mx-auto h-full max-h-screen my-auto px-2 "
             >
-              <CarouselContent className=" p-0 m-0">
+              <CarouselContent className="  p-0 m-0">
                 {/* two column template */}
                 <CarouselItem
                   key={"caro1"}
                   className="p-0 m-0 flex flex-col items-center justify-center aspect-[1000/1440] min-w-full min-h-full"
                 >
-                  <p className="text-center pb-2 text-slate-400 capitalize">
+                  <p className="text-center pb-2 w-full max-w-[90%] text-slate-400 capitalize">
                     two column template
                   </p>
-                  <motion.div
-                    initial={{ height: "99%" }}
-                    whileInView={{ height: "100%" }}
-                    className="aspect-[1000/1440] relative flex flex-col justify-center  mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
-                  >
+                  <div className="relative aspect-[1000/1440] flex flex-col justify-center w-full mx-auto max-h-[86vh] max-w-full rounded-md  select-none">
+                    {" "}
+                    <span className="bg-green-900 text-sm top-[-24px]  px-2 absolute right-0 z-10">
+                      show example
+                    </span>
                     <motion.div
-                      variants={fadein}
-                      initial={"initial"}
-                      whileInView={"animate"}
-                      className="aspect-[1000/1440]  absolute flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
+                      initial={{ height: "99%" }}
+                      whileInView={{ height: "100%" }}
+                      className="aspect-[1000/1440] relative flex flex-col justify-center  mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
                     >
-                      <img
-                        src="examples/2col2-example.png"
-                        alt=""
-                        className=" object-contain "
-                      />
+                      <motion.div
+                        variants={fadein}
+                        initial={"initial"}
+                        whileInView={"animate"}
+                        className="aspect-[1000/1440]  absolute flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none backdrop-brightness-50"
+                      >
+                        <img
+                          src="examples/2col2-example.png"
+                          alt=""
+                          className=" object-contain "
+                        />
+                      </motion.div>
+                      <PuppeteerTemplate />
                     </motion.div>
-                    <PuppeteerTemplate />
-                  </motion.div>
+                  </div>
                 </CarouselItem>
                 {/* basic template */}
                 <CarouselItem
@@ -126,7 +132,7 @@ const BuilderPage = () => {
                       variants={fadein}
                       initial={"initial"}
                       whileInView={"animate"}
-                      className="aspect-[1000/1440] absolute flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none"
+                      className="aspect-[1000/1440] absolute flex flex-col justify-center min-h-[80vh] mx-auto max-h-[86vh] max-w-full rounded-md overflow-clip select-none backdrop-brightness-50"
                     >
                       <img
                         src="examples/classic2-example.png"

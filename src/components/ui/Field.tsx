@@ -8,6 +8,7 @@ import { FaArrowCircleUp } from "react-icons/fa";
 type props = {
   className?: string;
   title?: string;
+  name?: string;
   key?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
@@ -31,6 +32,7 @@ const Field = ({
   onChange,
   onKeyDown,
   placeholder,
+  name,
   required,
   type,
   value,
@@ -59,6 +61,8 @@ const Field = ({
       <div className="p-[.1rem] rounded-2xl radialbig relative">
         <Input
           id={id}
+          name={name}
+          spellCheck={false}
           onChange={onChange}
           onKeyDown={onKeyDown}
           key={key}

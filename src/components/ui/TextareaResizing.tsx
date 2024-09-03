@@ -7,12 +7,14 @@ type resizingTextArea = {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
   className?: string;
+  name?: string;
 };
 const AutoResizeTextarea = ({
   className,
   onChange,
   placeholder = "type something...",
   value,
+  name,
 }: resizingTextArea) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -30,6 +32,7 @@ const AutoResizeTextarea = ({
         ref={textareaRef}
         onInput={handleInput}
         onFocus={handleInput}
+        name={name}
         style={{
           overflow: "hidden",
           resize: "none",

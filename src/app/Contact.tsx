@@ -26,6 +26,7 @@ const Contact = () => {
     position,
     setField,
   } = useTextStore();
+  console.log("🚀 ~ Contact ~ linkedin website:", { linkedin, website });
   console.log("🚀 ~ Contact ~ number:", number.u, number.f);
 
   const handleChange = (e: any) => {
@@ -77,6 +78,7 @@ const Contact = () => {
             placeholder="John Wick"
             title="Full Name"
             value={name}
+            name="fullName"
             className="capitalize"
             onChange={(e) => setField("name", e.target.value)}
           />
@@ -98,6 +100,7 @@ const Contact = () => {
           <div className=" col-span-2">
             <Field
               required
+              name="jobTitle"
               value={position}
               placeholder="Full Stack Developer"
               className="capitalize"
@@ -107,6 +110,7 @@ const Contact = () => {
           </div>{" "}
           <Field
             required
+            name="city"
             value={city}
             placeholder="Calgary, AB"
             className="capitalize"
@@ -115,6 +119,7 @@ const Contact = () => {
           />
           <Field
             required
+            name="country"
             value={country}
             placeholder="Canada"
             className="capitalize"
@@ -124,27 +129,30 @@ const Contact = () => {
           <div className=" col-span-2">
             <Field
               required
+              name="email"
               value={email}
               type="email"
               placeholder="ineedajob@stuff.com"
               title="Email Address"
-              onChange={(e) => setField("email", trimUrls(e.target.value))}
+              onChange={(e) => setField("email", e.target.value)}
             />
           </div>
           <div className=" col-span-2">
             <Field
+              name="linkedIn"
               value={linkedin}
               placeholder="https://www.linkedin.com/in/..."
               title="LinkedIn Profile"
-              onChange={(e) => setField("linkedin", trimUrls(e.target.value))}
+              onChange={(e) => setField("linkedin", e.target.value)}
             />
           </div>
           <div className=" col-span-2">
             <Field
+              name="website"
               value={website}
               placeholder="https://www.freelemonade.com"
               title="Web Portfolio"
-              onChange={(e) => setField("website", trimUrls(e.target.value))}
+              onChange={(e) => setField("website", e.target.value)}
             />
           </div>
         </div>
